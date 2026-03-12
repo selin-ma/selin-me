@@ -1,9 +1,8 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useMemo, useRef, useState } from 'react';
-
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import Image from 'next/image';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { bookshelf, otherHobbies, sportsActivities } from '@/lib/data';
@@ -12,7 +11,7 @@ import type { Book, LifeTab, OtherHobby, PhotoSlot } from '@/types';
 
 // ─── Tab transition variants ──────────────────────────────────────────────────
 
-const tabVariants = {
+const tabVariants: Variants = {
   initial: { opacity: 0, y: 14 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.26, ease: 'easeOut' } },
   exit: { opacity: 0, y: -14, transition: { duration: 0.16, ease: 'easeIn' } },
@@ -190,7 +189,7 @@ function Bookshelf() {
     );
   };
 
-  const bookVariants = {
+  const bookVariants: Variants = {
     enter: (dir: number) => ({ y: dir * 28, opacity: 0 }),
     center: {
       y: 0,
