@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { bookshelf, otherHobbies, sportsActivities } from '@/lib/data';
@@ -34,14 +34,8 @@ function BookListItem({
   isActive: boolean;
   onClick: () => void;
 }) {
-  const ref = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    if (isActive) ref.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }, [isActive]);
-
   return (
     <button
-      ref={ref}
       type="button"
       onClick={onClick}
       className={cn(

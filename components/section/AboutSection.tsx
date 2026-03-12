@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import { aboutStats, education, personalTags } from '@/lib/data';
 
@@ -11,10 +12,11 @@ function Avatar() {
     <div className="relative mx-auto h-24 w-24 flex-shrink-0">
       <div className="absolute inset-0 rounded-full border-2 border-terra/30" />
       <div className="absolute inset-[3px] overflow-hidden rounded-full">
-        <img
-          src="../../static/images/avatar.png"
-          alt="Ma Yudi"
+        <Image
+          src="/images/avatar.png"
+          alt="avatar image"
           className="h-full w-full object-cover"
+          fill
         />
       </div>
       <span
