@@ -13,7 +13,7 @@ function Avatar() {
       <div className="absolute inset-0 rounded-full border-2 border-terra/30" />
       <div className="absolute inset-[3px] overflow-hidden rounded-full">
         <Image
-          src="/images/avatar.png"
+          src="/public/images/avatar.png"
           alt="avatar image"
           className="h-full w-full object-cover"
           fill
