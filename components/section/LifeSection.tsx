@@ -3,6 +3,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+import Image from 'next/image';
+
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { bookshelf, otherHobbies, sportsActivities } from '@/lib/data';
 import { cn } from '@/lib/utils';
@@ -236,7 +238,6 @@ function Bookshelf() {
           <ul
             className="flex flex-col gap-0.5 overflow-y-auto pb-1 pr-2"
             style={{ maxHeight: '300px' }}
-            role="list"
           >
             {filteredBooks.map((book, i) => (
               <li key={book.title}>
@@ -295,10 +296,11 @@ function PhotoCard({ slot }: { slot: PhotoSlot }) {
   if (slot.src) {
     return (
       <div className="group relative aspect-square overflow-hidden rounded-xl">
-        <img
+        <Image
           src={slot.src}
           alt={slot.label}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-2">
           <p className="font-body text-[0.62rem] text-white/80">{slot.label}</p>
@@ -474,9 +476,12 @@ function FlipCard({ hobby }: { hobby: OtherHobby }) {
             <>
               <div className="relative z-10 grid grid-cols-3 gap-1 p-2">
                 {hobby.photos!.map((p, i) => (
-                  <div key={i} className="aspect-square overflow-hidden rounded-lg bg-white/10">
+                  <div
+                    key={i}
+                    className="relative aspect-square overflow-hidden rounded-lg bg-white/10"
+                  >
                     {p.src ? (
-                      <img src={p.src} alt={p.label} className="h-full w-full object-cover" />
+                      <Image src={p.src} alt={p.label} fill className="object-cover" />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center">
                         <svg
