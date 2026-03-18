@@ -564,7 +564,7 @@ export function LifeSection() {
         aria-hidden="true"
       />
 
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="reveal-section mb-14 text-center">
           <p className="mb-3 font-body text-[0.7rem] uppercase tracking-[0.3em] text-dusty-blue">

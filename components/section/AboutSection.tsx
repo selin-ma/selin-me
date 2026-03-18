@@ -100,7 +100,7 @@ function EducationBlock() {
 export function AboutSection() {
   return (
     <section id="about" className="bg-cream py-20">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Section kicker */}
         <motion.div
           className="reveal-section mb-10 text-center"
