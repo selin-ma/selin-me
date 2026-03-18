@@ -231,7 +231,7 @@ export function HeroSection() {
           style={{ animation: 'fadeUp 0.7s ease 0.9s both' }}
         >
           <a
-            href="#experience"
+            href="#about"
             className="flex items-center gap-2.5 rounded-full bg-ink px-6 py-3 font-body text-[0.8rem] tracking-[0.1em] text-cream transition-colors duration-300 hover:bg-terra"
           >
             {t('hero.cta.readStory')}
@@ -249,7 +249,7 @@ export function HeroSection() {
           </a>
           <a
             href="#contact"
-            className="border-b border-ink/10 pb-0.5 font-body text-[0.8rem] tracking-[0.1em] text-ink-light/60 transition-colors hover:border-terra hover:text-terra"
+            className="relative font-body text-[0.8rem] tracking-[0.1em] text-ink-light/60 transition-colors duration-300 after:absolute after:-bottom-1 after:left-1/2 after:h-[1.5px] after:w-0 after:-translate-x-1/2 after:bg-terra after:transition-all after:duration-300 hover:text-terra hover:after:w-4"
           >
             {t('hero.cta.contact')}
           </a>
