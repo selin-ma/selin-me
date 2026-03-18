@@ -35,21 +35,21 @@ export function Cursor() {
       rafRef.current = requestAnimationFrame(animate);
     };
 
-    const handleInteractableEnter = () => {
-      if (dotRef.current) dotRef.current.style.transform = 'scale(2.5)';
-      if (ringRef.current) ringRef.current.style.transform = 'scale(1.8)';
-    };
+    // const handleInteractableEnter = () => {
+    //   if (dotRef.current) dotRef.current.style.transform = 'scale(2.5)';
+    //   if (ringRef.current) ringRef.current.style.transform = 'scale(1.8)';
+    // };
 
-    const handleInteractableLeave = () => {
-      if (dotRef.current) dotRef.current.style.transform = 'scale(1)';
-      if (ringRef.current) ringRef.current.style.transform = 'scale(1)';
-    };
+    // const handleInteractableLeave = () => {
+    //   if (dotRef.current) dotRef.current.style.transform = 'scale(1)';
+    //   if (ringRef.current) ringRef.current.style.transform = 'scale(1)';
+    // };
 
     document.addEventListener('mousemove', handleMouseMove);
-    document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
-      el.addEventListener('mouseenter', handleInteractableEnter);
-      el.addEventListener('mouseleave', handleInteractableLeave);
-    });
+    // document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
+    //   el.addEventListener('mouseenter', handleInteractableEnter);
+    //   el.addEventListener('mouseleave', handleInteractableLeave);
+    // });
 
     rafRef.current = requestAnimationFrame(animate);
 
@@ -64,13 +64,13 @@ export function Cursor() {
       <div
         ref={dotRef}
         style={{ opacity: 0 }}
-        className="cursor-dot h-2.5 w-2.5 rounded-full bg-terra transition-transform duration-150"
+        className="cursor-dot h-2 w-2 rounded-full bg-terra transition-transform duration-150"
         aria-hidden="true"
       />
       <div
         ref={ringRef}
         style={{ opacity: 0 }}
-        className="cursor-ring h-8 w-8 rounded-full border border-terra/50 transition-transform duration-200"
+        className="cursor-ring h-5 w-5 rounded-full border border-terra/60 transition-transform duration-200"
         aria-hidden="true"
       />
     </>

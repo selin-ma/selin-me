@@ -159,7 +159,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl text-center">
+      <div className="relative z-10 text-center md:max-w-7xl w-full">
         <p
           className="mb-6 font-body text-[0.7rem] uppercase tracking-[0.3em] text-terra"
           style={{ animation: 'fadeUp 0.7s ease 0.3s both' }}
@@ -176,7 +176,7 @@ export function HeroSection() {
 
           {/* ── 代码 — default highlighted, terra ── */}
           <em
-            className="cursor-default font-light italic transition-colors duration-300"
+            className="align-middle cursor-default font-light italic transition-colors duration-300"
             style={{
               color:
                 WORD_COLORS[hovered] === WORD_COLORS.code || hovered === 'code'
@@ -192,7 +192,7 @@ export function HeroSection() {
 
           {/* ── 匠心 — sage on hover ── */}
           <em
-            className="cursor-default font-light not-italic transition-colors duration-300"
+            className="align-middle cursor-default font-light not-italic transition-colors duration-300"
             style={{
               fontWeight: 275,
               fontSize: '0.82em',
@@ -207,7 +207,7 @@ export function HeroSection() {
 
           {/* ── 好奇 — dusty-blue on hover ── */}
           <em
-            className="cursor-default font-light not-italic transition-colors duration-300"
+            className="align-middle cursor-default font-light not-italic transition-colors duration-300"
             style={{
               fontWeight: 275,
               fontSize: '0.82em',

@@ -205,7 +205,7 @@ export function ExperienceSection() {
       <div className="pointer-events-none absolute right-0 top-0 h-80 w-80 rounded-full bg-terra/[0.035] blur-3xl" aria-hidden="true" />
       <div className="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-sage/[0.04] blur-3xl" aria-hidden="true" />
 
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="reveal-section mb-14 text-center">
           <p className="mb-3 font-body text-[0.7rem] uppercase tracking-[0.3em] text-sage">
