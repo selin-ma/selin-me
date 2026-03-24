@@ -10,15 +10,10 @@
 
 /* ─── CSS Custom Properties ─────────────────────────────────────────────── */
 :root {
-  --color-cream: #faf6f0;
-  --color-paper: #f2ebe0;
-  --color-ink: #1c1917;
-  --color-ink-light: #44403c;
-  --color-terra: #c4714b;
-  --color-sage: #6b8f71;
-  --color-dusty-blue: #7a9db5;
-  --color-gold: #c9a84c;
-  --color-warm-white: #fdf9f4;
+  --text-body-size: 1rem;
+  --text-body-lineheight: 1.75;
+  --text-lead-size: 1.05rem;
+  --text-caption-size: 0.875rem;
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
@@ -30,23 +25,31 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Must be on html, not body — overflow-x:hidden on body creates a BFC scroll container in Safari, breaking position:fixed */
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
-  font-family: var(--font-instrument-sans), system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #1F1F1F;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 300;
-  overflow-x: hidden;
-  cursor: none;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lineheight);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  margin: 0;
+}
+
+p { margin: 0; }
+
 /* ─── Selection ──────────────────────────────────────────────────────────── */
 ::selection {
-  background-color: var(--color-terra);
-  color: var(--color-cream);
+  background-color: #5A6B4C;
+  color: #F0EFE9;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
@@ -55,11 +58,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-cream);
+  background: #F0EFE9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-terra);
+  background: #8A9B7C;
   border-radius: 3px;
 }
 
@@ -74,26 +77,22 @@ body {
 /* ─── Scroll reveal ──────────────────────────────────────────────────────── */
 .reveal-section {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(36px) scale(0.97);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s ease;
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-section.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-/* ─── Grain overlay ──────────────────────────────────────────────────────── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.02;
-  pointer-events: none;
-  z-index: 998;
+
+/* ─── Breathing dot ──────────────────────────────────────────────────────── */
+@keyframes breathe {
+  0%, 100% { opacity: 0.5; transform: scale(0.75); }
+  50%       { opacity: 1;   transform: scale(1.25); }
 }
 
 /* ─── Hero entry animations ──────────────────────────────────────────────── */
@@ -113,6 +112,39 @@ body::after {
   to   { opacity: 1; }
 }
 
+/* ─── Type scale ─────────────────────────────────────────────────────────── */
+:root {
+  --scale-ratio: 1.25; /* modular scale */
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 0.95;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.lead {
+  font-size: var(--text-lead-size);
+  line-height: 1.6;
+}
+
+.caption {
+  font-size: var(--text-caption-size);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Improve measure for long copy */
+.container p, .prose {
+  max-width: 65ch;
+}
+
 /* ─── Book 3D shelf ──────────────────────────────────────────────────────── */
 .book-3d {
   transform-style: preserve-3d;
@@ -125,7 +157,7 @@ body::after {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-terra), var(--color-gold));
+  background: #5A6B4C;
   z-index: 200;
   transition: width 0.1s linear;
 }

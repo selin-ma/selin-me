@@ -1,169 +1,257 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
-import { aboutStats, education, personalTags } from '@/lib/data';
-import { img } from '@/lib/utils';
+import { useI18n } from '@/components/i18n/I18nProvider';
+import { Container } from '@/components/ui/Container';
+import { education, workExperiences } from '@/lib/data';
 
-// ─── Avatar placeholder ───────────────────────────────────────────────────────
-
-function Avatar() {
+function CodeCard() {
   return (
-    <div className="relative mx-auto h-24 w-24 flex-shrink-0">
-      <div className="absolute inset-0 rounded-full border-2 border-terra/30" />
-      <div className="absolute inset-[3px] overflow-hidden rounded-full">
-        <Image
-          src={img('/images/avatar.png')}
-          alt="avatar image"
-          className="h-full w-full object-cover"
-          fill
-        />
+    <div
+      className="overflow-hidden rounded-[18px] bg-[#1e1e1e] shadow-[0_24px_64px_rgba(0,0,0,0.18)] ring-1 ring-white/[0.07]"
+      style={{ transform: 'rotate(-2deg)' }}
+    >
+      {/* macOS title bar */}
+      <div className="flex items-center gap-1.5 border-b border-white/[0.07] bg-[#252526] px-4 py-3">
+        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+        <span className="ml-4 font-mono text-[0.63rem] text-white/25">engineer.ts</span>
       </div>
-      <span
-        className="absolute bottom-1 right-1 h-3 w-3 rounded-full border-2 border-white bg-sage"
-        aria-hidden="true"
-      />
+
+      {/* Code body */}
+      <pre className="overflow-x-auto [&::-webkit-scrollbar]:hidden px-6 py-5 font-mono text-[0.78rem] leading-[1.95] text-[#d4d4d4]">
+        <span style={{ color: '#569cd6' }}>{'const '}</span>
+        <span style={{ color: '#4fc1ff' }}>engineer</span>
+        {' = '}
+        {'{'}
+        {'\n'}
+        {'  '}
+        <span style={{ color: '#9cdcfe' }}>stack</span>
+        {': ['}
+        <span style={{ color: '#ce9178' }}>{"'React'"}</span>
+        {', '}
+        <span style={{ color: '#ce9178' }}>{"'Next.js'"}</span>
+        {', '}
+        <span style={{ color: '#ce9178' }}>{"'TypeScript'"}</span>
+        {', '}
+        <span style={{ color: '#ce9178' }}>{"'Tailwind'"}</span>
+        {'],\n'}
+        {'  '}
+        <span style={{ color: '#9cdcfe' }}>exp</span>
+        {': '}
+        <span style={{ color: '#b5cea8' }}>5</span>
+        <span style={{ color: '#6a9955' }}>{',  // years'}</span>
+        {'\n'}
+        {'  '}
+        <span style={{ color: '#9cdcfe' }}>base</span>
+        {': '}
+        <span style={{ color: '#ce9178' }}>{"'Chengdu, China'"}</span>
+        {',\n'}
+        {'  '}
+        <span style={{ color: '#9cdcfe' }}>timezone</span>
+        {': '}
+        <span style={{ color: '#ce9178' }}>{"'UTC+8 \u2194 APAC'"}</span>
+        {',\n'}
+        {'  '}
+        <span style={{ color: '#9cdcfe' }}>openTo</span>
+        {': ['}
+        <span style={{ color: '#ce9178' }}>{"'Remote'"}</span>
+        {', '}
+        <span style={{ color: '#ce9178' }}>{"'Hybrid'"}</span>
+        {'],\n'}
+        {'  '}
+        <span style={{ color: '#9cdcfe' }}>available</span>
+        {': '}
+        <span style={{ color: '#569cd6' }}>true</span>
+        <span style={{ color: '#6a9955' }}>{',  // hire me :)'}</span>
+        {'\n'}
+        {'};\n'}
+        {'\n'}
+        <span style={{ color: '#569cd6' }}>{'export default '}</span>
+        <span style={{ color: '#4fc1ff' }}>engineer</span>
+        {';'}
+      </pre>
     </div>
   );
 }
-// ─── Stat card ────────────────────────────────────────────────────────────────
-
-function StatCard({ number, label }: { number: string; label: string }) {
-  return (
-    <div className="flex flex-col items-center gap-0.5">
-      <span className="font-display text-[1.6rem] font-light text-ink">{number}</span>
-      <span className="font-body text-[0.62rem] uppercase tracking-[0.15em] text-ink/35">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-// ─── Personal tag row ─────────────────────────────────────────────────────────
-
-function TagRow({ icon, text }: { icon: string; text: string }) {
-  return (
-    <div className="flex items-start gap-3">
-      <span
-        className="mt-[1px] flex h-5 w-5 flex-shrink-0 items-center justify-center text-[0.85rem]"
-        aria-hidden="true"
-      >
-        {icon}
-      </span>
-      <span className="font-body text-[0.82rem] leading-snug text-ink/60">{text}</span>
-    </div>
-  );
-}
-
-// ─── Education block ──────────────────────────────────────────────────────────
-
-function EducationBlock() {
-  return (
-    <div className="mt-6 border-t border-ink/6 pt-5">
-      <p className="mb-3 font-body text-[0.62rem] uppercase tracking-[0.2em] text-ink/28">
-        Education
-      </p>
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          {/* School icon */}
-          <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gold/10">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              className="text-gold"
-              aria-hidden="true"
-            >
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
-            </svg>
-          </div>
-          <div>
-            <p className="font-body text-[0.8rem] font-medium text-ink/75">{education.school}</p>
-            <p className="font-body text-[0.68rem] text-ink/38">{education.degree}</p>
-          </div>
-        </div>
-        <span className="flex-shrink-0 font-body text-[0.68rem] text-ink/28">
-          {education.period}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-// ─── About Section ────────────────────────────────────────────────────────────
 
 export function AboutSection() {
+  const { t } = useI18n();
   return (
-    <section id="about" className="bg-cream py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Section kicker */}
-        <motion.div
-          className="reveal-section mb-10 text-center"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          <p className="font-body text-[0.7rem] uppercase tracking-[0.3em] text-dusty-blue">
-            About Me
-          </p>
-        </motion.div>
-
-        {/* Main card */}
-        <motion.div
-          className="mx-auto max-w-2xl overflow-hidden rounded-3xl border border-ink/[0.07] bg-white shadow-sm"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: 'easeOut', delay: 0.08 }}
-        >
-          {/* ── Top: avatar + stats ── */}
-          <div className="flex items-center justify-between gap-5 border-b border-ink/5 px-8 py-7">
-            <div className="flex items-center gap-5">
-              <Avatar />
-              <div>
-                <p className="font-display text-[1.15rem] font-light text-ink">
-                  Selin
-                  {/* <span className="ml-2 font-body text-[0.85rem] font-normal text-ink/35">
-                    Selin
-                  </span> */}
+    <section id="about" className="relative overflow-hidden bg-white py-8 md:py-20">
+      <Container>
+        <div className="relative">
+          {/* ── Desktop ─────────────────────────────────────────────────────── */}
+          <div className="hidden lg:block">
+            {/* Two columns */}
+            <div className="flex gap-20 xl:gap-28">
+              {/* Left — label + code card + name/available row below */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+                className="w-[42%] flex-shrink-0 xl:w-[40%]"
+              >
+                <p className="mb-4 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+                  / {t('about.kicker')}
                 </p>
-                <p className="mt-0.5 font-body text-[0.72rem] text-terra">Frontend Engineer</p>
+                <CodeCard />
+
+                {/* Below card — Available left, name+role right */}
+                <div className="mt-5 flex items-end justify-between">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-olive/40 bg-olive/10 px-3 py-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-olive" aria-hidden="true" />
+                    <span className="font-body text-[0.63rem] uppercase tracking-[0.12em] text-olive">
+                      {t('about.available')}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-display text-[1.1rem] font-medium leading-tight text-ink">
+                      Selin Ma
+                    </p>
+                    <p className="mt-0.5 font-body text-[0.72rem] text-ink/60">
+                      {t('about.roleTitle')}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Right — stats + bio + experience */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+                className="flex flex-1 flex-col"
+              >
+                {/* Experience */}
+                <p className="mb-4 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+                  / {t('about.label.experience')}
+                </p>
+                <div>
+                  {workExperiences.map((exp, i) => (
+                    <motion.div
+                      key={exp.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-30px' }}
+                      transition={{
+                        duration: 0.45,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: 0.15 + i * 0.07,
+                      }}
+                    >
+                      <div className="h-px bg-ink/[0.08]" />
+                      <div className="flex items-center gap-5 py-5">
+                        <p className="flex-1 font-display text-[0.92rem] font-medium text-ink">
+                          {t(`about.role.${exp.id}`)}
+                        </p>
+                        <p className="w-36 flex-shrink-0 font-body text-[0.75rem] text-ink/50">
+                          {exp.company}
+                        </p>
+                        <p className="flex-shrink-0 font-body text-[0.72rem] tabular-nums text-ink/28">
+                          {exp.period.replace(' — ', '\u2009\u2192\u2009')}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                  <div className="h-px bg-ink/[0.08]" />
+                </div>
+
+                {/* Education — right col, own row below experience */}
+                <div className="mt-8 pt-6">
+                  <p className="mb-3 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive">
+                    / {t('about.label.education')}
+                  </p>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="font-display text-[0.92rem] font-medium text-ink">
+                      {t('about.school')}
+                    </p>
+                    <p className="flex-shrink-0 font-body text-[0.72rem] text-ink/38">
+                      {t('about.degree')}
+                    </p>
+                    <p className="flex-shrink-0 font-body text-[0.67rem] tabular-nums text-ink/22">
+                      {education.period}
+                    </p>
+                  </div>
+                  <p className="mt-1 font-body text-[0.67rem] tabular-nums text-ink/50">
+                    {education.gpa}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* ── Mobile ──────────────────────────────────────────────────────── */}
+          <div className="flex flex-col lg:hidden">
+            <p className="mb-8 text-center font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+              / {t('about.kicker')}
+            </p>
+
+            <CodeCard />
+
+            {/* Below card — Available left, name+role right */}
+            <div className="mt-5 flex items-end justify-between">
+              <div className="inline-flex items-center gap-2 rounded-full border border-olive/40 bg-olive/10 px-3 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-olive" aria-hidden="true" />
+                <span className="font-body text-[0.63rem] uppercase tracking-[0.12em] text-olive">
+                  {t('about.available')}
+                </span>
+              </div>
+              <div className="text-right">
+                <p className="font-display text-[1rem] font-medium leading-tight text-ink">
+                  Selin Ma
+                </p>
+                <p className="mt-0.5 font-body text-[0.68rem] text-ink/60">
+                  {t('about.roleTitle')}
+                </p>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="hidden items-center gap-6 sm:flex">
-              <div className="h-8 w-px bg-ink/6" aria-hidden="true" />
-              {aboutStats.map((s, i) => (
-                <div key={s.label} className="flex items-center gap-6">
-                  <StatCard number={s.number} label={s.label} />
-                  {i < aboutStats.length - 1 && (
-                    <div className="h-8 w-px bg-ink/6" aria-hidden="true" />
-                  )}
+            <p className="mt-8 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive">
+              / {t('about.label.experience')}
+            </p>
+            <div>
+              {workExperiences.map((exp, i) => (
+                <div key={exp.id}>
+                  {i > 0 && <div className="h-px bg-ink/[0.08]" />}
+                  <div className="flex items-center gap-4 py-5">
+                    <div className="flex-1">
+                      <p className="font-display text-[0.88rem] font-medium text-ink">
+                        {t(`about.role.${exp.id}`)}
+                      </p>
+                      <p className="mt-0.5 font-body text-[0.7rem] text-ink/50">{exp.company}</p>
+                    </div>
+                    <p className="flex-shrink-0 font-body text-[0.7rem] tabular-nums text-ink/28">
+                      {exp.period.replace(' — ', '\u2009\u2192\u2009')}
+                    </p>
+                  </div>
                 </div>
               ))}
+              <div className="h-px bg-ink/[0.08]" />
+            </div>
+
+            <div className="mt-8">
+              <p className="mb-3 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive">
+                / {t('about.label.education')}
+              </p>
+              <p className="font-body text-[0.82rem] font-medium text-ink/70">
+                {t('about.school')}
+              </p>
+              <p className="mt-0.5 font-body text-[0.72rem] text-ink/38">{t('about.degree')}</p>
+              <p className="mt-0.5 font-body text-[0.67rem] tabular-nums text-ink/22">
+                {education.period}
+              </p>
+              <p className="mt-1 font-body text-[0.67rem] tabular-nums text-ink/50">
+                {education.gpa}
+              </p>
             </div>
           </div>
-
-          {/* ── Middle: tag rows ── */}
-          <div className="space-y-3.5 px-8 py-6">
-            {personalTags.map((tag) => (
-              <TagRow key={tag.text} icon={tag.icon} text={tag.text} />
-            ))}
-          </div>
-
-          {/* ── Bottom: education ── */}
-          <div className="px-8 pb-7">
-            <EducationBlock />
-          </div>
-        </motion.div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }
