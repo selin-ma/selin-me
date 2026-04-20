@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
-import { defaultLocale, isLocale, localeMeta, locales } from '@/lib/i18n';
+import { isLocale, locales } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
 function replaceLocaleInPath(pathname: string, nextLocale: string) {
@@ -17,44 +17,38 @@ function replaceLocaleInPath(pathname: string, nextLocale: string) {
   return `/${parts.join('/')}${pathname.endsWith('/') ? '/' : ''}`;
 }
 
+const SHORT_LABEL: Record<string, string> = { zh: 'CN', en: 'EN' };
+
 export function LanguageSwitch({ className }: { className?: string }) {
   const pathname = usePathname() ?? '/';
   const { locale } = useI18n();
 
   const items = locales.map((l) => ({
     locale: l,
-    label: localeMeta[l].label,
+    label: SHORT_LABEL[l] ?? l.toUpperCase(),
     href: replaceLocaleInPath(pathname, l),
     active: l === locale,
   }));
 
-  const currentLabel = localeMeta[locale]?.label ?? localeMeta[defaultLocale].label;
-
   return (
-    <div className={cn('relative', className)}>
-      <details className="group">
-        <summary className="list-none cursor-pointer select-none rounded-full border border-ink/15 px-3 py-1.5 font-body text-[0.72rem] uppercase tracking-[0.15em] text-ink-light/60 transition-all hover:border-ink hover:bg-ink hover:text-cream">
-          {currentLabel}
-        </summary>
-        <div className="absolute right-0 mt-2 w-36 overflow-hidden rounded-xl border border-ink/10 bg-cream shadow-lg">
-          <ul className="py-1">
-            {items.map((it) => (
-              <li key={it.locale}>
-                <a
-                  href={it.href}
-                  className={cn(
-                    'block px-3 py-2 font-body text-[0.78rem] text-ink-light/70 hover:bg-ink/5',
-                    it.active && 'bg-ink/5 text-ink',
-                  )}
-                >
-                  {it.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </details>
+    <div className={cn('flex items-center gap-1.5 h-full', className)}>
+      {items.map((it, i) => (
+        <>
+          {i > 0 && (
+            <span key={`divider-${it.locale}`} className="h-3 w-px bg-ink/20" aria-hidden="true" />
+          )}
+          <a
+            key={it.locale}
+            href={it.href}
+            className={cn(
+              'inline-flex h-full items-center px-3 font-body text-sm tracking-[0.05em] transition-colors duration-200',
+              it.active ? 'font-medium text-olive' : 'text-ink/35 hover:text-ink/70',
+            )}
+          >
+            {it.label}
+          </a>
+        </>
+      ))}
     </div>
   );
 }
-

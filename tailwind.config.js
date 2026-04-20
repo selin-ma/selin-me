@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-   content: [
+  content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './lib/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,21 +8,36 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        body: ['Instrument Sans', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        cream: '#FAF6F0',
-        paper: '#F2EBE0',
+        /* Design system tokens — Olive Grove palette */
+        bg: '#F0EFE9',
         ink: {
-          DEFAULT: '#1C1917',
-          light: '#44403C',
+          DEFAULT: '#1F1F1F',
+          light: '#8A9B7C',
         },
-        terra: '#C4714B',
-        sage: '#6B8F71',
-        'dusty-blue': '#7A9DB5',
-        gold: '#C9A84C',
-        'warm-white': '#FDF9F4',
+        olive: {
+          DEFAULT: '#8E9B84',
+          lt: '#8A9B7C',
+          bg: '#EDF2EA',
+          dark: '#5A6B4C',
+        },
+        amber: {
+          DEFAULT: '#FFBA3B',
+          ink: '#3D2A00',
+        },
+        dark: '#1A1F18',
+
+        /* Legacy aliases */
+        cream: '#F0EFE9',
+        paper: '#F0EFE9',
+        'warm-white': '#F0EFE9',
+        midnight: '#1A1F18',
+        terra: '#8E9B84',
+        sage: '#8A9B7C',
+        gold: '#FFBA3B',
       },
       keyframes: {
         fadeUp: {
@@ -44,6 +59,9 @@ module.exports = {
           '100%': { transform: 'scaleY(0)', transformOrigin: 'bottom' },
         },
       },
+      transitionDuration: {
+        600: '600ms',
+      },
       animation: {
         'fade-up': 'fadeUp 0.7s ease forwards',
         'fade-in': 'fadeIn 0.5s ease forwards',
@@ -53,5 +71,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
-
+};

@@ -6,6 +6,6 @@ export function cn(...inputs: ClassValue[]): string {
 }
 
 export function img(path: string) {
-  const base = process.env.NODE_ENV === 'production' ? '/selin-me' : '';
+  const base = process.env.GITHUB_ACTIONS === 'true' ? '/selin-me' : '';
   return `${base}${path}`;
 }

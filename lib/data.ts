@@ -1,28 +1,16 @@
-import type { Book, OtherHobby, Skill, SportsActivity, WorkExperience } from '@/types';
-
-export const aboutStats = [
-  { number: '5', label: 'Years Exp' },
-  { number: '2', label: 'AU Clients' },
-  { number: '10+', label: 'Projects' },
-];
-
-export const personalTags = [
-  { icon: '📍', text: 'Chengdu, China' },
-  { icon: '🗓️', text: 'Born in the 90s' },
-  {
-    icon: '🌏',
-    text: 'Worked with Australian clients at a global tech firm — fluent in English tech docs & async comms.',
-  },
-  {
-    icon: '💡',
-    text: 'Obsessed with building things that feel alive — in code, in books, and on the court.',
-  },
-];
+import type {
+  Book,
+  OtherHobby,
+  Skill,
+  SportsActivity,
+  VibeProject,
+  WorkExperience,
+  WorkShowcase,
+} from '@/types';
 
 export const education = {
-  school: '电子科技大学成都学院',
-  degree: 'Bachelor of Computer Science (Top-up)',
   period: '2018 — 2020',
+  gpa: 'GPA 3.42 · 7/313（Top 5%）',
 };
 
 export const workExperiences: WorkExperience[] = [
@@ -43,6 +31,9 @@ export const workExperiences: WorkExperience[] = [
       '使用 Framer Motion 实现品牌级高保真交互动效，提升用户参与度并保障跨端稳定性',
       '在 Flight Centre Lerna Monorepo 中开发可复用业务组件，打通 Drupal Headless CMS 与前端映射层，支持编辑器拖拽建页',
       '集成 AWS Lambda + Elasticsearch Serverless BFF，为门店搜索功能提供高性能数据聚合，编写并维护 OpenAPI (Swagger) 规范',
+      '主导 Ticket 全生命周期管理：从初始开发、Dev Notes 文档编写、QA 测试，到客户评审与生产发布，全流程独立交付',
+      '借助 GitHub Actions 自动化测试体系保障代码可靠性，持续维护技术文档',
+      '持续参与双层 Code Review，确保交付符合企业级工程规范',
       '为 CoverMore 白标保险产品实现多步购买漏斗，设计支持多品牌定制的白标架构，单一代码库服务多个合作伙伴',
     ],
     techStack: [
@@ -78,13 +69,13 @@ export const workExperiences: WorkExperience[] = [
     illustrationKey: 'dataviz',
   },
   {
-    id: 'pengye',
+    id: 'penge',
     tag: 'Early Career · Framework',
     leftTitle: '从框架出发\n理解工程本质',
     color: '#7A9DB5',
     period: 'Oct 2019 — Jul 2021',
-    company: 'Pengye Software',
-    role: 'Frontend Engineer · 前端工程师',
+    company: 'Penge Software',
+    role: 'Intern Frontend Engineer · 前端工程师',
     location: '成都',
     body: '职业生涯的起点。在鹏业软件深度参与跨平台 UI 框架的从零设计与研发，独立完成 Angular 框架搭建并发布为内部 npm 包，负责多角色动态仪表盘和复杂权限系统的实现。',
     highlights: [
@@ -198,121 +189,46 @@ export const skills: Skill[] = [
 
 export const bookshelf: Book[] = [
   {
-    title: '我与地坛',
-    author: '史铁生',
-    color: '#8B6F47',
-    category: '文学·散文',
-    year: 2023,
-    note: '在最狂妄的年龄忽地残废了双腿，史铁生在地坛里想通了很多事。读完很久，还是会想起那句"死是一件不必急于求成的事"。',
-    doubanUrl: 'https://book.douban.com/subject/1054187/',
-  },
-  {
-    title: '悉达多',
-    author: '赫尔曼·黑塞',
-    color: '#C4714B',
-    category: '文学·小说',
+    id: 'siddhartha',
+    color: '#BF8B3A',
+    coverUrl: '/images/life/books/siddhartha.jpg',
     year: 2024,
-    note: '不是关于佛陀的故事，而是关于一个人如何找到自己的道路。每次人生迷茫时翻一遍，都会有新的理解。',
     doubanUrl: 'https://book.douban.com/subject/26980487/',
   },
   {
-    title: '西方现代思想讲义',
-    author: '刘擎',
-    color: '#4A6741',
-    category: '哲学·思想',
+    id: 'the-stranger',
+    color: '#8FA8B8',
+    coverUrl: '/images/life/books/the-stranger.jpg',
     year: 2024,
-    note: '把尼采、韦伯、萨特讲得通透又不失严谨。读完对"现代性的困境"有了具体的感知，而不只是一个词。',
+    doubanUrl: 'https://book.douban.com/subject/24257486/',
+  },
+  {
+    id: 'existentialism',
+    color: '#1E3A5F',
+    coverUrl: '/images/life/books/existentialism.jpg',
+    year: 2023,
+    doubanUrl: 'https://book.douban.com/subject/10608319/',
+  },
+  {
+    id: 'invisible-women',
+    color: '#C0394B',
+    coverUrl: '/images/life/books/invisible-women.jpg',
+    year: 2024,
+    doubanUrl: 'https://book.douban.com/subject/35942057/',
+  },
+  {
+    id: 'western-thought',
+    color: '#3D5C40',
+    coverUrl: '/images/life/books/western-thought.jpg',
+    year: 2024,
     doubanUrl: 'https://book.douban.com/subject/35313227/',
   },
   {
-    title: '可能性的艺术',
-    author: '刘瑜',
-    color: '#7A9DB5',
-    category: '政治·社会',
+    id: 'garden-of-earth',
+    color: '#7A5C3E',
+    coverUrl: '/images/life/books/i-and-the-garden.jpg',
     year: 2023,
-    note: '比较政治学入门，但写得像散文。刘瑜用"可能性"这个词，提醒我们历史没有必然，只有选择。',
-    doubanUrl: 'https://book.douban.com/subject/35819419/',
-  },
-  {
-    title: '存在主义是一种人道主义',
-    author: '萨特',
-    color: '#2C3E50',
-    category: '哲学·思想',
-    year: 2023,
-    note: '"存在先于本质"——我们先来到世界，然后定义自己。薄薄一本，却是理解萨特最好的入口。',
-    doubanUrl: 'https://book.douban.com/subject/5256578/',
-  },
-  {
-    title: '看不见的女性',
-    author: '卡罗琳·克里亚多·佩雷斯',
-    color: '#9B4D7E',
-    category: '社会·性别',
-    year: 2024,
-    note: '数据里的性别偏见。从城市规划到医疗研究，原来世界的默认设置是"男性"。读完会重新审视很多习以为常的事。',
-    doubanUrl: 'https://book.douban.com/subject/35074637/',
-  },
-  {
-    title: '1984',
-    author: '乔治·奥威尔',
-    color: '#3D3D3D',
-    category: '文学·小说',
-    year: 2022,
-    note: 'Big Brother is watching you. 写于1949年，读起来像是在描述某些现实。有些书让人不舒服，但必须读。',
-    doubanUrl: 'https://book.douban.com/subject/4820710/',
-  },
-  {
-    title: '现代艺术150年',
-    author: '威尔·贡培兹',
-    color: '#C9A84C',
-    category: '艺术·设计',
-    year: 2024,
-    note: '从塞尚到班克斯，用讲故事的方式把现代艺术串联起来。不再觉得当代艺术故弄玄虚，开始真正"看懂"了。',
-    doubanUrl: 'https://book.douban.com/subject/25902848/',
-  },
-  {
-    title: '始于极限',
-    author: '上野千鹤子 · 铃木凉美',
-    color: '#A0522D',
-    category: '社会·性别',
-    year: 2024,
-    note: '一场关于女性、欲望、自由与妥协的真实对话。两个截然不同的女人，在信件往来里碰撞出很多让人久久回味的问题。',
-    doubanUrl: 'https://book.douban.com/subject/36154656/',
-  },
-  {
-    title: '春天终将来临',
-    author: '大卫·霍克尼 · 马丁·盖福特',
-    color: '#4A7C59',
-    category: '艺术·设计',
-    year: 2024,
-    note: '霍克尼用 iPad 画画，用摄影机记录四季。这本书让我重新看待"观看"这件事——不只是用眼睛，而是用时间和记忆。',
-    doubanUrl: 'https://book.douban.com/subject/35815393/',
-  },
-  {
-    title: '祥瑞',
-    author: '月望东山',
-    color: '#8B6914',
-    category: '历史',
-    year: 2024,
-    note: '写王莽和他的时代。一个被史书钉在"篡汉"二字上的人，读完才发现他更像一个理想主义者——结局是悲剧，但过程耐人寻味。',
-    doubanUrl: 'https://book.douban.com/subject/36672955/',
-  },
-  {
-    title: '金阁寺',
-    author: '三岛由纪夫',
-    color: '#7A6A4A',
-    category: '文学·小说',
-    year: 2023,
-    note: '一个对美近乎病态的人，最终选择亲手毁掉他所爱的美。三岛的文字本身就是金阁，华丽、精确、令人不安。',
-    doubanUrl: 'https://book.douban.com/subject/26986954/',
-  },
-  {
-    title: '反脆弱',
-    author: '纳西姆·尼古拉斯·塔勒布',
-    color: '#5B7FA6',
-    category: '哲学·思想',
-    year: 2024,
-    note: '不只是"抗压"，而是从混乱中获益。读完重新审视了自己对不确定性的态度——与其回避波动，不如让自己从中变得更强。',
-    doubanUrl: 'https://book.douban.com/subject/25782902/',
+    doubanUrl: 'https://book.douban.com/subject/30207170/',
   },
 ];
 
@@ -326,73 +242,220 @@ export const sportsActivities: SportsActivity[] = [
     desc: '组建业余战队 Twinkle Pickle，代表 Beesoul 品牌参加比赛。从上海到重庆到吉隆坡，用一块球场和一把球拍，认识了一群真正热爱这项运动的人。',
     badges: ['Twinkle Pickle 战队', 'Beesoul 签约球员', '上海 · 重庆 · 吉隆坡'],
     photos: [
-      { label: '个人训练' },
-      { label: '上海站 · 比赛' },
-      { label: '重庆站 · 战队' },
-      { label: '吉隆坡站 · 海外赛' },
-      { label: '队友合照' },
-      { label: 'Beesoul 装备' },
+      {
+        labelKey: 'life.photo.kl1',
+        src: '/images/life/pickleball/kl-1.jpg',
+        position: '30% center',
+      },
+      { labelKey: 'life.photo.kl2', src: '/images/life/pickleball/kl-2.jpg' },
+      {
+        labelKey: 'life.photo.kl3',
+        src: '/images/life/pickleball/kl-3.jpg',
+        position: 'center 30%',
+      },
+      {
+        labelKey: 'life.photo.chongqing',
+        src: '/images/life/pickleball/chongqing.jpg',
+        position: '40% center',
+      },
+      { labelKey: 'life.photo.shanghai', src: '/images/life/pickleball/shanghai.JPG' },
+      {
+        labelKey: 'life.photo.chengdu1',
+        src: '/images/life/pickleball/chengdu-1.JPG',
+        position: '50% 20%',
+      },
+      { labelKey: 'life.photo.chengdu2', src: '/images/life/pickleball/chengdu-2.jpg' },
     ],
+  },
+];
+
+// ─── Work Showcase ───────────────────────────────────────────────────────────
+
+export const workShowcases: WorkShowcase[] = [
+  {
+    id: 'travel-associates',
+    category: 'Travel Platform',
+    categoryZh: '旅游平台',
+    title: 'TravelAssociates',
+    titleZh: 'TravelAssociates',
+    desc: 'End-to-end platform rebuild for a leading Australian travel brand — migrated the entire site to Next.js + Turborepo, delivering core features, a standardised component library, and Lighthouse SEO 100/100.',
+    descZh:
+      '主导澳大利亚头部旅游品牌全站重构——整体迁移至 Next.js + Turborepo，负责核心功能交付、组件库规范化建设，Lighthouse SEO 满分 100/100。',
+    tech: ['Next.js', 'TypeScript', 'Turborepo'],
+    coverImage: '/images/work/travel-associates.png',
+    siteUrl: 'https://www.travelassociates.com',
+  },
+  {
+    id: 'flight-centre',
+    category: 'Design System',
+    categoryZh: '设计系统',
+    title: 'Flight Centre',
+    titleZh: 'Flight Centre',
+    desc: "High-bar feature delivery within Flight Centre's Lerna monorepo — pixel-perfect Figma implementation, Drupal headless CMS integration, and an AWS Lambda + Elasticsearch BFF powering store search.",
+    descZh:
+      '在 Flight Centre Lerna Monorepo 中高标准交付页面功能——像素级还原 Figma 设计，打通 Drupal Headless CMS，并集成 AWS Lambda + Elasticsearch BFF 驱动门店搜索。',
+    tech: ['Next.js', 'FC Design System', 'Storybook', 'AWS Lambda', 'Jest'],
+    coverImage: '/images/work/flight-centre.png',
+    siteUrl: 'https://www.flightcentre.com.au/about-us',
+  },
+  {
+    id: 'covermore',
+    category: 'Insurance · White-label',
+    categoryZh: '保险 · 白标产品',
+    title: 'CoverMore',
+    titleZh: 'CoverMore',
+    desc: 'Large-scale white-label insurance platform built on a Drupal PHP theme inheritance model — a base theme powering multiple partner sub-themes, ranging from legacy JavaScript to modern Preact. Delivered a multi-step purchase funnel adaptable across all brand variants.',
+    descZh:
+      '基于 Drupal PHP 主题继承体系的大型白标保险平台——一套 base theme 驱动多个合作伙伴 sub-theme，技术栈横跨原生 JavaScript 老主题与现代 Preact 新主题，交付可跨品牌复用的多步购买漏斗。',
+    tech: ['Drupal PHP Themes', 'Preact', 'JavaScript', 'Tailwind CSS'],
+    slides: [
+      {
+        label: 'CoverMore',
+        coverImage: '/images/work/cover-more.png',
+        siteUrl: 'https://www.covermore.com.au',
+      },
+      {
+        label: 'AusPost',
+        coverImage: '/images/work/auspost.png',
+        siteUrl: 'https://auspost.poweredbycovermore.com/',
+      },
+      {
+        label: 'ahm',
+        coverImage: '/images/work/ahm.png',
+        siteUrl: 'https://ahm.com.au/travel-insurance',
+      },
+      {
+        label: 'Webjet',
+        coverImage: '/images/work/webjet.png',
+        siteUrl: 'https://insurance.webjet.com.au/',
+      },
+    ],
+  },
+  {
+    id: 'pengye-ui-framework',
+    category: 'UI Framework',
+    categoryZh: 'UI 框架',
+    title: 'Pengye UI Framework',
+    titleZh: '鹏业跨平台 UI 框架',
+    desc: 'Cross-platform UI framework built from scratch with Angular 9, published as an internal npm package. Covered PC and WeChat Mini-program with a bitwise permission system.',
+    descZh:
+      '从零研发跨平台 UI 框架，覆盖 PC 与微信小程序，发布为内部 npm 包，并使用位运算实现复杂多角色权限控制体系。',
+    tech: ['Angular 9', 'TypeScript', 'RxJS'],
+  },
+  {
+    id: 'selin-portfolio',
+    category: 'Portfolio',
+    categoryZh: '个人作品集',
+    title: 'selin.me',
+    titleZh: 'selin.me',
+    desc: 'This portfolio itself — designed and shipped in one week with Claude as a pair-programming partner. Static export to GitHub Pages with bilingual i18n and Framer Motion.',
+    descZh:
+      '你正在看的这个网站。以 Claude 为结对伙伴，一周内完成设计、开发与部署，双语 i18n + Framer Motion 动效。',
+    tech: ['Next.js', 'Framer Motion', 'Tailwind'],
+    siteUrl: 'https://selin-ma.github.io/selin-me',
+  },
+];
+
+export const vibeProjects: VibeProject[] = [
+  {
+    id: 'selin-me',
+    name: 'selin.me',
+    emoji: '🌿',
+    status: 'live',
+    color: '#6B8F71',
+    story:
+      '这个作品集本身就是一次 vibe coding 实验。从零开始，用 Claude 作为结对编程伙伴，在一周内完成了设计、开发、部署的全流程。每一行动画、每一个排版细节，都是人机协作的产物。',
+    desc: 'Selin的个人网站，用 AI 辅助开发。',
+    aiTools: ['Claude', 'v0'],
+    techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
+    liveUrl: 'https://selin-ma.github.io/selin-me',
+    repoUrl: 'https://github.com/selin-ma/selin-me',
+  },
+  {
+    id: 'pickle-vibe',
+    name: 'Pickle Vibe',
+    emoji: '🥒',
+    status: 'building',
+    color: '#C4714B',
+    story:
+      '匹克球在中国还是一项新兴运动，但它正在以惊人的速度生长。Pickle Vibe 是专为中文社区打造的匹克球内容平台——比赛资讯、技术教学、装备测评、球友社区，一站聚合。用 vibe coding 方式，把对这项运动的热爱变成一个真实产品。',
+    desc: '面向中文球友的匹克球内容平台，聚合赛事、教学与社区。',
+    aiTools: ['Claude', 'Cursor', 'v0'],
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+  },
+  {
+    id: 'pickle-tracker',
+    name: 'Pickle Tracker',
+    emoji: '📊',
+    status: 'building',
+    color: '#7A9DB5',
+    story:
+      '一个帮助匹克球玩家分析比赛回合的工具。记录每一分的得失原因，可视化自己的技术短板，找到真正需要练习的地方。从"感觉打得不好"到"数据告诉我哪里不好"。',
+    desc: '匹克球回合数据记录与分析工具，用数据找到技术提升点。',
+    aiTools: ['Claude', 'Cursor'],
+    techStack: ['React', 'TypeScript', 'Chart.js', 'PWA'],
+  },
+  {
+    id: 'cycle-log',
+    name: '月经记录',
+    emoji: '🌸',
+    status: 'building',
+    color: '#9B4D7E',
+    story:
+      '一个简洁、私密的月经周期记录微信小程序。市面上的同类产品要么广告太多，要么权限太贪，要么界面太复杂。我想做一个只做一件事、做好一件事的工具——记录、预测、理解自己的身体节律。',
+    desc: '简洁私密的微信小程序，记录周期、预测下次、理解身体。',
+    aiTools: ['Claude', 'Cursor'],
+    techStack: ['微信小程序', 'TypeScript', 'Vant Weapp'],
+  },
+  {
+    id: 'still-hearth',
+    name: 'Still Hearth',
+    emoji: '🏡',
+    status: 'concept',
+    color: '#8B6F47',
+    story:
+      '一款像素风格的独立游戏，关于一个人在废弃小屋里慢慢修缮生活的故事。没有战斗，没有排行榜，只有修复、种植、等待和时间流逝的安静感。灵感来自对"慢游戏"的渴望——有时候你只是需要一个可以喘口气的地方。',
+    desc: '像素风独立游戏，在废弃小屋里修复生活，慢慢的，安静的。',
+    aiTools: ['Claude', 'Midjourney', 'Cursor'],
+    techStack: ['Godot 4', 'GDScript', 'Aseprite'],
   },
 ];
 
 export const otherHobbies: OtherHobby[] = [
   {
+    id: 'musical',
     icon: '🎭',
-    label: '音乐剧',
     color: '#9B4D7E',
-    desc: '尤其爱《莫里哀》和《剧院魅影》。当演员开口的那一刻，舞台上所有的光和声音都只为一种情感服务——那是电影给不了的东西。',
-    photos: [
-      { label: '莫里哀', src: '' },
-      { label: '剧院魅影', src: '' },
-      { label: '现场留念', src: '' },
-    ],
+    photos: [{ src: '/images/life/curiosities/stage.jpg' }],
   },
   {
+    id: 'movie',
     icon: '🎬',
-    label: '电影',
     color: '#5B7FA6',
-    desc: '在观影团看电影——字幕播完才开灯，没有人提前离席。这群人真正尊重电影，我也在这里学会了怎么"看"一部电影。',
+    photos: [{ src: '/images/life/curiosities/movie.jpg', position: '60%' }],
   },
   {
+    id: 'cook',
     icon: '🍳',
-    label: '做饭',
     color: '#C4714B',
-    desc: '川菜是母语，但我也迷上了做意大利面和日式拉面。料理和写代码一样——细节决定成败，而且立刻就能得到反馈。',
+    photos: [{ src: '/images/life/curiosities/cook.jpg', position: '10%' }],
   },
   {
-    icon: '✈️',
-    label: '旅行',
-    color: '#C9A84C',
-    desc: '去过的地方越多，越觉得世界很大、偏见很小。每次旅行都会带回一些新的问题，而不只是答案。',
-    photos: [
-      { label: '旅途照片', src: '' },
-      { label: '旅途照片', src: '' },
-      { label: '旅途照片', src: '' },
-    ],
+    id: 'pet',
+    icon: '🐹',
+    color: '#C4956A',
+    photos: [{ src: '/images/life/curiosities/pet.jpg' }],
   },
   {
+    id: 'tennis',
     icon: '🎾',
-    label: '网球',
     color: '#7A9D5B',
-    desc: '打网球让我重新理解了"节奏"这件事。发球、回击、移步——每一拍都是当下，没有办法分心。场上的专注感和写代码时很像。',
+    photos: [{ src: '/images/life/curiosities/tennis.jpg', position: 'right' }],
   },
   {
+    id: 'surf-skate',
     icon: '🛹',
-    label: '陆冲',
     color: '#4A6741',
-    desc: '从零开始自学，带动了一圈朋友一起玩，最后自学上了泵道。那种靠自己找到节奏感、然后带着大家一起飞起来的感觉，很难复制。',
-  },
-  {
-    icon: '🚴',
-    label: '骑行',
-    color: '#7A9DB5',
-    desc: '城市里的慢骑是解压神器，长途骑行是另一种旅行方式。两个轮子，足够看见很多平时错过的风景。',
-  },
-  {
-    icon: '🖊️',
-    label: 'Penbeat',
-    color: '#B8935A',
-    desc: '用一支笔打出节奏——成本极低，门槛极高。曾经认真练过一阵，也许是我所有爱好里最冷门的一个，但恰好证明：有趣的事不需要理由。',
+    photos: [{ src: '/images/life/curiosities/surfskateboard.jpg', position: '30%' }],
   },
 ];

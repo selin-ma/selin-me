@@ -23,22 +23,20 @@ export interface Skill {
 }
 
 export interface Book {
-  title: string;
-  author: string;
+  id: string;
   color: string;
-  category: string;
+  coverUrl?: string;
   year: number;
-  note?: string;
   doubanUrl: string;
 }
 
 // ─── Sports / Life ────────────────────────────────────────────────────────────
 
 export interface PhotoSlot {
-  /** Label shown on placeholder, e.g. "上海站 · 2024" */
-  label: string;
-  /** Optional: actual image path once you add photos, e.g. "/photos/shanghai.jpg" */
+  /** i18n key for the label, e.g. "life.photo.kl1" */
+  labelKey: string;
   src?: string;
+  position?: string;
 }
 
 export interface SportsActivity {
@@ -58,12 +56,60 @@ export interface SportsActivity {
 }
 
 export interface OtherHobby {
+  id: string;
   icon: string;
-  label: string;
   color: string;
-  desc: string;
-  photos?: { label: string; src: string }[];
+  photos?: { src: string; position?: string }[];
 }
 
 export type LifeTab = 'reading' | 'sports' | 'more';
 export type SkillCategory = 'all' | Skill['category'];
+
+// ─── Vibe Projects ────────────────────────────────────────────────────────────
+
+// ─── Work Showcase ───────────────────────────────────────────────────────────
+
+export interface ShowcaseSlide {
+  /** Short label shown on the dot, e.g. "AusPost", "CoverMore" */
+  label?: string;
+  coverImage?: string;
+  siteUrl?: string;
+}
+
+export interface WorkShowcase {
+  id: string;
+  /** Category label, e.g. "Web App", "Design System" */
+  category: string;
+  categoryZh: string;
+  title: string;
+  titleZh: string;
+  /** 1-2 sentence description (English) */
+  desc: string;
+  descZh: string;
+  /** Key tech, shown in lookbook metadata, e.g. ["Next.js", "TypeScript"] */
+  tech?: string[];
+  /** Single screenshot / hero image (used when slides is absent) */
+  coverImage?: string;
+  siteUrl?: string;
+  /** Multiple slides — each can have its own screenshot + link */
+  slides?: ShowcaseSlide[];
+}
+
+export interface VibeProject {
+  id: string;
+  name: string;
+  emoji: string;
+  status: 'live' | 'building' | 'concept';
+  color: string;
+  coverImage?: string;
+  /** Full story shown on the featured (first) card */
+  story: string;
+  /** Short description shown on regular cards */
+  desc: string;
+  /** AI tools used to build this project */
+  aiTools: string[];
+  techStack?: string[];
+  liveUrl?: string;
+  repoUrl?: string;
+  docsUrl?: string;
+}
