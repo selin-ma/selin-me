@@ -55,6 +55,7 @@ npm run format     # Prettier
 ## Editing Content
 
 All content lives in **`lib/data.ts`**. No component changes needed for:
+
 - Work experience, highlights, tech stack
 - Skills and levels
 - Bookshelf

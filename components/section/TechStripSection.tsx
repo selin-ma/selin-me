@@ -4,9 +4,35 @@ const TECHS = [
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <circle cx="12" cy="12" r="2.05" />
-        <ellipse cx="12" cy="12" rx="10" ry="3.8" fill="none" stroke="currentColor" strokeWidth="1.2" />
-        <ellipse cx="12" cy="12" rx="10" ry="3.8" fill="none" stroke="currentColor" strokeWidth="1.2" transform="rotate(60 12 12)" />
-        <ellipse cx="12" cy="12" rx="10" ry="3.8" fill="none" stroke="currentColor" strokeWidth="1.2" transform="rotate(120 12 12)" />
+        <ellipse
+          cx="12"
+          cy="12"
+          rx="10"
+          ry="3.8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+        />
+        <ellipse
+          cx="12"
+          cy="12"
+          rx="10"
+          ry="3.8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          transform="rotate(60 12 12)"
+        />
+        <ellipse
+          cx="12"
+          cy="12"
+          rx="10"
+          ry="3.8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          transform="rotate(120 12 12)"
+        />
       </svg>
     ),
   },
@@ -15,8 +41,26 @@ const TECHS = [
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="3" fillOpacity="0.12" />
-        <rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" strokeWidth="1.4" />
-        <text x="5.2" y="16.8" fontFamily="monospace" fontSize="9" fontWeight="800" fill="currentColor">TS</text>
+        <rect
+          x="2"
+          y="2"
+          width="20"
+          height="20"
+          rx="3"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+        />
+        <text
+          x="5.2"
+          y="16.8"
+          fontFamily="monospace"
+          fontSize="9"
+          fontWeight="800"
+          fill="currentColor"
+        >
+          TS
+        </text>
       </svg>
     ),
   },
@@ -25,7 +69,14 @@ const TECHS = [
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.4" />
-        <path d="M8.5 16V8l8 9.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M8.5 16V8l8 9.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -41,8 +92,24 @@ const TECHS = [
     label: 'AWS',
     icon: (
       <svg width="20" height="16" viewBox="0 0 28 20" fill="currentColor" aria-hidden="true">
-        <text x="0" y="14" fontFamily="monospace" fontSize="11" fontWeight="800" letterSpacing="0.5" fill="currentColor">AWS</text>
-        <path d="M3 17.5 Q14 20.5 25 17.5" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+        <text
+          x="0"
+          y="14"
+          fontFamily="monospace"
+          fontSize="11"
+          fontWeight="800"
+          letterSpacing="0.5"
+          fill="currentColor"
+        >
+          AWS
+        </text>
+        <path
+          d="M3 17.5 Q14 20.5 25 17.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -50,8 +117,19 @@ const TECHS = [
     label: 'Storybook',
     icon: (
       <svg width="14" height="16" viewBox="0 0 14 18" fill="none" aria-hidden="true">
-        <path d="M1.5 1.5h11l-.5 14-10.5.5V1.5z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.1" />
-        <path d="M5 5.5h4M5 8.5h4M5 11.5h2.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+        <path
+          d="M1.5 1.5h11l-.5 14-10.5.5V1.5z"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          fill="currentColor"
+          fillOpacity="0.1"
+        />
+        <path
+          d="M5 5.5h4M5 8.5h4M5 11.5h2.5"
+          stroke="currentColor"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -89,7 +167,9 @@ export function TechStripSection() {
             className="mx-1.5 flex flex-shrink-0 items-center gap-2 rounded-full bg-ink/[0.045] px-4 py-2 text-ink/50"
           >
             {icon}
-            <span className="whitespace-nowrap font-body text-[0.76rem] tracking-wide">{label}</span>
+            <span className="whitespace-nowrap font-body text-[0.76rem] tracking-wide">
+              {label}
+            </span>
           </div>
         ))}
       </div>

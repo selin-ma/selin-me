@@ -145,10 +145,24 @@ function SportsLightbox({
   return createPortal(
     <div className="fixed inset-0 z-[100]">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-ink/75 backdrop-blur-md" onClick={onClose} role="button" tabIndex={0} onKeyDown={onClose} aria-label="Close" />
+      <div
+        className="absolute inset-0 bg-ink/75 backdrop-blur-md"
+        onClick={onClose}
+        role="button"
+        tabIndex={0}
+        onKeyDown={onClose}
+        aria-label="Close"
+      />
 
       {/* Content */}
-      <div className="absolute inset-0 flex items-center justify-center" onClick={onClose} role="button" tabIndex={0} onKeyDown={onClose} aria-label="Close">
+      <div
+        className="absolute inset-0 flex items-center justify-center"
+        onClick={onClose}
+        role="button"
+        tabIndex={0}
+        onKeyDown={onClose}
+        aria-label="Close"
+      >
         <div
           className="relative"
           style={{ width: 'min(1100px, 92vw)' }}
@@ -505,12 +519,7 @@ function MobileSportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => voi
             tabIndex={0}
           >
             {photo.src && (
-              <Image
-                src={photo.src}
-                alt={t(photo.labelKey)}
-                fill
-                className="object-cover"
-              />
+              <Image src={photo.src} alt={t(photo.labelKey)} fill className="object-cover" />
             )}
           </div>
         );
@@ -525,7 +534,14 @@ function MobileReadingGrid({ onTap }: { onTap: (idx: number) => void }) {
   return (
     <div className="grid grid-cols-2 gap-5">
       {books.map((book, i) => (
-        <div key={book.id} className="group flex flex-col" onClick={() => onTap(i)} onKeyDown={(e) => e.key === 'Enter' && onTap(i)} role="button" tabIndex={0}>
+        <div
+          key={book.id}
+          className="group flex flex-col"
+          onClick={() => onTap(i)}
+          onKeyDown={(e) => e.key === 'Enter' && onTap(i)}
+          role="button"
+          tabIndex={0}
+        >
           <div className="relative aspect-[2/3] [perspective:800px]">
             <div
               className="relative h-full w-full overflow-hidden rounded-r-md shadow-xl transition-transform duration-700 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(-20deg)_rotateX(5deg)_translateY(-0.5rem)]"

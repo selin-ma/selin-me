@@ -73,7 +73,7 @@ Access translations via `useI18n()` hook (client components only):
 
 ```ts
 const { t, locale } = useI18n();
-t('nav.about') // looks up in lib/i18n.ts messages
+t('nav.about'); // looks up in lib/i18n.ts messages
 ```
 
 All translation keys live in `lib/i18n.ts`.
@@ -110,10 +110,10 @@ npm run format       # Prettier format all files
 
 Two GitHub Actions workflows:
 
-| Workflow | File | Trigger | What it does |
-|---|---|---|---|
-| CI | `deploy.yml` | push to `master`/`dev-redesign`, PR to `master` | ESLint → Prettier check → TypeScript |
-| Deploy | `nextjs.yml` | push to `master` | ESLint → Prettier check → TypeScript → Next.js build → GitHub Pages |
+| Workflow | File         | Trigger                                         | What it does                                                        |
+| -------- | ------------ | ----------------------------------------------- | ------------------------------------------------------------------- |
+| CI       | `deploy.yml` | push to `master`/`dev-redesign`, PR to `master` | ESLint → Prettier check → TypeScript                                |
+| Deploy   | `nextjs.yml` | push to `master`                                | ESLint → Prettier check → TypeScript → Next.js build → GitHub Pages |
 
 Checks run in this order before every deploy: **lint → format → type-check → build**. Any failure blocks deployment.
 
@@ -127,6 +127,7 @@ Active redesign work is on `dev-redesign`. Merge to `master` triggers auto-deplo
 ## TypeScript Interfaces
 
 Key types in `types/index.ts`:
+
 - `WorkExperience` — job entries with highlights and techStack
 - `Skill` — with category (`frontend` | `engineering` | `soft`) and level
 - `VibeProject` — AI-assisted side projects with status (`live` | `building` | `concept`)
@@ -136,21 +137,24 @@ Key types in `types/index.ts`:
 ## Visual Design System — Personal Portfolio
 
 ### Design philosophy
+
 Quiet confidence. The site should feel like a well-made book —
 unhurried, precise, with one warm surprise. No gradients, no
 noise textures, no glassmorphism. Every element earns its place.
 
 ### Color palette
---color-bg:        #F0EFE9  /* warm off-white, like aged paper */
---color-ink:       #232420  /* near-black for all body text */
---color-mist:      #7FA2BF  /* misty blue — decoration only */
---color-mist-lt:   #B0C4D4  /* lighter blue for labels, meta */
---color-mist-bg:   #D6E4EE  /* faint blue for surface tints */
---color-amber:     #FFBA3B  /* warm amber — CTA and accent ONLY */
---color-amber-ink: #3D2A00  /* text on amber backgrounds */
---color-dark:      #1C1C28  /* footer / dark strip */
+
+--color-bg: #F0EFE9 /_ warm off-white, like aged paper _/
+--color-ink: #232420 /_ near-black for all body text _/
+--color-mist: #7FA2BF /_ misty blue — decoration only _/
+--color-mist-lt: #B0C4D4 /_ lighter blue for labels, meta _/
+--color-mist-bg: #D6E4EE /_ faint blue for surface tints _/
+--color-amber: #FFBA3B /_ warm amber — CTA and accent ONLY _/
+--color-amber-ink: #3D2A00 /_ text on amber backgrounds _/
+--color-dark: #1C1C28 /_ footer / dark strip _/
 
 ### Color usage rules (strict)
+
 - Misty blue (#7FA2BF) is DECORATIVE, never an action color.
   Use it for: large display text, section dividers, hover
   underlines, tag borders, monospace meta labels.
@@ -161,6 +165,7 @@ noise textures, no glassmorphism. Every element earns its place.
   in --color-mist-bg. No shadows.
 
 ### Typography
+
 - Display / hero heading: large serif or handwriting-style
   font, color --color-mist. Weight light. Letter-spacing -0.02em.
 - Body: clean sans-serif, 16–18px, line-height 1.75,
@@ -172,6 +177,7 @@ noise textures, no glassmorphism. Every element earns its place.
   tracked out, separated by a hairline rule.
 
 ### Layout principles
+
 - Generous whitespace. Sections breathe — min 6rem vertical gap.
 - Left sidebar for monospace meta info (loc, status, mode).
 - Content column offset to the right (~30% left margin on desktop).
@@ -179,6 +185,7 @@ noise textures, no glassmorphism. Every element earns its place.
 - No hero image. Typography IS the hero.
 
 ### Interaction feel
+
 - Hover states: blue underline slides in (transform scaleX),
   not color change.
 - Transitions: 200–300ms ease, no bounce, no spring on text.
@@ -186,6 +193,7 @@ noise textures, no glassmorphism. Every element earns its place.
 - Cursor: default — no custom cursors.
 
 ### Do not
+
 - No gradients, blur, glow, or drop shadows.
 - No hero images or background photos.
 - No rounded buttons — use sharp or very slight radius (4px).

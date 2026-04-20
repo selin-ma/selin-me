@@ -3,7 +3,14 @@
 import { usePathname } from 'next/navigation';
 import { createContext, useContext, useEffect, useMemo } from 'react';
 
-import { defaultLocale, formatMessage, isLocale, localeMeta, messages, type Locale } from '@/lib/i18n';
+import {
+  defaultLocale,
+  formatMessage,
+  isLocale,
+  localeMeta,
+  messages,
+  type Locale,
+} from '@/lib/i18n';
 
 type I18nContextValue = {
   locale: Locale;
@@ -42,4 +49,3 @@ export function useI18n() {
   if (!ctx) throw new Error('useI18n must be used within I18nProvider');
   return ctx;
 }
-

@@ -355,22 +355,44 @@ function PickleVibeCard() {
 
             {/* Prev — vertically centered, always visible */}
             <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev();
+              }}
               className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-black/75 md:left-5"
               aria-label="Previous"
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
                 <path d="M19 12H5M12 5l-7 7 7 7" />
               </svg>
             </button>
 
             {/* Next — vertically centered, always visible */}
             <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                next();
+              }}
               className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-black/75 md:right-5"
               aria-label="Next"
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
@@ -381,7 +403,15 @@ function PickleVibeCard() {
               className="absolute right-4 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-black/75 md:right-6 md:top-6"
               aria-label="Close"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
