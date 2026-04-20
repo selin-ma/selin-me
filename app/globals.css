@@ -30,8 +30,12 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #1F1F1F;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1f1f1f;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-weight: 300;
   font-size: var(--text-body-size);
   line-height: var(--text-body-lineheight);
@@ -39,17 +43,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Playfair Display', Georgia, serif;
   margin: 0;
 }
 
-p { margin: 0; }
+p {
+  margin: 0;
+}
 
 /* ─── Selection ──────────────────────────────────────────────────────────── */
 ::selection {
-  background-color: #5A6B4C;
-  color: #F0EFE9;
+  background-color: #5a6b4c;
+  color: #f0efe9;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
@@ -58,11 +69,11 @@ p { margin: 0; }
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0EFE9;
+  background: #f0efe9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8A9B7C;
+  background: #8a9b7c;
   border-radius: 3px;
 }
 
@@ -88,11 +99,17 @@ p { margin: 0; }
   transform: translateY(0) scale(1);
 }
 
-
 /* ─── Breathing dot ──────────────────────────────────────────────────────── */
 @keyframes breathe {
-  0%, 100% { opacity: 0.5; transform: scale(0.75); }
-  50%       { opacity: 1;   transform: scale(1.25); }
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
 }
 
 /* ─── Hero entry animations ──────────────────────────────────────────────── */
@@ -108,8 +125,12 @@ p { margin: 0; }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ─── Type scale ─────────────────────────────────────────────────────────── */
@@ -141,7 +162,8 @@ h2 {
 }
 
 /* Improve measure for long copy */
-.container p, .prose {
+.container p,
+.prose {
   max-width: 65ch;
 }
 
@@ -157,7 +179,7 @@ h2 {
   top: 0;
   left: 0;
   height: 2px;
-  background: #5A6B4C;
+  background: #5a6b4c;
   z-index: 200;
   transition: width 0.1s linear;
 }

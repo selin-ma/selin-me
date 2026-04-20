@@ -12,7 +12,6 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="bg-warm-white py-8 md:py-20">
       <Container>
-
         {/* Header */}
         <motion.div
           className="mb-16"
