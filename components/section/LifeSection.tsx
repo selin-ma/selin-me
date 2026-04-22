@@ -869,7 +869,9 @@ export function LifeSection() {
                         <span
                           className={cn(
                             'font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-300',
-                            isActive ? 'text-olive-dark' : 'text-black/30 group-hover:text-black/50',
+                            isActive
+                              ? 'text-olive-dark'
+                              : 'text-black/30 group-hover:text-black/50',
                           )}
                         >
                           {t(item.labelKey)}
