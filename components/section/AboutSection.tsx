@@ -112,9 +112,7 @@ export function AboutSection() {
                     <p className="font-display text-[1.1rem] font-medium leading-tight text-ink">
                       Selin Ma
                     </p>
-                    <p className="mt-0.5 font-body text-xs text-ink/60">
-                      {t('about.roleTitle')}
-                    </p>
+                    <p className="mt-0.5 font-body text-xs text-ink/60">{t('about.roleTitle')}</p>
                   </div>
                 </div>
               </motion.div>
