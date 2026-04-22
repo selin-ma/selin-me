@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 
 import { I18nProvider } from '@/components/i18n/I18nProvider';
+import { IconFonts } from '@/components/ui/IconFonts';
 
 const fontDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -36,20 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${fontDisplay.variable} ${fontBody.variable}`}
     >
-      <head>
-        {/* eslint-disable-next-line @next/next/no-page-custom-font, @next/next/google-font-display */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=swipe_right"
-        />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font, @next/next/google-font-display */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close,menu"
-        />
-      </head>
       <body>
         <I18nProvider>{children}</I18nProvider>
+        <IconFonts />
       </body>
     </html>
   );

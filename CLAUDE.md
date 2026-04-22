@@ -58,15 +58,6 @@ public/
 - Responsive: mobile-first, breakpoints `md:` and `lg:`
 - Fluid type with `clamp()` for hero/display text
 
-### Images
-
-Always use the `img()` helper from `lib/utils.ts` for image paths — it prepends `/selin-me` in production to handle the GitHub Pages base path:
-
-```ts
-import { img } from '@/lib/utils';
-<img src={img('/images/avatar.png')} />
-```
-
 ### i18n
 
 Access translations via `useI18n()` hook (client components only):

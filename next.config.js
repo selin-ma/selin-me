@@ -6,7 +6,7 @@ const nextConfig = {
   basePath: isGitHubPages ? '/selin-me' : '',
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    unoptimized: isGitHubPages,
   },
 };
 

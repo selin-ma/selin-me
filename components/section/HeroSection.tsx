@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { Container } from '@/components/ui/Container';
+import sheroImg from '@/public/images/hero/shero.jpg';
 
 export function HeroSection() {
   const { t } = useI18n();
@@ -41,11 +42,11 @@ export function HeroSection() {
             {/* Hero photo */}
             <div className="w-full overflow-hidden rounded-[14px] h-80">
               <Image
-                src="/images/hero/shero.jpg"
+                src={sheroImg}
                 alt="Hero"
                 className="w-full h-full object-cover object-right"
-                width={100}
-                height={100}
+                placeholder="blur"
+                priority
               />
             </div>
 
@@ -66,11 +67,11 @@ export function HeroSection() {
           {/* Hero photo */}
           <div className="mb-8 w-full max-w-xs self-end overflow-hidden rounded-[12px] h-72">
             <Image
-              src="/images/hero/shero.jpg"
+              src={sheroImg}
               alt="Hero"
               className="w-full h-full object-cover object-right"
-              width={320}
-              height={288}
+              placeholder="blur"
+              priority
             />
           </div>
 

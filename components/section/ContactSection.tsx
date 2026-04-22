@@ -46,7 +46,7 @@ export function ContactSection() {
       <Container>
         <div className="relative z-10 mx-auto max-w-3xl text-center">
           <motion.p
-            className="mb-4 font-body text-[0.7rem] uppercase tracking-[0.3em] text-olive"
+            className="mb-4 font-body text-xs uppercase tracking-[0.3em] text-olive-dark"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}

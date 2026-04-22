@@ -30,15 +30,7 @@ function ImagePanel({
 
   const inner = (
     <div className="group relative aspect-[580/325] w-full cursor-pointer overflow-hidden bg-[#EBEBEB]">
-      {slide.coverImage ? (
-        <Image
-          src={slide.coverImage}
-          alt={title}
-          fill
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-          sizes="(max-width: 1024px) 100vw, 58vw"
-        />
-      ) : (
+      {slides.every((s) => !s.coverImage) ? (
         <div className="flex h-full w-full items-center justify-center">
           <svg
             width="64"
@@ -57,6 +49,22 @@ function ImagePanel({
             <circle cx="32" cy="32" r="7" stroke="currentColor" strokeWidth="1.5" />
           </svg>
         </div>
+      ) : (
+        slides.map((s, i) =>
+          s.coverImage ? (
+            <Image
+              key={i}
+              src={s.coverImage}
+              alt={title}
+              fill
+              priority={i === 0}
+              placeholder="blur"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="object-cover object-top transition-[opacity,transform] duration-500 group-hover:scale-[1.03]"
+              style={{ opacity: i === active ? 1 : 0 }}
+            />
+          ) : null,
+        )
       )}
 
       {/* Hover overlay — visit site */}
