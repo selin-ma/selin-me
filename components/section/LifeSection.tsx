@@ -8,6 +8,7 @@ import { createPortal } from 'react-dom';
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { bookshelf, otherHobbies, sportsActivities } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import twinklePickleImg from '@/public/images/life/pickleball/twinkle-pickle.jpg';
 
 import { Container } from '../ui/Container';
 
@@ -176,6 +177,7 @@ function SportsLightbox({
                 alt={t(photo.labelKey)}
                 width={1200}
                 height={900}
+                placeholder="blur"
                 style={{ width: '100%', maxHeight: '82vh', objectFit: 'contain', display: 'block' }}
               />
               {/* Mobile prev/next — vertically centered on the image */}
@@ -278,6 +280,8 @@ function SportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => void }) {
                 src={photo.src}
                 alt={t(photo.labelKey)}
                 fill
+                placeholder="blur"
+                sizes="(max-width: 1024px) 50vw, 33vw"
                 className="object-cover"
                 style={{ objectPosition: photo.position ?? 'center' }}
               />
@@ -343,6 +347,8 @@ function ReadingGrid({ onHover }: { onHover: (idx: number) => void }) {
                   src={book.coverUrl}
                   alt={t(`life.book.${book.id}.title`)}
                   fill
+                  placeholder="blur"
+                  sizes="(max-width: 768px) 50vw, 20vw"
                   className="object-cover"
                 />
               )}
@@ -370,7 +376,7 @@ function ReadingGrid({ onHover }: { onHover: (idx: number) => void }) {
             <h4 className="font-serif text-base leading-tight">
               {t(`life.book.${book.id}.title`)}
             </h4>
-            <p className="mt-0.5 font-mono text-xs uppercase tracking-widest text-olive">
+            <p className="mt-0.5 font-mono text-xs uppercase tracking-widest text-olive-dark">
               {t(`life.book.${book.id}.author`)}
             </p>
           </div>
@@ -446,6 +452,8 @@ function MoreGrid() {
                     src={firstPhoto!.src}
                     alt={t(`life.hobby.${hobby.id}.label`)}
                     fill
+                    placeholder="blur"
+                    sizes="(max-width: 768px) 50vw, 20vw"
                     className="object-cover"
                   />
                 ) : (
@@ -519,7 +527,14 @@ function MobileSportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => voi
             tabIndex={0}
           >
             {photo.src && (
-              <Image src={photo.src} alt={t(photo.labelKey)} fill className="object-cover" />
+              <Image
+                src={photo.src}
+                alt={t(photo.labelKey)}
+                fill
+                placeholder="blur"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
             )}
           </div>
         );
@@ -552,6 +567,8 @@ function MobileReadingGrid({ onTap }: { onTap: (idx: number) => void }) {
                   src={book.coverUrl}
                   alt={t(`life.book.${book.id}.title`)}
                   fill
+                  placeholder="blur"
+                  sizes="(max-width: 768px) 50vw, 20vw"
                   className="object-cover"
                 />
               )}
@@ -577,7 +594,7 @@ function MobileReadingGrid({ onTap }: { onTap: (idx: number) => void }) {
           </div>
           <div className="mt-3">
             <h4 className="font-serif text-sm leading-tight">{t(`life.book.${book.id}.title`)}</h4>
-            <p className="mt-0.5 font-mono text-xs uppercase tracking-widest text-olive">
+            <p className="mt-0.5 font-mono text-xs uppercase tracking-widest text-olive-dark">
               {t(`life.book.${book.id}.author`)}
             </p>
           </div>
@@ -633,6 +650,8 @@ function MobileMoreGrid() {
                     src={firstPhoto!.src}
                     alt={t(`life.hobby.${hobby.id}.label`)}
                     fill
+                    placeholder="blur"
+                    sizes="50vw"
                     className="object-cover"
                   />
                 ) : (
@@ -701,7 +720,7 @@ export function LifeSection() {
         <div ref={sectionRef} className="hidden bg-white lg:block">
           <div className="w-full py-20">
             {/* Kicker */}
-            <p className="mb-5 font-mono text-xs uppercase tracking-[0.28em] text-olive">
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.28em] text-olive-dark">
               / {t('life.section.kicker')}
             </p>
 
@@ -753,7 +772,8 @@ export function LifeSection() {
                                 className="flex items-center gap-5 px-5 py-4 transition-colors duration-200"
                               >
                                 <Image
-                                  src="/images/life/pickleball/twinkle-pickle.png"
+                                  src={twinklePickleImg}
+                                  placeholder="blur"
                                   alt="Twinkle Pickle"
                                   width={56}
                                   height={56}
@@ -763,11 +783,11 @@ export function LifeSection() {
                                   <p className="font-display text-[1.1rem] font-black leading-tight text-ink">
                                     Twinkle Pickle
                                   </p>
-                                  <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-olive">
+                                  <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-olive-dark">
                                     {t('life.sports.teamRole')}
                                   </p>
                                 </div>
-                                <span className="shrink-0 font-mono text-xs uppercase tracking-[0.1em] text-olive-lt transition-colors duration-200 group-hover:text-ink">
+                                <span className="shrink-0 font-mono text-xs uppercase tracking-[0.1em] text-olive-dark transition-colors duration-200 group-hover:text-ink">
                                   小红书 ↗
                                 </span>
                               </a>
@@ -777,10 +797,10 @@ export function LifeSection() {
                                 rel="noopener noreferrer"
                                 className="group/beesoul flex items-center gap-3 border-t border-olive/10 px-5 py-3 transition-colors duration-200"
                               >
-                                <span className="font-mono text-xs uppercase tracking-[0.14em] text-olive-lt transition-colors duration-200 group-hover/beesoul:text-olive">
+                                <span className="font-mono text-xs uppercase tracking-[0.14em] text-olive-dark-lt transition-colors duration-200 group-hover/beesoul:text-olive">
                                   {t('life.sports.sponsored')}
                                 </span>
-                                <span className="font-mono text-xs uppercase tracking-[0.1em] text-olive-lt transition-colors duration-200 group-hover/beesoul:text-olive">
+                                <span className="font-mono text-xs uppercase tracking-[0.1em] text-olive-dark transition-colors duration-200 group-hover/beesoul:text-olive-dark">
                                   Beesoul Pickleball
                                 </span>
                               </a>
@@ -841,7 +861,7 @@ export function LifeSection() {
                         <span
                           className={cn(
                             'font-mono text-xs transition-colors duration-300',
-                            isActive ? 'text-olive' : 'text-black/15',
+                            isActive ? 'text-olive-dark' : 'text-black/15',
                           )}
                         >
                           {item.num}
@@ -849,7 +869,7 @@ export function LifeSection() {
                         <span
                           className={cn(
                             'font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-300',
-                            isActive ? 'text-olive' : 'text-black/20 group-hover:text-black/40',
+                            isActive ? 'text-olive-dark' : 'text-black/30 group-hover:text-black/50',
                           )}
                         >
                           {t(item.labelKey)}
@@ -910,7 +930,7 @@ export function LifeSection() {
       <div className="lg:hidden bg-white">
         {/* Header + tab bar */}
         <Container className="pt-10 pb-0">
-          <p className="mb-6 font-mono text-xs uppercase tracking-[0.28em] text-olive">
+          <p className="mb-6 font-mono text-xs uppercase tracking-[0.28em] text-olive-dark">
             / {t('life.section.kicker')}
           </p>
           <div className="flex w-full">
@@ -977,7 +997,8 @@ export function LifeSection() {
                   className="flex items-center gap-4 px-4 py-3.5 transition-colors duration-200"
                 >
                   <Image
-                    src="/images/life/pickleball/twinkle-pickle.png"
+                    src={twinklePickleImg}
+                    placeholder="blur"
                     alt="Twinkle Pickle"
                     width={48}
                     height={48}
@@ -987,7 +1008,7 @@ export function LifeSection() {
                     <p className="font-display text-[1rem] font-black leading-tight text-ink">
                       Twinkle Pickle
                     </p>
-                    <p className="mt-0.5 font-mono text-xs uppercase tracking-[0.14em] text-olive">
+                    <p className="mt-0.5 font-mono text-xs uppercase tracking-[0.14em] text-olive-dark">
                       {t('life.sports.teamRole')}
                     </p>
                   </div>
@@ -1001,10 +1022,10 @@ export function LifeSection() {
                   rel="noopener noreferrer"
                   className="group/beesoul flex items-center gap-3 border-t border-olive/10 px-4 py-2.5 transition-colors duration-200"
                 >
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-olive-lt transition-colors duration-200 group-hover/beesoul:text-olive">
+                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-olive-dark-lt transition-colors duration-200 group-hover/beesoul:text-olive">
                     {t('life.sports.sponsored')}
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-[0.1em] text-olive-lt transition-colors duration-200 group-hover/beesoul:text-olive">
+                  <span className="font-mono text-xs uppercase tracking-[0.1em] text-olive-dark transition-colors duration-200 group-hover/beesoul:text-olive-dark">
                     Beesoul Pickleball
                   </span>
                 </a>

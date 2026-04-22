@@ -95,7 +95,7 @@ export function AboutSection() {
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
                 className="w-[42%] flex-shrink-0 xl:w-[40%]"
               >
-                <p className="mb-4 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+                <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark italic">
                   / {t('about.kicker')}
                 </p>
                 <CodeCard />
@@ -104,7 +104,7 @@ export function AboutSection() {
                 <div className="mt-5 flex items-end justify-between">
                   <div className="inline-flex items-center gap-2 rounded-full border border-olive/40 bg-olive/10 px-3 py-1">
                     <span className="h-1.5 w-1.5 rounded-full bg-olive" aria-hidden="true" />
-                    <span className="font-body text-[0.63rem] uppercase tracking-[0.12em] text-olive">
+                    <span className="font-body text-[0.63rem] uppercase tracking-[0.12em] text-olive-dark">
                       {t('about.available')}
                     </span>
                   </div>
@@ -112,7 +112,7 @@ export function AboutSection() {
                     <p className="font-display text-[1.1rem] font-medium leading-tight text-ink">
                       Selin Ma
                     </p>
-                    <p className="mt-0.5 font-body text-[0.72rem] text-ink/60">
+                    <p className="mt-0.5 font-body text-xs text-ink/60">
                       {t('about.roleTitle')}
                     </p>
                   </div>
@@ -128,7 +128,7 @@ export function AboutSection() {
                 className="flex flex-1 flex-col"
               >
                 {/* Experience */}
-                <p className="mb-4 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+                <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark italic">
                   / {t('about.label.experience')}
                 </p>
                 <div>
@@ -163,14 +163,14 @@ export function AboutSection() {
 
                 {/* Education — right col, own row below experience */}
                 <div className="mt-8 pt-6">
-                  <p className="mb-3 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive">
+                  <p className="mb-3 font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark">
                     / {t('about.label.education')}
                   </p>
                   <div className="flex items-baseline justify-between gap-4">
                     <p className="font-display text-[0.92rem] font-medium text-ink">
                       {t('about.school')}
                     </p>
-                    <p className="flex-shrink-0 font-body text-[0.72rem] text-ink/38">
+                    <p className="flex-shrink-0 font-body text-xs text-ink/38">
                       {t('about.degree')}
                     </p>
                     <p className="flex-shrink-0 font-body text-[0.67rem] tabular-nums text-ink/22">
@@ -187,7 +187,7 @@ export function AboutSection() {
 
           {/* ── Mobile ──────────────────────────────────────────────────────── */}
           <div className="flex flex-col lg:hidden">
-            <p className="mb-8 text-center font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+            <p className="mb-8 text-center font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark italic">
               / {t('about.kicker')}
             </p>
 
@@ -197,7 +197,7 @@ export function AboutSection() {
             <div className="mt-5 flex items-end justify-between">
               <div className="inline-flex items-center gap-2 rounded-full border border-olive/40 bg-olive/10 px-3 py-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-olive" aria-hidden="true" />
-                <span className="font-body text-[0.63rem] uppercase tracking-[0.12em] text-olive">
+                <span className="font-body text-[0.63rem] uppercase tracking-[0.12em] text-olive-dark">
                   {t('about.available')}
                 </span>
               </div>
@@ -211,7 +211,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            <p className="mt-8 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive">
+            <p className="mt-8 font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark">
               / {t('about.label.experience')}
             </p>
             <div>
@@ -235,13 +235,13 @@ export function AboutSection() {
             </div>
 
             <div className="mt-8">
-              <p className="mb-3 font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive">
+              <p className="mb-3 font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark">
                 / {t('about.label.education')}
               </p>
               <p className="font-body text-[0.82rem] font-medium text-ink/70">
                 {t('about.school')}
               </p>
-              <p className="mt-0.5 font-body text-[0.72rem] text-ink/38">{t('about.degree')}</p>
+              <p className="mt-0.5 font-body text-xs text-ink/38">{t('about.degree')}</p>
               <p className="mt-0.5 font-body text-[0.67rem] tabular-nums text-ink/22">
                 {education.period}
               </p>

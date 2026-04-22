@@ -42,7 +42,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
             href={it.href}
             className={cn(
               'inline-flex h-full items-center px-3 font-body text-sm tracking-[0.05em] transition-colors duration-200',
-              it.active ? 'font-medium text-olive' : 'text-ink/35 hover:text-ink/70',
+              it.active ? 'font-medium text-olive-dark' : 'text-ink/50 hover:text-ink/80',
             )}
           >
             {it.label}

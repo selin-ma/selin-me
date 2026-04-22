@@ -151,7 +151,7 @@ export function SkillsSection() {
     <section id="skills" className="overflow-hidden bg-white py-8 md:py-20">
       {/* ── Desktop ───────────────────────────────────────────────────────── */}
       <Container className="hidden lg:block">
-        <p className="mb-10 text-center font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+        <p className="mb-10 text-center font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark italic">
           / {t('skills.kicker')}
         </p>
         <div className="grid grid-cols-[220px_1fr_220px] items-center gap-0">
@@ -198,7 +198,7 @@ export function SkillsSection() {
 
       {/* ── Mobile ────────────────────────────────────────────────────────── */}
       <Container className="lg:hidden">
-        <p className="mb-5 text-center font-body text-[0.72rem] font-medium uppercase tracking-[0.15em] text-olive italic">
+        <p className="mb-5 text-center font-body text-xs font-medium uppercase tracking-[0.15em] text-olive-dark italic">
           / {t('skills.kicker')}
         </p>
         <div className="text-center">

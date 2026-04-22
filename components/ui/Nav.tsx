@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { LanguageSwitch } from '@/components/ui/LanguageSwitch';
 import { cn } from '@/lib/utils';
+import sheroImg from '@/public/images/hero/shero.jpg';
 
 const NAV_LINKS = [
   { labelKey: 'nav.about', href: '#about' },
@@ -87,15 +88,7 @@ export function Nav() {
           aria-label="Home"
           className="flex h-9 w-9 overflow-hidden rounded-full transition-opacity hover:opacity-80 flex-shrink-0"
           onClick={menuOpen ? closeMenu : undefined}
-        >
-          {/* <Image
-            src="/images/avatar.png"
-            alt="avatar"
-            className="h-full w-full object-cover"
-            width={100}
-            height={100}
-          /> */}
-        </a>
+        ></a>
 
         {/* Mobile progress bar — bottom edge of header */}
         <div
@@ -132,12 +125,10 @@ export function Nav() {
             className="mr-2 flex h-9 w-9 flex-shrink-0 overflow-hidden rounded-full transition-opacity hover:opacity-80"
           >
             <Image
-              // src="/images/avatar.png"
-              src="/images/hero/shero.jpg"
+              src={sheroImg}
               alt="avatar"
               className="h-full w-full object-cover object-right"
-              width={100}
-              height={100}
+              placeholder="blur"
             />
           </a>
 
@@ -151,7 +142,7 @@ export function Nav() {
                     href={item.href}
                     className={cn(
                       'inline-flex h-full group relative px-3 font-body text-sm tracking-[0.05em] transition-all duration-500 ease-out',
-                      isActive ? 'text-olive font-medium' : 'text-ink hover:text-olive',
+                      isActive ? 'text-olive-dark font-medium' : 'text-ink hover:text-olive-dark',
                     )}
                   >
                     <span className="transition-transform duration-500 ease-out group-hover:-translate-y-0.5">

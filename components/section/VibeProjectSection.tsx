@@ -2,12 +2,21 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { Container } from '@/components/ui/Container';
 import { vibeProjects } from '@/lib/data';
+import pickleVibe11 from '@/public/images/vibeProjects/pickle-vibe-1-1.png';
+import pickleVibe1 from '@/public/images/vibeProjects/pickle-vibe-1.png';
+import pickleVibe2 from '@/public/images/vibeProjects/pickle-vibe-2.png';
+import pickleVibe3 from '@/public/images/vibeProjects/pickle-vibe-3.png';
+import pickleVibe4 from '@/public/images/vibeProjects/pickle-vibe-4.png';
+import pickleVibe5 from '@/public/images/vibeProjects/pickle-vibe-5.png';
+import pickleVibe62 from '@/public/images/vibeProjects/pickle-vibe-6-2.png';
+import pickleVibe6 from '@/public/images/vibeProjects/pickle-vibe-6.png';
 
 // ── Mist blue accent ───────────────────────────────────────────────────────
 const MIST = '#7FA2BF';
@@ -15,16 +24,16 @@ const MIST = '#7FA2BF';
 // ── Featured project IDs (in card order) ─────────────────────────────────
 const FEATURED_IDS = ['selin-me', 'pickle-vibe', 'still-hearth'];
 
-// ── Phone screenshot paths ─────────────────────────────────────────────────
-const PICKLE_VIBE_SHOTS = [
-  '/images/vibeProjects/pickle-vibe-1.png',
-  '/images/vibeProjects/pickle-vibe-1-1.png',
-  '/images/vibeProjects/pickle-vibe-2.png',
-  '/images/vibeProjects/pickle-vibe-3.png',
-  '/images/vibeProjects/pickle-vibe-4.png',
-  '/images/vibeProjects/pickle-vibe-5.png',
-  '/images/vibeProjects/pickle-vibe-6.png',
-  '/images/vibeProjects/pickle-vibe-6-2.png',
+// ── Phone screenshot images ────────────────────────────────────────────────
+const PICKLE_VIBE_SHOTS: StaticImageData[] = [
+  pickleVibe1,
+  pickleVibe11,
+  pickleVibe2,
+  pickleVibe3,
+  pickleVibe4,
+  pickleVibe5,
+  pickleVibe6,
+  pickleVibe62,
 ];
 
 // ── GDD scroll content ─────────────────────────────────────────────────────
@@ -251,13 +260,12 @@ function PickleVibeCard() {
             className="group relative min-h-0 flex-1 overflow-hidden focus:outline-none"
             aria-label="View screenshot 3"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <Image
               src={PICKLE_VIBE_SHOTS[2]}
               alt="Pickle Vibe featured screen"
               className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
-              width={100}
-              height={100}
+              placeholder="blur"
+              fill
             />
             <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-200 group-hover:bg-ink/15">
               <svg
@@ -284,11 +292,12 @@ function PickleVibeCard() {
                 className="group relative flex-1 overflow-hidden focus:outline-none"
                 aria-label={`View screenshot ${idx + 1}`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={PICKLE_VIBE_SHOTS[idx]}
                   alt={`Pickle Vibe screen ${idx + 1}`}
-                  className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.06]"
+                  className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.06]"
+                  placeholder="blur"
+                  fill
                 />
                 <div className="absolute inset-0 bg-ink/0 transition-colors duration-200 group-hover:bg-ink/20" />
               </button>
@@ -297,7 +306,7 @@ function PickleVibeCard() {
         </div>
 
         {/* Category chip */}
-        <p className="mb-1.5 font-mono text-[0.52rem] uppercase tracking-[0.2em] text-olive">
+        <p className="mb-1.5 font-mono text-[0.52rem] uppercase tracking-[0.2em] text-olive-dark">
           {t('vibe.card.picklevibe.category')}
         </p>
 
@@ -333,13 +342,14 @@ function PickleVibeCard() {
                 className="pointer-events-none"
                 style={{ width: 'min(360px, 72vw)', maxHeight: '82vh' }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={PICKLE_VIBE_SHOTS[lightbox]}
                   alt={`Pickle Vibe screen ${lightbox + 1}`}
+                  placeholder="blur"
                   style={{
                     display: 'block',
                     width: '100%',
+                    height: 'auto',
                     maxHeight: '82vh',
                     objectFit: 'contain',
                     borderRadius: '28px',
@@ -526,7 +536,7 @@ export function VibeProjectSection() {
       {/* Section header */}
       <Container className="pb-0 pt-14 md:pt-20">
         <motion.p
-          className="mb-3 font-mono text-[0.6rem] uppercase tracking-[0.28em] text-olive"
+          className="mb-3 font-mono text-xs uppercase tracking-[0.28em] text-olive-dark"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}

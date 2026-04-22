@@ -1,3 +1,5 @@
+import type { StaticImageData } from 'next/image';
+
 export interface WorkExperience {
   id: string;
   tag: string;
@@ -25,7 +27,7 @@ export interface Skill {
 export interface Book {
   id: string;
   color: string;
-  coverUrl?: string;
+  coverUrl?: StaticImageData;
   year: number;
   doubanUrl: string;
 }
@@ -35,7 +37,7 @@ export interface Book {
 export interface PhotoSlot {
   /** i18n key for the label, e.g. "life.photo.kl1" */
   labelKey: string;
-  src?: string;
+  src?: StaticImageData;
   position?: string;
 }
 
@@ -59,7 +61,7 @@ export interface OtherHobby {
   id: string;
   icon: string;
   color: string;
-  photos?: { src: string; position?: string }[];
+  photos?: { src: StaticImageData; position?: string }[];
 }
 
 export type LifeTab = 'reading' | 'sports' | 'more';
@@ -72,7 +74,7 @@ export type SkillCategory = 'all' | Skill['category'];
 export interface ShowcaseSlide {
   /** Short label shown on the dot, e.g. "AusPost", "CoverMore" */
   label?: string;
-  coverImage?: string;
+  coverImage?: StaticImageData;
   siteUrl?: string;
 }
 
@@ -89,7 +91,7 @@ export interface WorkShowcase {
   /** Key tech, shown in lookbook metadata, e.g. ["Next.js", "TypeScript"] */
   tech?: string[];
   /** Single screenshot / hero image (used when slides is absent) */
-  coverImage?: string;
+  coverImage?: StaticImageData;
   siteUrl?: string;
   /** Multiple slides — each can have its own screenshot + link */
   slides?: ShowcaseSlide[];
@@ -101,7 +103,7 @@ export interface VibeProject {
   emoji: string;
   status: 'live' | 'building' | 'concept';
   color: string;
-  coverImage?: string;
+  coverImage?: StaticImageData;
   /** Full story shown on the featured (first) card */
   story: string;
   /** Short description shown on regular cards */

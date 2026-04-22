@@ -1,3 +1,35 @@
+// ─── Book covers ──────────────────────────────────────────────────────────────
+import existentialismImg from '@/public/images/life/books/existentialism.jpg';
+import theStrangerImg from '@/public/images/life/books/the-stranger.jpg';
+import invisibleWomenImg from '@/public/images/life/books/invisible-women.jpg';
+import westernThoughtImg from '@/public/images/life/books/western-thought.jpg';
+import iAndTheGardenImg from '@/public/images/life/books/i-and-the-garden.jpg';
+import siddharthaImg from '@/public/images/life/books/siddhartha.jpg';
+
+// ─── Pickleball photos ────────────────────────────────────────────────────────
+import surfskatboardImg from '@/public/images/life/curiosities/surfskateboard.jpg';
+import tennisImg from '@/public/images/life/curiosities/tennis.jpg';
+import pickleChengdu1Img from '@/public/images/life/pickleball/chengdu-1.jpg';
+import pickleChengdu2Img from '@/public/images/life/pickleball/chengdu-2.jpg';
+import pickleChongqingImg from '@/public/images/life/pickleball/chongqing.jpg';
+import pickleKl1Img from '@/public/images/life/pickleball/kl-1.jpg';
+import pickleKl2Img from '@/public/images/life/pickleball/kl-2.jpg';
+import pickleKl3Img from '@/public/images/life/pickleball/kl-3.jpg';
+import pickleShanghaiImg from '@/public/images/life/pickleball/shanghai.jpg';
+
+// ─── Work covers ─────────────────────────────────────────────────────────────
+import travelAssociatesImg from '@/public/images/work/travel-associates.png';
+import flightCentreImg from '@/public/images/work/flight-centre.png';
+import coverMoreImg from '@/public/images/work/cover-more.png';
+import auspostImg from '@/public/images/work/auspost.png';
+import ahmImg from '@/public/images/work/ahm.png';
+import webjetImg from '@/public/images/work/webjet.png';
+
+// ─── Hobby photos ─────────────────────────────────────────────────────────────
+import stageImg from '@/public/images/life/curiosities/stage.jpg';
+import movieImg from '@/public/images/life/curiosities/movie.jpg';
+import cookImg from '@/public/images/life/curiosities/cook.jpg';
+import petImg from '@/public/images/life/curiosities/pet.jpg';
 import type {
   Book,
   OtherHobby,
@@ -191,42 +223,42 @@ export const bookshelf: Book[] = [
   {
     id: 'siddhartha',
     color: '#BF8B3A',
-    coverUrl: '/images/life/books/siddhartha.jpg',
+    coverUrl: siddharthaImg,
     year: 2024,
     doubanUrl: 'https://book.douban.com/subject/26980487/',
   },
   {
     id: 'the-stranger',
     color: '#8FA8B8',
-    coverUrl: '/images/life/books/the-stranger.jpg',
+    coverUrl: theStrangerImg,
     year: 2024,
     doubanUrl: 'https://book.douban.com/subject/24257486/',
   },
   {
     id: 'existentialism',
     color: '#1E3A5F',
-    coverUrl: '/images/life/books/existentialism.jpg',
+    coverUrl: existentialismImg,
     year: 2023,
     doubanUrl: 'https://book.douban.com/subject/10608319/',
   },
   {
     id: 'invisible-women',
     color: '#C0394B',
-    coverUrl: '/images/life/books/invisible-women.jpg',
+    coverUrl: invisibleWomenImg,
     year: 2024,
     doubanUrl: 'https://book.douban.com/subject/35942057/',
   },
   {
     id: 'western-thought',
     color: '#3D5C40',
-    coverUrl: '/images/life/books/western-thought.jpg',
+    coverUrl: westernThoughtImg,
     year: 2024,
     doubanUrl: 'https://book.douban.com/subject/35313227/',
   },
   {
     id: 'garden-of-earth',
     color: '#7A5C3E',
-    coverUrl: '/images/life/books/i-and-the-garden.jpg',
+    coverUrl: iAndTheGardenImg,
     year: 2023,
     doubanUrl: 'https://book.douban.com/subject/30207170/',
   },
@@ -242,29 +274,13 @@ export const sportsActivities: SportsActivity[] = [
     desc: '组建业余战队 Twinkle Pickle，代表 Beesoul 品牌参加比赛。从上海到重庆到吉隆坡，用一块球场和一把球拍，认识了一群真正热爱这项运动的人。',
     badges: ['Twinkle Pickle 战队', 'Beesoul 签约球员', '上海 · 重庆 · 吉隆坡'],
     photos: [
-      {
-        labelKey: 'life.photo.kl1',
-        src: '/images/life/pickleball/kl-1.jpg',
-        position: '30% center',
-      },
-      { labelKey: 'life.photo.kl2', src: '/images/life/pickleball/kl-2.jpg' },
-      {
-        labelKey: 'life.photo.kl3',
-        src: '/images/life/pickleball/kl-3.jpg',
-        position: 'center 30%',
-      },
-      {
-        labelKey: 'life.photo.chongqing',
-        src: '/images/life/pickleball/chongqing.jpg',
-        position: '40% center',
-      },
-      { labelKey: 'life.photo.shanghai', src: '/images/life/pickleball/shanghai.JPG' },
-      {
-        labelKey: 'life.photo.chengdu1',
-        src: '/images/life/pickleball/chengdu-1.JPG',
-        position: '50% 20%',
-      },
-      { labelKey: 'life.photo.chengdu2', src: '/images/life/pickleball/chengdu-2.jpg' },
+      { labelKey: 'life.photo.kl1', src: pickleKl1Img, position: '30% center' },
+      { labelKey: 'life.photo.kl2', src: pickleKl2Img },
+      { labelKey: 'life.photo.kl3', src: pickleKl3Img, position: 'center 30%' },
+      { labelKey: 'life.photo.chongqing', src: pickleChongqingImg, position: '40% center' },
+      { labelKey: 'life.photo.shanghai', src: pickleShanghaiImg },
+      { labelKey: 'life.photo.chengdu1', src: pickleChengdu1Img, position: '50% 20%' },
+      { labelKey: 'life.photo.chengdu2', src: pickleChengdu2Img },
     ],
   },
 ];
@@ -282,7 +298,7 @@ export const workShowcases: WorkShowcase[] = [
     descZh:
       '主导澳大利亚头部旅游品牌全站重构——整体迁移至 Next.js + Turborepo，负责核心功能交付、组件库规范化建设，Lighthouse SEO 满分 100/100。',
     tech: ['Next.js', 'TypeScript', 'Turborepo'],
-    coverImage: '/images/work/travel-associates.png',
+    coverImage: travelAssociatesImg,
     siteUrl: 'https://www.travelassociates.com',
   },
   {
@@ -295,7 +311,7 @@ export const workShowcases: WorkShowcase[] = [
     descZh:
       '在 Flight Centre Lerna Monorepo 中高标准交付页面功能——像素级还原 Figma 设计，打通 Drupal Headless CMS，并集成 AWS Lambda + Elasticsearch BFF 驱动门店搜索。',
     tech: ['Next.js', 'FC Design System', 'Storybook', 'AWS Lambda', 'Jest'],
-    coverImage: '/images/work/flight-centre.png',
+    coverImage: flightCentreImg,
     siteUrl: 'https://www.flightcentre.com.au/about-us',
   },
   {
@@ -309,26 +325,14 @@ export const workShowcases: WorkShowcase[] = [
       '基于 Drupal PHP 主题继承体系的大型白标保险平台——一套 base theme 驱动多个合作伙伴 sub-theme，技术栈横跨原生 JavaScript 老主题与现代 Preact 新主题，交付可跨品牌复用的多步购买漏斗。',
     tech: ['Drupal PHP Themes', 'Preact', 'JavaScript', 'Tailwind CSS'],
     slides: [
-      {
-        label: 'CoverMore',
-        coverImage: '/images/work/cover-more.png',
-        siteUrl: 'https://www.covermore.com.au',
-      },
+      { label: 'CoverMore', coverImage: coverMoreImg, siteUrl: 'https://www.covermore.com.au' },
       {
         label: 'AusPost',
-        coverImage: '/images/work/auspost.png',
+        coverImage: auspostImg,
         siteUrl: 'https://auspost.poweredbycovermore.com/',
       },
-      {
-        label: 'ahm',
-        coverImage: '/images/work/ahm.png',
-        siteUrl: 'https://ahm.com.au/travel-insurance',
-      },
-      {
-        label: 'Webjet',
-        coverImage: '/images/work/webjet.png',
-        siteUrl: 'https://insurance.webjet.com.au/',
-      },
+      { label: 'ahm', coverImage: ahmImg, siteUrl: 'https://ahm.com.au/travel-insurance' },
+      { label: 'Webjet', coverImage: webjetImg, siteUrl: 'https://insurance.webjet.com.au/' },
     ],
   },
   {
@@ -426,36 +430,36 @@ export const otherHobbies: OtherHobby[] = [
     id: 'musical',
     icon: '🎭',
     color: '#9B4D7E',
-    photos: [{ src: '/images/life/curiosities/stage.jpg' }],
+    photos: [{ src: stageImg }],
   },
   {
     id: 'movie',
     icon: '🎬',
     color: '#5B7FA6',
-    photos: [{ src: '/images/life/curiosities/movie.jpg', position: '60%' }],
+    photos: [{ src: movieImg, position: '60%' }],
   },
   {
     id: 'cook',
     icon: '🍳',
     color: '#C4714B',
-    photos: [{ src: '/images/life/curiosities/cook.jpg', position: '10%' }],
+    photos: [{ src: cookImg, position: '10%' }],
   },
   {
     id: 'pet',
     icon: '🐹',
     color: '#C4956A',
-    photos: [{ src: '/images/life/curiosities/pet.jpg' }],
+    photos: [{ src: petImg }],
   },
   {
     id: 'tennis',
     icon: '🎾',
     color: '#7A9D5B',
-    photos: [{ src: '/images/life/curiosities/tennis.jpg', position: 'right' }],
+    photos: [{ src: tennisImg, position: 'right' }],
   },
   {
     id: 'surf-skate',
     icon: '🛹',
     color: '#4A6741',
-    photos: [{ src: '/images/life/curiosities/surfskateboard.jpg', position: '30%' }],
+    photos: [{ src: surfskatboardImg, position: '30%' }],
   },
 ];
