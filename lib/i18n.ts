@@ -141,6 +141,7 @@ export const messages: Record<Locale, Messages> = {
 
     'life.sports.teamRole': '匹克球战队 · 主理人',
     'life.sports.sponsored': '签约球员',
+    'life.sports.xiaohongshu': '小红书 ↗',
     'life.sports.motto':
       '以专业之心，敬业余之爱。用一块球场和一把球拍，认识了一群真正热爱这项运动的伙伴。',
     'life.reading.body': '那些与我们身处不同时代的朋友们，她们的生命与我们终究还是相连的。',
@@ -321,12 +322,12 @@ export const messages: Record<Locale, Messages> = {
     'life.photo.kl2': 'Team Life · Kuala Lumpur',
     'life.photo.kl3': 'MiLP DUPR 14 · Kuala Lumpur',
     'life.photo.chongqing': 'Kitchen Cup Open · Chongqing',
-    'life.photo.shanghai': 'MiLP National Championship · Shanghai',
+    'life.photo.shanghai': 'MiLP China National Finals · Shanghai',
     'life.photo.chengdu1': 'Team Life · Chengdu',
     'life.photo.chengdu2': 'Beesoul Mixed Doubles Challenge · Chengdu',
-
     'life.sports.teamRole': 'Pickleball Team · Founder',
     'life.sports.sponsored': 'Sponsored Player',
+    'life.sports.xiaohongshu': 'RED ↗',
     'life.sports.motto': 'Honoring amateur love with professional devotion. Twinkle on courts.',
     'life.reading.body':
       'Friends from another era — their lives and ours are still connected, across every page.',
