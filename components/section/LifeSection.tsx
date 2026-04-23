@@ -669,16 +669,13 @@ function MobileMoreGrid() {
                   </div>
                 )}
                 <div
-                  className="absolute inset-x-0 bottom-0 px-3 pb-3 pt-6"
+                  className="absolute inset-x-0 bottom-0 px-3 pb-3 pt-8"
                   style={{
-                    background: `linear-gradient(to top, ${hobby.color} 0%, ${hobby.color}cc 50%, transparent 100%)`,
+                    background: `linear-gradient(to top, ${hobby.color}cc 0%, transparent 100%)`,
                   }}
                 >
                   <p className="font-serif text-xs text-white">
                     {t(`life.hobby.${hobby.id}.label`)}
-                  </p>
-                  <p className="mt-0.5 font-body text-[0.65rem] leading-[1.6] text-white/80">
-                    {t(`life.hobby.${hobby.id}.desc`)}
                   </p>
                 </div>
               </div>
@@ -948,10 +945,11 @@ export function LifeSection() {
                   )}
                 >
                   <span className="text-xs tracking-wide">{t(item.labelKey)}</span>
-                  <motion.span
-                    animate={{ scale: isActive ? 1 : 0.6, opacity: isActive ? 1 : 0.2 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    className="block h-1 w-1 rounded-full bg-olive"
+                  <span
+                    className={cn(
+                      'block h-1 w-1 rounded-full bg-olive transition-all duration-500 ease-out',
+                      isActive ? 'scale-100 opacity-100 animate-breathe' : 'scale-[0.6] opacity-20',
+                    )}
                   />
                 </button>
               );

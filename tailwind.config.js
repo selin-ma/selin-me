@@ -17,6 +17,7 @@ module.exports = {
         ink: {
           DEFAULT: '#1F1F1F',
           light: '#8A9B7C',
+          lt: '#919191',
         },
         olive: {
           DEFAULT: '#8E9B84',
@@ -29,9 +30,11 @@ module.exports = {
           ink: '#3D2A00',
         },
         dark: '#1A1F18',
-
         /* Legacy aliases */
-        cream: '#F0EFE9',
+        cream: {
+          DEFAULT: '#F0EFE9',
+          lt: '#E9EBEA',
+        },
         paper: '#F0EFE9',
         'warm-white': '#F0EFE9',
         midnight: '#1A1F18',
@@ -58,6 +61,10 @@ module.exports = {
           '51%': { transform: 'scaleY(1)', transformOrigin: 'bottom' },
           '100%': { transform: 'scaleY(0)', transformOrigin: 'bottom' },
         },
+        breathe: {
+          '0%, 100%': { opacity: '0.5', transform: 'scale(0.75)' },
+          '50%': { opacity: '1', transform: 'scale(1.25)' },
+        },
       },
       transitionDuration: {
         600: '600ms',
@@ -67,6 +74,7 @@ module.exports = {
         'fade-in': 'fadeIn 0.5s ease forwards',
         'skill-fill': 'skillFill 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
         'scroll-line': 'scrollLine 1.5s ease-in-out infinite',
+        breathe: 'breathe 2.4s ease-in-out infinite',
       },
     },
   },

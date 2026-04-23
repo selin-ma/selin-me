@@ -99,18 +99,6 @@ p {
   transform: translateY(0) scale(1);
 }
 
-/* ─── Breathing dot ──────────────────────────────────────────────────────── */
-@keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(0.75);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.25);
-  }
-}
 
 /* ─── Hero entry animations ──────────────────────────────────────────────── */
 @keyframes fadeUp {

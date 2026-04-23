@@ -77,7 +77,7 @@ export function Nav() {
       <header
         style={{ width: '100dvw' }}
         className={cn(
-          'fixed left-0 top-0 z-50 flex items-center justify-between px-5  transition-all duration-300 md:hidden',
+          'fixed left-0 top-0 z-50 h-14 flex items-center justify-between px-5  transition-all duration-300 md:hidden',
           scrolled || menuOpen
             ? 'bg-white shadow-[0_2px_16px_rgba(28,25,23,0.08)]'
             : 'bg-white/80 backdrop-blur-sm',
@@ -86,9 +86,16 @@ export function Nav() {
         <a
           href="#"
           aria-label="Home"
-          className="flex h-9 w-9 overflow-hidden rounded-full transition-opacity hover:opacity-80 flex-shrink-0"
+          className="flex h-8 w-8 overflow-hidden rounded-full transition-opacity hover:opacity-80 flex-shrink-0"
           onClick={menuOpen ? closeMenu : undefined}
-        ></a>
+        >
+          <Image
+            src={sheroImg}
+            alt="avatar"
+            className="h-full w-full object-cover object-right"
+            placeholder="blur"
+          />
+        </a>
 
         {/* Mobile progress bar — bottom edge of header */}
         <div
@@ -103,7 +110,7 @@ export function Nav() {
           aria-expanded={menuOpen}
           className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-ink/[0.06]"
         >
-          <span className="material-symbols-outlined select-none text-ink text-base">
+          <span className="material-symbols-outlined select-none text-ink ">
             {menuOpen ? 'close' : 'menu'}
           </span>
         </button>
@@ -152,12 +159,9 @@ export function Nav() {
                       className={cn(
                         'absolute -bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-olive transition-all duration-500 ease-out',
                         isActive
-                          ? 'scale-100 opacity-100'
+                          ? 'scale-100 opacity-100 animate-breathe'
                           : 'scale-0 opacity-0 group-hover:scale-75 group-hover:opacity-60',
                       )}
-                      style={
-                        isActive ? { animation: 'breathe 2.4s ease-in-out infinite' } : undefined
-                      }
                     />
                   </a>
                 </li>
