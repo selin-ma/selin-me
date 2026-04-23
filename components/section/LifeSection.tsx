@@ -130,8 +130,14 @@ function SportsLightbox({
   const [loaded, setLoaded] = useState(false);
   const photo = photos[idx];
 
-  const prev = () => { setLoaded(false); setIdx((i) => (i - 1 + photos.length) % photos.length); };
-  const next = () => { setLoaded(false); setIdx((i) => (i + 1) % photos.length); };
+  const prev = () => {
+    setLoaded(false);
+    setIdx((i) => (i - 1 + photos.length) % photos.length);
+  };
+  const next = () => {
+    setLoaded(false);
+    setIdx((i) => (i + 1) % photos.length);
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -219,13 +225,19 @@ function SportsLightbox({
               {photos.length > 1 && (
                 <>
                   <button
-                    onClick={(e) => { e.stopPropagation(); prev(); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prev();
+                    }}
                     className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm lg:hidden"
                   >
                     ‹
                   </button>
                   <button
-                    onClick={(e) => { e.stopPropagation(); next(); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      next();
+                    }}
                     className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm lg:hidden"
                   >
                     ›
@@ -246,13 +258,19 @@ function SportsLightbox({
         <>
           <button
             className="absolute left-5 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-opacity hover:opacity-80 lg:flex"
-            onClick={(e) => { e.stopPropagation(); prev(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
           >
             ‹
           </button>
           <button
             className="absolute right-16 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-opacity hover:opacity-80 lg:flex"
-            onClick={(e) => { e.stopPropagation(); next(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
           >
             ›
           </button>
