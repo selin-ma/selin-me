@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 
 import { I18nProvider } from '@/components/i18n/I18nProvider';
+import { ChatBot } from '@/components/ui/ChatBot';
 import { IconFonts } from '@/components/ui/IconFonts';
 
 const fontDisplay = Playfair_Display({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body>
         <I18nProvider>{children}</I18nProvider>
+        <ChatBot />
         <IconFonts />
       </body>
     </html>

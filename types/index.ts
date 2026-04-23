@@ -10,7 +10,6 @@ export interface WorkExperience {
   role: string;
   location: string;
   body: string;
-  highlights: string[];
   techStack: string[];
   illustrationKey: 'architecture' | 'dataviz' | 'ecommerce' | 'beginning';
 }

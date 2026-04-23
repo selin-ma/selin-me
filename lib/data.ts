@@ -56,18 +56,6 @@ export const workExperiences: WorkExperience[] = [
     role: 'Mid-Level Frontend Engineer · 中级前端工程师',
     location: 'Chengdu → Remote (AU clients)',
     body: '在全球技术咨询公司 CI&T 担任前端工程师，服务澳大利亚头部客户，涵盖旅游、保险等行业。深度参与三个核心项目的重构与迭代，在 Next.js、Turborepo、Storybook 等现代工程体系中积累了大型项目实战经验。',
-    highlights: [
-      '主导 TravelAssociates 平台全量迁移，适配 Next.js + Turborepo 架构，按时交付关键前端功能',
-      '基于 Storybook 搭建标准化 UI 组件库，实现与 Figma 设计稿 100% 还原，统一全站视觉规范',
-      '优化关键渲染路径，Lighthouse SEO 达满分 100/100，Performance 达 89/100',
-      '使用 Framer Motion 实现品牌级高保真交互动效，提升用户参与度并保障跨端稳定性',
-      '在 Flight Centre Lerna Monorepo 中开发可复用业务组件，打通 Drupal Headless CMS 与前端映射层，支持编辑器拖拽建页',
-      '集成 AWS Lambda + Elasticsearch Serverless BFF，为门店搜索功能提供高性能数据聚合，编写并维护 OpenAPI (Swagger) 规范',
-      '主导 Ticket 全生命周期管理：从初始开发、Dev Notes 文档编写、QA 测试，到客户评审与生产发布，全流程独立交付',
-      '借助 GitHub Actions 自动化测试体系保障代码可靠性，持续维护技术文档',
-      '持续参与双层 Code Review，确保交付符合企业级工程规范',
-      '为 CoverMore 白标保险产品实现多步购买漏斗，设计支持多品牌定制的白标架构，单一代码库服务多个合作伙伴',
-    ],
     techStack: [
       'React 18',
       'Next.js',
@@ -92,11 +80,7 @@ export const workExperiences: WorkExperience[] = [
     role: 'Frontend Engineer · 前端工程师',
     location: '成都',
     body: '在青云科技负责云市场（Marketplace）前端研发，覆盖买家中心、卖家中心、订单管理、支付流程等核心业务链路，并主导企业官网的移动端响应式改版，积累了 ToB SaaS 产品的完整开发经验。',
-    highlights: [
-      '使用 React + TypeScript 端到端交付云市场买卖家中心功能，包括订单管理与支付流程',
-      '主导高流量营销落地页开发，使用 Next.js SSR 保障 SEO 效果与首屏性能，提升用户转化率',
-      '执行企业官网全面移动端优先响应式改版，确保跨设备无障碍访问体验',
-    ],
+
     techStack: ['React', 'TypeScript', 'Next.js', 'Ant Design', 'Sass', 'RESTful API'],
     illustrationKey: 'dataviz',
   },
@@ -110,11 +94,7 @@ export const workExperiences: WorkExperience[] = [
     role: 'Intern Frontend Engineer · 前端工程师',
     location: '成都',
     body: '职业生涯的起点。在鹏业软件深度参与跨平台 UI 框架的从零设计与研发，独立完成 Angular 框架搭建并发布为内部 npm 包，负责多角色动态仪表盘和复杂权限系统的实现。',
-    highlights: [
-      '使用 Angular 9 构建跨平台 UI 框架（PC + 微信小程序），封装为内部 npm 包供多项目复用',
-      '使用位运算实现读/写/审批/编辑的复杂权限控制体系，显著降低逻辑耦合度和内存开销',
-      '设计多角色动态仪表盘与全局搜索模块，实现关键词高亮和搜索历史功能',
-    ],
+
     techStack: ['Angular 9', 'TypeScript', 'WeChat Mini-program', 'npm Package', 'RxJS', 'Less'],
     illustrationKey: 'ecommerce',
   },
@@ -294,9 +274,9 @@ export const workShowcases: WorkShowcase[] = [
     categoryZh: '旅游平台',
     title: 'TravelAssociates',
     titleZh: 'TravelAssociates',
-    desc: 'End-to-end platform rebuild for a leading Australian travel brand — migrated the entire site to Next.js + Turborepo, delivering core features, a standardised component library, and Lighthouse SEO 100/100.',
+    desc: 'End-to-end platform rebuild for a leading Australian travel brand — migrated the entire site to Next.js + Turborepo, delivering core features, a standardised component library, and Lighthouse Performance 85/100 SEO 100/100.',
     descZh:
-      '主导澳大利亚头部旅游品牌全站重构——整体迁移至 Next.js + Turborepo，负责核心功能交付、组件库规范化建设，Lighthouse SEO 满分 100/100。',
+      '澳大利亚头部旅游品牌全站重构——整体迁移至 Next.js + Turborepo，负责核心功能交付、组件库规范化建设，Lighthouse Performance 85/100 SEO 100/100。',
     tech: ['Next.js', 'TypeScript', 'Turborepo'],
     coverImage: travelAssociatesImg,
     siteUrl: 'https://www.travelassociates.com',
@@ -307,7 +287,7 @@ export const workShowcases: WorkShowcase[] = [
     categoryZh: '设计系统',
     title: 'Flight Centre',
     titleZh: 'Flight Centre',
-    desc: "High-bar feature delivery within Flight Centre's Lerna monorepo — pixel-perfect Figma implementation, Drupal headless CMS integration, and an AWS Lambda + Elasticsearch BFF powering store search.",
+    desc: "High-bar feature delivery within Flight Centre's monorepo — pixel-perfect Figma implementation, Drupal headless CMS integration, and an AWS Lambda + Elasticsearch BFF powering store search.",
     descZh:
       '在 Flight Centre Lerna Monorepo 中高标准交付页面功能——像素级还原 Figma 设计，打通 Drupal Headless CMS，并集成 AWS Lambda + Elasticsearch BFF 驱动门店搜索。',
     tech: ['Next.js', 'FC Design System', 'Storybook', 'AWS Lambda', 'Jest'],
@@ -322,7 +302,7 @@ export const workShowcases: WorkShowcase[] = [
     titleZh: 'CoverMore',
     desc: 'Large-scale white-label insurance platform built on a Drupal PHP theme inheritance model — a base theme powering multiple partner sub-themes, ranging from legacy JavaScript to modern Preact. Delivered a multi-step purchase funnel adaptable across all brand variants.',
     descZh:
-      '基于 Drupal PHP 主题继承体系的大型白标保险平台——一套 base theme 驱动多个合作伙伴 sub-theme，技术栈横跨原生 JavaScript 老主题与现代 Preact 新主题，交付可跨品牌复用的多步购买漏斗。',
+      '基于 Drupal PHP 主题继承体系的大型白标保险平台——一套 base theme 驱动多个合作伙伴 sub-theme，技术栈横跨原生 JavaScript 老主题与现代 Preact 新主题，交付可跨品牌复用的多步购买流程。',
     tech: ['Drupal PHP Themes', 'Preact', 'JavaScript', 'Tailwind CSS'],
     slides: [
       { label: 'CoverMore', coverImage: coverMoreImg, siteUrl: 'https://www.covermore.com.au' },
