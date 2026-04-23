@@ -35,7 +35,6 @@ import type {
   OtherHobby,
   Skill,
   SportsActivity,
-  VibeProject,
   WorkExperience,
   WorkShowcase,
 } from '@/types';
@@ -340,70 +339,6 @@ export const workShowcases: WorkShowcase[] = [
   },
 ];
 
-export const vibeProjects: VibeProject[] = [
-  {
-    id: 'selin-me',
-    name: 'selin.me',
-    emoji: '🌿',
-    status: 'live',
-    color: '#6B8F71',
-    story:
-      '这个作品集本身就是一次 vibe coding 实验。从零开始，用 Claude 作为结对编程伙伴，在一周内完成了设计、开发、部署的全流程。每一行动画、每一个排版细节，都是人机协作的产物。',
-    desc: 'Selin的个人网站，用 AI 辅助开发。',
-    aiTools: ['Claude', 'v0'],
-    techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
-    liveUrl: 'https://selin-ma.github.io/selin-me',
-    repoUrl: 'https://github.com/selin-ma/selin-me',
-  },
-  {
-    id: 'pickle-vibe',
-    name: 'Pickle Vibe',
-    emoji: '🥒',
-    status: 'building',
-    color: '#C4714B',
-    story:
-      '匹克球在中国还是一项新兴运动，但它正在以惊人的速度生长。Pickle Vibe 是专为中文社区打造的匹克球内容平台——比赛资讯、技术教学、装备测评、球友社区，一站聚合。用 vibe coding 方式，把对这项运动的热爱变成一个真实产品。',
-    desc: '面向中文球友的匹克球内容平台，聚合赛事、教学与社区。',
-    aiTools: ['Claude', 'Cursor', 'v0'],
-    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
-  },
-  {
-    id: 'pickle-tracker',
-    name: 'Pickle Tracker',
-    emoji: '📊',
-    status: 'building',
-    color: '#7A9DB5',
-    story:
-      '一个帮助匹克球玩家分析比赛回合的工具。记录每一分的得失原因，可视化自己的技术短板，找到真正需要练习的地方。从"感觉打得不好"到"数据告诉我哪里不好"。',
-    desc: '匹克球回合数据记录与分析工具，用数据找到技术提升点。',
-    aiTools: ['Claude', 'Cursor'],
-    techStack: ['React', 'TypeScript', 'Chart.js', 'PWA'],
-  },
-  {
-    id: 'cycle-log',
-    name: '月经记录',
-    emoji: '🌸',
-    status: 'building',
-    color: '#9B4D7E',
-    story:
-      '一个简洁、私密的月经周期记录微信小程序。市面上的同类产品要么广告太多，要么权限太贪，要么界面太复杂。我想做一个只做一件事、做好一件事的工具——记录、预测、理解自己的身体节律。',
-    desc: '简洁私密的微信小程序，记录周期、预测下次、理解身体。',
-    aiTools: ['Claude', 'Cursor'],
-    techStack: ['微信小程序', 'TypeScript', 'Vant Weapp'],
-  },
-  {
-    id: 'still-hearth',
-    name: 'Still Hearth',
-    emoji: '🏡',
-    status: 'concept',
-    color: '#8B6F47',
-    story:
-      '一款像素风格的独立游戏，关于一个人在废弃小屋里慢慢修缮生活的故事。没有战斗，没有排行榜，只有修复、种植、等待和时间流逝的安静感。灵感来自对"慢游戏"的渴望——有时候你只是需要一个可以喘口气的地方。',
-    desc: '像素风独立游戏，在废弃小屋里修复生活，慢慢的，安静的。',
-    aiTools: ['Claude', 'Midjourney', 'Cursor'],
-    techStack: ['Godot 4', 'GDScript', 'Aseprite'],
-  },
-];
 
 export const otherHobbies: OtherHobby[] = [
   {
