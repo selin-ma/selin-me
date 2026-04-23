@@ -127,10 +127,17 @@ function SportsLightbox({
 }) {
   const { t } = useI18n();
   const [idx, setIdx] = useState(initialIdx);
+  const [loaded, setLoaded] = useState(false);
   const photo = photos[idx];
 
-  const prev = () => setIdx((i) => Math.max(0, i - 1));
-  const next = () => setIdx((i) => Math.min(photos.length - 1, i + 1));
+  const prev = () => {
+    setLoaded(false);
+    setIdx((i) => (i - 1 + photos.length) % photos.length);
+  };
+  const next = () => {
+    setLoaded(false);
+    setIdx((i) => (i + 1) % photos.length);
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -143,8 +150,27 @@ function SportsLightbox({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClose]);
 
+  const prevIdx = (idx - 1 + photos.length) % photos.length;
+  const nextIdx = (idx + 1) % photos.length;
+
   return createPortal(
     <div className="fixed inset-0 z-[100]">
+      {/* Preload adjacent images */}
+      {[prevIdx, nextIdx].map((i) =>
+        photos[i]?.src ? (
+          <Image
+            key={i}
+            src={photos[i].src}
+            alt=""
+            width={1200}
+            height={900}
+            priority
+            aria-hidden
+            className="sr-only"
+          />
+        ) : null,
+      )}
+
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-ink/75 backdrop-blur-md"
@@ -172,15 +198,30 @@ function SportsLightbox({
         >
           {photo.src && (
             <div className="relative">
+              {/* Shimmer skeleton */}
+              {!loaded && (
+                <div className="absolute inset-0 overflow-hidden rounded-md bg-white/10">
+                  <div className="h-full w-full animate-[shimmer_1.4s_ease-in-out_infinite] bg-gradient-to-r from-white/0 via-white/15 to-white/0 bg-[length:200%_100%]" />
+                </div>
+              )}
               <Image
+                key={idx}
                 src={photo.src}
                 alt={t(photo.labelKey)}
                 width={1200}
                 height={900}
-                placeholder="blur"
-                style={{ width: '100%', maxHeight: '82vh', objectFit: 'contain', display: 'block' }}
+                priority
+                onLoad={() => setLoaded(true)}
+                style={{
+                  width: '100%',
+                  maxHeight: '82vh',
+                  objectFit: 'contain',
+                  display: 'block',
+                  opacity: loaded ? 1 : 0,
+                  transition: 'opacity 0.25s ease',
+                }}
               />
-              {/* Mobile prev/next — vertically centered on the image */}
+              {/* Mobile prev/next */}
               {photos.length > 1 && (
                 <>
                   <button
@@ -188,8 +229,7 @@ function SportsLightbox({
                       e.stopPropagation();
                       prev();
                     }}
-                    disabled={idx === 0}
-                    className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm disabled:opacity-25 lg:hidden"
+                    className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm lg:hidden"
                   >
                     ‹
                   </button>
@@ -198,8 +238,7 @@ function SportsLightbox({
                       e.stopPropagation();
                       next();
                     }}
-                    disabled={idx === photos.length - 1}
-                    className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm disabled:opacity-25 lg:hidden"
+                    className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm lg:hidden"
                   >
                     ›
                   </button>
@@ -218,22 +257,20 @@ function SportsLightbox({
       {photos.length > 1 && (
         <>
           <button
-            className="absolute left-5 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-opacity hover:opacity-80 disabled:opacity-20 lg:flex"
+            className="absolute left-5 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-opacity hover:opacity-80 lg:flex"
             onClick={(e) => {
               e.stopPropagation();
               prev();
             }}
-            disabled={idx === 0}
           >
             ‹
           </button>
           <button
-            className="absolute right-16 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-opacity hover:opacity-80 disabled:opacity-20 lg:flex"
+            className="absolute right-16 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white shadow-lg backdrop-blur-sm transition-opacity hover:opacity-80 lg:flex"
             onClick={(e) => {
               e.stopPropagation();
               next();
             }}
-            disabled={idx === photos.length - 1}
           >
             ›
           </button>
@@ -785,7 +822,7 @@ export function LifeSection() {
                                   </p>
                                 </div>
                                 <span className="shrink-0 font-mono text-xs uppercase tracking-[0.1em] text-olive-dark transition-colors duration-200 group-hover:text-ink">
-                                  小红书 ↗
+                                  {t('life.sports.xiaohongshu')}
                                 </span>
                               </a>
                               <a

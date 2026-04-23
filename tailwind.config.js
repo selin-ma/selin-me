@@ -65,6 +65,10 @@ module.exports = {
           '0%, 100%': { opacity: '0.5', transform: 'scale(0.75)' },
           '50%': { opacity: '1', transform: 'scale(1.25)' },
         },
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
       },
       transitionDuration: {
         600: '600ms',

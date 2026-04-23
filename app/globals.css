@@ -99,7 +99,6 @@ p {
   transform: translateY(0) scale(1);
 }
 
-
 /* ─── Hero entry animations ──────────────────────────────────────────────── */
 @keyframes fadeUp {
   from {
