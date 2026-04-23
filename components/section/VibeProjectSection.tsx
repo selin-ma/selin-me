@@ -8,7 +8,6 @@ import { createPortal } from 'react-dom';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { Container } from '@/components/ui/Container';
-import { vibeProjects } from '@/lib/data';
 import pickleVibe11 from '@/public/images/vibeProjects/pickle-vibe-1-1.png';
 import pickleVibe1 from '@/public/images/vibeProjects/pickle-vibe-1.png';
 import pickleVibe2 from '@/public/images/vibeProjects/pickle-vibe-2.png';
@@ -166,7 +165,7 @@ function SelinMeCard() {
             />
           ))}
           <span className="ml-2 flex-1 rounded-full bg-ink/[0.06] px-2 py-0.5 text-center font-mono text-[0.38rem] text-ink/30">
-            selin-ma.github.io/selin-me
+            https://selin-me.vercel.app
           </span>
         </div>
 
@@ -225,7 +224,7 @@ function SelinMeCard() {
 
       {/* Link */}
       <a
-        href="https://selin-ma.github.io/selin-me"
+        href="https://selin-me.vercel.app"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 inline-flex items-center gap-1 font-mono text-[0.57rem] uppercase tracking-[0.16em] text-[#6B8F71] transition-opacity duration-150 hover:opacity-60"
@@ -520,9 +519,7 @@ function VibeCard({ id }: { id: string }) {
 // ── Section ────────────────────────────────────────────────────────────────
 export function VibeProjectSection() {
   const { t } = useI18n();
-  const featured = vibeProjects
-    .filter((p) => FEATURED_IDS.includes(p.id))
-    .sort((a, b) => FEATURED_IDS.indexOf(a.id) - FEATURED_IDS.indexOf(b.id));
+  const featured = FEATURED_IDS;
 
   return (
     <section id="vibe" className="relative overflow-hidden bg-white pt-8 pb-4 md:py-20">
@@ -561,11 +558,11 @@ export function VibeProjectSection() {
       <Container className="hidden lg:block py-20">
         <div className="relative translate-y-20 min-h-[550px]">
           <ConnectorLines />
-          {featured.map((project, i) => {
+          {featured.map((id, i) => {
             const cfg = CARD_LAYOUT[i];
             return (
               <motion.div
-                key={project.id}
+                key={id}
                 className="absolute z-10 w-[26%] "
                 style={{ left: cfg.left, top: cfg.top, rotate: cfg.rotate }}
                 initial={{ opacity: 0, y: 30 }}
@@ -574,7 +571,7 @@ export function VibeProjectSection() {
                 transition={{ duration: 0.9, delay: 0.08 + i * 0.18, ease: [0.16, 1, 0.3, 1] }}
               >
                 <GlareCard>
-                  <VibeCard id={project.id} />
+                  <VibeCard id={id} />
                 </GlareCard>
               </motion.div>
             );
@@ -584,16 +581,16 @@ export function VibeProjectSection() {
 
       {/* Mobile: stacked */}
       <Container className="mt-10 space-y-6 pb-10 lg:hidden">
-        {featured.map((project, i) => (
+        {featured.map((id, i) => (
           <motion.div
-            key={project.id}
+            key={id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <GlareCard>
-              <VibeCard id={project.id} />
+              <VibeCard id={id} />
             </GlareCard>
           </motion.div>
         ))}
