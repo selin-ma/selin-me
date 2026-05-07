@@ -173,13 +173,18 @@ export const messages: Record<Locale, Messages> = {
     'vibe.card.selinme.category': 'Portfolio Site',
     'vibe.card.selinme.title': 'selin.me',
     'vibe.card.selinme.desc': '现在浏览的这个网站，AI 辅助开发，从设计到代码全程协作完成。',
-    'vibe.card.picklevibe.category': 'H5 · Building',
+    'vibe.card.picklevibe.category': 'H5 · 开发中',
     'vibe.card.picklevibe.title': 'Pickle Vibe',
-    'vibe.card.picklevibe.desc': '面向中文球友的匹克球内容平台。',
+    'vibe.card.picklevibe.desc':
+      '面向中文球友的匹克球平台。汇集畅打预定、比赛报名、内容分享等功能。',
     'vibe.card.stillhearth.category': '独立游戏 · 像素风 · 构思中',
     'vibe.card.stillhearth.title': 'Stillhearth',
     'vibe.card.stillhearth.desc':
       '石头会滚下来，但我们还是会做明天的早餐。——像素风 RPG，在缓慢消失的世界里，用料理对抗遗忘。',
+    'vibe.card.kanajump.category': 'Web App · 日语学习 · 更新中',
+    'vibe.card.kanajump.title': 'Kana Jump',
+    'vibe.card.kanajump.desc':
+      '一款专注于假名学习的 PWA 应用，支持离线使用、答题历史同步和错题针对性练习。',
 
     // Work Showcase
     'showcase.kicker': '工作成果',
@@ -369,6 +374,10 @@ export const messages: Record<Locale, Messages> = {
     'vibe.card.stillhearth.title': 'Stillhearth',
     'vibe.card.stillhearth.desc':
       'The boulder rolls back down. But we still make breakfast for tomorrow. — A Pixel RPG about cooking against forgetting in a world that slowly disappears.',
+    'vibe.card.kanajump.category': 'Web App · Japanese',
+    'vibe.card.kanajump.title': 'Kana Jump',
+    'vibe.card.kanajump.desc':
+      'A kana memorization tool — browse hiragana & katakana, practice mode, and study history. Built as a PWA so it works anywhere.',
 
     // Work Showcase
     'showcase.kicker': 'Selected Work',

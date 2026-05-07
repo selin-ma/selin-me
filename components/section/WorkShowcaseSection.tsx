@@ -176,7 +176,7 @@ function ProjectRow({
 
   return (
     <motion.div
-      className="relative pt-12 lg:pt-24"
+      className="relative pt-8 lg:pt-24"
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -259,7 +259,7 @@ export function WorkShowcaseSection() {
       {/* ── Section header ─────────────────────────────────────────────── */}
       <Container className="pb-0 pt-14 md:pt-20">
         <motion.p
-          className="mb-3 font-mono text-[0.6rem] uppercase tracking-[0.28em] text-terra"
+          className="mb-3 font-mono text-xs uppercase tracking-[0.28em] text-olive-dark"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
