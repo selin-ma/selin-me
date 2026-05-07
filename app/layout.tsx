@@ -22,12 +22,20 @@ const fontBody = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio — Frontend Engineer',
+  title: 'Selin Ma — Frontend Engineer',
   description: '5年前端工程师的职业故事与技术积累',
   openGraph: {
-    title: 'Portfolio — Frontend Engineer',
+    title: 'Selin Ma — Frontend Engineer',
     description: '5年前端工程师的职业故事与技术积累',
     type: 'website',
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'Selin',
+    statusBarStyle: 'default',
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 

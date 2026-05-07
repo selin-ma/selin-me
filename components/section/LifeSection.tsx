@@ -939,23 +939,17 @@ export function LifeSection() {
               </div>
 
               {/* ── Vertical strip navigation ────────────────────────────── */}
-              <div className="flex shrink-0 flex-col items-center justify-center gap-2">
+              <div className="flex shrink-0 flex-col items-center justify-center gap-2.5">
                 {NAV_ITEMS.map((item, i) => (
                   <button
                     key={item.key}
                     onClick={() => setPanel(i as Panel)}
                     aria-label={t(item.labelKey)}
-                    className="group flex w-6 items-center justify-center py-1.5"
-                  >
-                    <span
-                      className={cn(
-                        'block w-[2px] transition-all duration-500 ease-out',
-                        i === panel
-                          ? 'h-7 bg-olive'
-                          : 'h-3 bg-olive/30 group-hover:h-4 group-hover:bg-olive/60',
-                      )}
-                    />
-                  </button>
+                    className={cn(
+                      'w-1.5 rounded-full transition-all duration-300',
+                      i === panel ? 'h-6 bg-ink/60' : 'h-1.5 bg-ink/20 hover:bg-ink/35',
+                    )}
+                  />
                 ))}
               </div>
             </div>
@@ -969,7 +963,7 @@ export function LifeSection() {
           <p className="mb-6 font-mono text-xs uppercase tracking-[0.28em] text-olive-dark">
             / {t('life.section.kicker')}
           </p>
-          <div className="flex w-full">
+          <div className="flex w-full rounded-full border border-ink/[0.09] p-1">
             {NAV_ITEMS.map((item, i) => {
               const isActive = panel === i;
               return (
@@ -977,17 +971,11 @@ export function LifeSection() {
                   key={item.key}
                   onClick={() => setPanel(i as Panel)}
                   className={cn(
-                    'relative flex-1 flex flex-col items-center gap-2.5 transition-colors duration-300',
-                    isActive ? 'text-ink' : 'text-ink/30 hover:text-olive-lt',
+                    'relative flex-1 flex flex-col items-center gap-2 rounded-full py-2 transition-all duration-300',
+                    isActive ? 'bg-ink/[0.07] text-olive-dark font-medium' : 'text-ink/35 hover:text-ink/60',
                   )}
                 >
                   <span className="text-xs tracking-wide">{t(item.labelKey)}</span>
-                  <span
-                    className={cn(
-                      'block h-1 w-1 rounded-full bg-olive transition-all duration-500 ease-out',
-                      isActive ? 'scale-100 opacity-100 animate-breathe' : 'scale-[0.6] opacity-20',
-                    )}
-                  />
                 </button>
               );
             })}
@@ -1070,7 +1058,7 @@ export function LifeSection() {
             )}
 
             {/* Body copy */}
-            <div className="mb-3 border-l-2 border-olive/40 pl-5">
+            <div className="my-5 border-l-2 border-olive/40 pl-5">
               {panel === 0 && (
                 <p className="font-body text-sm leading-[1.85] text-ink">
                   {t('life.sports.motto')}
