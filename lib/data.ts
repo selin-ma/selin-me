@@ -335,7 +335,7 @@ export const workShowcases: WorkShowcase[] = [
     descZh:
       '你正在看的这个网站。以 Claude 为结对伙伴，一周内完成设计、开发与部署，双语 i18n + Framer Motion 动效。',
     tech: ['Next.js', 'Framer Motion', 'Tailwind'],
-    siteUrl: 'https://selin-ma.github.io/selin-me',
+    siteUrl: 'https://selin-me.netlify.app',
   },
 ];
 

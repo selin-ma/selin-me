@@ -83,9 +83,9 @@ type CardMeta = { accent: string; techStack: string[]; links?: LinkDef[] };
 const CARD_META: Record<CardId, CardMeta> = {
   'kana-jump': {
     accent: '#7FA2BF',
-    techStack: ['React', 'TypeScript', 'Supabase', 'PWA'],
+    techStack: ['React', 'TypeScript', 'Supabase', 'PWA', 'ts-fsrs', 'Vite'],
     links: [
-      { href: 'https://kana-jump.vercel.app/', label: 'Live', primary: true },
+      { href: 'https://kana-jump.netlify.app/', label: 'Live', primary: true },
       { href: 'https://github.com/selin-ma/kana-jump', label: 'GitHub', primary: false },
     ],
   },
@@ -93,7 +93,7 @@ const CARD_META: Record<CardId, CardMeta> = {
     accent: '#6B8F71',
     techStack: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind'],
     links: [
-      { href: 'https://selin-me.vercel.app', label: 'Live', primary: true },
+      { href: 'https://selin-me.netlify.app', label: 'Live', primary: true },
       { href: 'https://github.com/selin-ma/selin-me', label: 'GitHub', primary: false },
     ],
   },
@@ -180,7 +180,7 @@ function SelinMeVisual() {
           <span key={c} className="h-[7px] w-[7px] rounded-full" style={{ background: c + '80' }} />
         ))}
         <span className="ml-2 flex-1 rounded-full bg-ink/[0.06] px-2 py-0.5 text-center font-mono text-[0.42rem] text-ink/30">
-          https://selin-me.vercel.app
+          https://selin-me.netlify.app
         </span>
       </div>
       {/* Mini nav */}
