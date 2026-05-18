@@ -184,7 +184,7 @@ export const messages: Record<Locale, Messages> = {
     'vibe.card.kanajump.category': 'Web App · 日语学习 · 更新中',
     'vibe.card.kanajump.title': 'Kana Jump',
     'vibe.card.kanajump.desc':
-      '专注假名学习的 PWA 应用，搭载 FSRS 间隔重复算法与 R2 音频存储，按教材章节组织单词学习，智能调度复习节奏。',
+      '专注日语学习的 PWA 应用，支持假名记忆与单词记忆，搭载 FSRS 间隔重复算法与 R2 音频存储，按《大家的日语初级 I》教材章节组织学习内容，智能调度复习节奏。',
 
     // Work Showcase
     'showcase.kicker': '工作成果',
@@ -377,7 +377,7 @@ export const messages: Record<Locale, Messages> = {
     'vibe.card.kanajump.category': 'Web App · Japanese',
     'vibe.card.kanajump.title': 'Kana Jump',
     'vibe.card.kanajump.desc':
-      'A kana memorization PWA with FSRS spaced repetition, R2-hosted audio, and vocabulary organized by textbook chapters for smart review scheduling.',
+      'A Japanese language learning PWA with kana memorization and vocabulary practice, powered by FSRS spaced repetition and R2-hosted audio. Organized by Minna no Nihongo I textbook chapters for smart review scheduling.',
 
     // Work Showcase
     'showcase.kicker': 'Selected Work',
