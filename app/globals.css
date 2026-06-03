@@ -2,104 +2,71 @@
  * Fonts are loaded via next/font/google in app/layout.tsx.
  * Do NOT add @import for Google Fonts here — next/font self-hosts them
  * with zero layout shift and automatic preloading.
+ *
+ * Tailwind CSS v4 — configuration is CSS-first via @theme.
+ * See: https://tailwindcss.com/docs/v4-beta
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* ─── CSS Custom Properties ─────────────────────────────────────────────── */
-:root {
-  --text-body-size: 1rem;
-  --text-body-lineheight: 1.75;
-  --text-lead-size: 1.05rem;
-  --text-caption-size: 0.875rem;
+/* ─── Design Tokens ───────────────────────────────────────────────────── */
+@theme {
+  /* Font families — next/font/google self-hosts these with their own
+     CSS variable names (--font-pixel, --font-caveat, --font-dm-mono).
+     The @theme names below use distinct aliases to avoid overwriting
+     next/font's injected variables. The plain names (e.g. 'Pixelify Sans')
+     match the @font-face that next/font registers. */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: Inter, system-ui, sans-serif;
+  --font-pixelify-sans: 'Pixelify Sans, pixel, sans-serif';
+  --font-caveat-hand: 'Caveat, DM Mono, monospace';
+  --font-dm-mono: 'DM Mono, monospace';
+
+  /* Color — Olive Grove palette */
+  --color-bg: #F0EFE9;
+  --color-ink: #1F1F1F;
+  --color-ink-light: #F1F1F1;
+  --color-ink-lt: #919191;
+  --color-olive: #8E9B84;
+  --color-olive-lt: #8A9B7C;
+  --color-olive-bg: #EDF2EA;
+  --color-olive-dark: #5A6B4C;
+  --color-amber: #FFBA3B;
+  --color-amber-ink: #3D2A00;
+  --color-dark: #1A1F18;
+  --color-cream: #F0EFE9;
+  --color-cream-lt: #E9EBEA;
+  --color-paper: #F0EFE9;
+  --color-warm-white: #F0EFE9;
+  --color-midnight: #1A1F18;
+  --color-terra: #8E9B84;
+  --color-sage: #8A9B7C;
+  --color-gold: #FFBA3B;
+
+  /* Sticky note accent colors — hero section */
+  --color-sticky-green: #C8F135;
+  --color-sticky-green-light: #B8D44A;
+  --color-sticky-yellow: #FDE68A;
+  --color-sticky-yellow-light: #F0CF6A;
+
+  /* Animations */
+  --animate-fade-up: fadeUp 0.7s ease forwards;
+  --animate-fade-in: fadeIn 0.5s ease forwards;
+  --animate-skill-fill: skillFill 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-scroll-line: scrollLine 1.5s ease-in-out infinite;
+  --animate-breathe: breathe 2.4s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.4s ease-in-out infinite;
+  --animate-shiny-text: shiny-text 4s ease-in-out infinite;
+
+  /* Transition durations — extend defaults */
+  --duration-600: 600ms;
+
+  /* LifeSection — pegboard & book card */
+  --color-book-card: #FEFDF8;
 }
 
-/* ─── Base ───────────────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* ─── Keyframes ─────────────────────────────────────────────────────────── */
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden; /* Must be on html, not body — overflow-x:hidden on body creates a BFC scroll container in Safari, breaking position:fixed */
-}
-
-body {
-  background-color: #ffffff;
-  color: #1f1f1f;
-  font-family:
-    'Inter',
-    system-ui,
-    -apple-system,
-    sans-serif;
-  font-weight: 300;
-  font-size: var(--text-body-size);
-  line-height: var(--text-body-lineheight);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Playfair Display', Georgia, serif;
-  margin: 0;
-}
-
-p {
-  margin: 0;
-}
-
-/* ─── Selection ──────────────────────────────────────────────────────────── */
-::selection {
-  background-color: #5a6b4c;
-  color: #f0efe9;
-}
-
-/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 3px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f0efe9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8a9b7c;
-  border-radius: 3px;
-}
-
-/* ─── Custom cursor ──────────────────────────────────────────────────────── */
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* ─── Scroll reveal ──────────────────────────────────────────────────────── */
-.reveal-section {
-  opacity: 0;
-  transform: translateY(36px) scale(0.97);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-section.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* ─── Hero entry animations ──────────────────────────────────────────────── */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -120,38 +87,234 @@ p {
   }
 }
 
-/* ─── Type scale ─────────────────────────────────────────────────────────── */
+@keyframes skillFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes shiny-text {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes chipFlip {
+  0%, 70% { transform: perspective(400px) rotateY(0deg); }
+  85% { transform: perspective(400px) rotateY(90deg); opacity: 0.4; }
+  86% { transform: perspective(400px) rotateY(-90deg); opacity: 0.4; }
+  100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
+}
+
+/* ─── LifeSection — Pegboard board ────────────────────────────────────────── */
+.pegboard-bg {
+  background-color: #F7F7F5;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.09) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+  box-shadow: inset 0 2px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Badge left panel — pickleball team green gradient */
+.badge-left-panel {
+  background: linear-gradient(145deg, #c8d8be, #8eac7e);
+}
+
+.footer-chip-flip {
+  animation: chipFlip 3.6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.marquee-track {
+  animation: marquee var(--marquee-dur, 32s) linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  --marquee-dur: 320s;
+}
+
+.footer-dot-grid {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-ink) 18%, transparent) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 12px 12px;
+}
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────── */
 :root {
-  --scale-ratio: 1.25; /* modular scale */
+  --text-body-size: 1rem;
+  --text-body-lineheight: 1.75;
+  --text-lead-size: 1.05rem;
+  --text-caption-size: 0.875rem;
+  --scale-ratio: 1.25;
 }
 
-h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  line-height: 0.95;
-  font-weight: 400;
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-h2 {
-  font-size: clamp(1.6rem, 3.8vw, 2.6rem);
-  line-height: 1.05;
-  font-weight: 400;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Must be on html, not body — overflow-x:hidden on body creates a BFC scroll container in Safari, breaking position:fixed */
+  }
 
-.lead {
-  font-size: var(--text-lead-size);
-  line-height: 1.6;
-}
+  body {
+    color: var(--color-ink);
+    font-family:
+      'Inter',
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-weight: 300;
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-lineheight);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+  }
 
-.caption {
-  font-size: var(--text-caption-size);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  /* ─── Type scale ─────────────────────────────────────────────────────────── */
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 0.95;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+    line-height: 1.05;
+    font-weight: 400;
+  }
+
+  .lead {
+    font-size: var(--text-lead-size);
+    line-height: 1.6;
+  }
+
+  .caption {
+    font-size: var(--text-caption-size);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 }
 
 /* Improve measure for long copy */
 .container p,
 .prose {
   max-width: 65ch;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-olive-dark);
+  color: var(--color-bg);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 3px;
+}
+
+/* ─── Custom cursor ──────────────────────────────────────────────────────── */
+@media (hover: hover) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ─── Scroll reveal ──────────────────────────────────────────────────────── */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(36px) scale(0.97);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 /* ─── Book 3D shelf ──────────────────────────────────────────────────────── */
@@ -166,7 +329,7 @@ h2 {
   top: 0;
   left: 0;
   height: 2px;
-  background: #5a6b4c;
+  background: var(--color-sticky-yellow-light);
   z-index: 200;
   transition: width 0.1s linear;
 }

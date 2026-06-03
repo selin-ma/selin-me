@@ -11,11 +11,13 @@ import surfskatboardImg from '@/public/images/life/curiosities/surfskateboard.jp
 import tennisImg from '@/public/images/life/curiosities/tennis.jpg';
 import pickleChengdu1Img from '@/public/images/life/pickleball/chengdu-1.jpg';
 import pickleChengdu2Img from '@/public/images/life/pickleball/chengdu-2.jpg';
-import pickleChongqingImg from '@/public/images/life/pickleball/chongqing.jpg';
+import pickleChengdu3Img from '@/public/images/life/pickleball/chengdu-3.jpg';
+import pickleChongqingImg from '@/public/images/life/pickleball/chongqing-2.jpg';
 import pickleKl1Img from '@/public/images/life/pickleball/kl-1.jpg';
 import pickleKl2Img from '@/public/images/life/pickleball/kl-2.jpg';
 import pickleKl3Img from '@/public/images/life/pickleball/kl-3.jpg';
-import pickleShanghaiImg from '@/public/images/life/pickleball/shanghai.jpg';
+import pickleShanghaiImg from '@/public/images/life/pickleball/shanghai-2.jpg';
+import pickleXinjingImg from '@/public/images/life/pickleball/xinjin-2.jpg';
 
 // ─── Work covers ─────────────────────────────────────────────────────────────
 import travelAssociatesImg from '@/public/images/work/travel-associates.png';
@@ -30,6 +32,9 @@ import stageImg from '@/public/images/life/curiosities/stage.jpg';
 import movieImg from '@/public/images/life/curiosities/movie.jpg';
 import cookImg from '@/public/images/life/curiosities/cook.jpg';
 import petImg from '@/public/images/life/curiosities/pet.jpg';
+import travelImg from '@/public/images/life/curiosities/travel.jpg';
+import tbImg from '@/public/images/life/curiosities/tb.jpg';
+import hikingImg from '@/public/images/life/curiosities/hiking.jpg';
 import type {
   Book,
   OtherHobby,
@@ -253,13 +258,34 @@ export const sportsActivities: SportsActivity[] = [
     desc: '组建业余战队 Twinkle Pickle，代表 Beesoul 品牌参加比赛。从上海到重庆到吉隆坡，用一块球场和一把球拍，认识了一群真正热爱这项运动的人。',
     badges: ['Twinkle Pickle 战队', 'Beesoul 签约球员', '上海 · 重庆 · 吉隆坡'],
     photos: [
-      { labelKey: 'life.photo.kl1', src: pickleKl1Img, position: '30% center' },
-      { labelKey: 'life.photo.kl2', src: pickleKl2Img },
-      { labelKey: 'life.photo.kl3', src: pickleKl3Img, position: 'center 30%' },
-      { labelKey: 'life.photo.chongqing', src: pickleChongqingImg, position: '40% center' },
-      { labelKey: 'life.photo.shanghai', src: pickleShanghaiImg },
-      { labelKey: 'life.photo.chengdu1', src: pickleChengdu1Img, position: '50% 20%' },
-      { labelKey: 'life.photo.chengdu2', src: pickleChengdu2Img },
+      { labelKey: 'life.photo.kl1', src: pickleKl1Img, position: '30% center', date: '2026-02' },
+      { labelKey: 'life.photo.kl2', src: pickleKl2Img, date: '2026-02' },
+      { labelKey: 'life.photo.kl3', src: pickleKl3Img, position: 'center 30%', date: '2026-02' },
+      {
+        labelKey: 'life.photo.chongqing',
+        src: pickleChongqingImg,
+        position: '40% center',
+        date: '2026-01',
+      },
+      { labelKey: 'life.photo.shanghai', src: pickleShanghaiImg, date: '2025-09' },
+      {
+        labelKey: 'life.photo.chengdu1',
+        src: pickleChengdu1Img,
+        position: '50% 20%',
+        date: '2026-03',
+      },
+      {
+        labelKey: 'life.photo.xinjin',
+        src: pickleXinjingImg,
+        date: '2025-11',
+      },
+      { labelKey: 'life.photo.chengdu2', src: pickleChengdu2Img, date: '2025-12' },
+      {
+        labelKey: 'life.photo.chengdu3',
+        src: pickleChengdu3Img,
+        position: 'center 40%',
+        date: '2026-04',
+      },
     ],
   },
 ];
@@ -284,8 +310,8 @@ export const workShowcases: WorkShowcase[] = [
     id: 'flight-centre',
     category: 'Design System',
     categoryZh: '设计系统',
-    title: 'Flight Centre',
-    titleZh: 'Flight Centre',
+    title: 'FlightCentre',
+    titleZh: 'FlightCentre',
     desc: "High-bar feature delivery within Flight Centre's monorepo — pixel-perfect Figma implementation, Drupal headless CMS integration, and an AWS Lambda + Elasticsearch BFF powering store search.",
     descZh:
       '在 Flight Centre Lerna Monorepo 中高标准交付页面功能——像素级还原 Figma 设计，打通 Drupal Headless CMS，并集成 AWS Lambda + Elasticsearch BFF 驱动门店搜索。',
@@ -339,7 +365,6 @@ export const workShowcases: WorkShowcase[] = [
   },
 ];
 
-
 export const otherHobbies: OtherHobby[] = [
   {
     id: 'musical',
@@ -352,6 +377,13 @@ export const otherHobbies: OtherHobby[] = [
     icon: '🎬',
     color: '#5B7FA6',
     photos: [{ src: movieImg, position: '60%' }],
+  },
+
+  {
+    id: 'hiking',
+    icon: '🥾',
+    color: '#4A6741',
+    photos: [{ src: hikingImg, position: 'center 90%' }],
   },
   {
     id: 'cook',
@@ -366,6 +398,18 @@ export const otherHobbies: OtherHobby[] = [
     photos: [{ src: petImg }],
   },
   {
+    id: 'tb',
+    icon: '🧘',
+    color: '#4A6741',
+    photos: [{ src: tbImg, position: '30%' }],
+  },
+  {
+    id: 'travel',
+    icon: '🎬',
+    color: '#5B7FA6',
+    photos: [{ src: travelImg, position: '40%' }],
+  },
+  {
     id: 'tennis',
     icon: '🎾',
     color: '#7A9D5B',
@@ -375,6 +419,6 @@ export const otherHobbies: OtherHobby[] = [
     id: 'surf-skate',
     icon: '🛹',
     color: '#4A6741',
-    photos: [{ src: surfskatboardImg, position: '30%' }],
+    photos: [{ src: surfskatboardImg, position: 'center 70%' }],
   },
 ];

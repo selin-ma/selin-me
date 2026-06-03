@@ -1,4 +1,4 @@
-# CLAUDE.md — selin-me Portfolio
+# AGENTS.md — selin-me Portfolio
 
 ## Project Overview
 

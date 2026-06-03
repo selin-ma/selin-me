@@ -116,7 +116,7 @@ const gridItemVariants = {
 
 type SportsPhoto = (typeof sportsActivities)[0]['photos'][number];
 
-function SportsLightbox({
+const SportsLightbox = ({
   photos,
   initialIdx,
   onClose,
@@ -124,7 +124,7 @@ function SportsLightbox({
   photos: SportsPhoto[];
   initialIdx: number;
   onClose: () => void;
-}) {
+}) => {
   const { t } = useI18n();
   const [idx, setIdx] = useState(initialIdx);
   const [loaded, setLoaded] = useState(false);
@@ -201,7 +201,7 @@ function SportsLightbox({
               {/* Shimmer skeleton */}
               {!loaded && (
                 <div className="absolute inset-0 overflow-hidden rounded-md bg-white/10">
-                  <div className="h-full w-full animate-[shimmer_1.4s_ease-in-out_infinite] bg-gradient-to-r from-white/0 via-white/15 to-white/0 bg-[length:200%_100%]" />
+                  <div className="h-full w-full animate-shimmer bg-gradient-to-r from-white/0 via-white/15 to-white/0 bg-[length:200%_100%]" />
                 </div>
               )}
               <Image
@@ -287,11 +287,11 @@ function SportsLightbox({
     </div>,
     document.body,
   );
-}
+};
 
 // ─── Desktop right-side grids ─────────────────────────────────────────────────
 
-function SportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => void }) {
+const SportsGrid = ({ onPhotoClick }: { onPhotoClick: (idx: number) => void }) => {
   const { t } = useI18n();
   const photos = sportsActivities[0].photos;
   return (
@@ -336,9 +336,9 @@ function SportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => void }) {
       })}
     </motion.div>
   );
-}
+};
 
-function TypewriterText({ text }: { text: string }) {
+const TypewriterText = ({ text }: { text: string }) => {
   const [displayed, setDisplayed] = useState('');
   useEffect(() => {
     setDisplayed('');
@@ -351,9 +351,9 @@ function TypewriterText({ text }: { text: string }) {
     return () => clearInterval(id);
   }, [text]);
   return <span>{displayed}</span>;
-}
+};
 
-function ReadingGrid({ onHover }: { onHover: (idx: number) => void }) {
+const ReadingGrid = ({ onHover }: { onHover: (idx: number) => void }) => {
   const { t } = useI18n();
   const books = bookshelf.slice(0, 6);
   return (
@@ -399,7 +399,7 @@ function ReadingGrid({ onHover }: { onHover: (idx: number) => void }) {
               />
               {!book.coverUrl && (
                 <div className="relative z-10 flex h-full flex-col justify-end p-4 pl-7">
-                  <p className="font-display text-sm font-semibold leading-tight text-white/95">
+                  <p className="font-dm-mono text-sm font-semibold leading-tight text-white/95">
                     {t(`life.book.${book.id}.title`)}
                   </p>
                   <p className="mt-1.5 font-body text-xs text-white/45">
@@ -421,9 +421,9 @@ function ReadingGrid({ onHover }: { onHover: (idx: number) => void }) {
       ))}
     </motion.div>
   );
-}
+};
 
-function MoreGrid() {
+const MoreGrid = () => {
   const { t } = useI18n();
   const [flipped, setFlipped] = useState<number | null>(null);
   const hobbies = otherHobbies.slice(0, 6);
@@ -459,11 +459,7 @@ function MoreGrid() {
                 className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl [backface-visibility:hidden]"
                 style={{ backgroundColor: hobby.color + '22' }}
               >
-                {/* emoji — lifts on hover */}
-                <span className="text-5xl transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                  {hobby.icon}
-                </span>
-                <span className="mt-3 font-serif text-sm text-ink">
+                <span className="font-serif text-sm text-ink transition-transform duration-300 ease-out group-hover:-translate-y-1">
                   {t(`life.hobby.${hobby.id}.label`)}
                 </span>
 
@@ -539,11 +535,11 @@ function MoreGrid() {
       })}
     </motion.div>
   );
-}
+};
 
 // ─── Mobile grids ─────────────────────────────────────────────────────────────
 
-function MobileSportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => void }) {
+const MobileSportsGrid = ({ onPhotoClick }: { onPhotoClick: (idx: number) => void }) => {
   const { t } = useI18n();
   const photos = sportsActivities[0].photos;
   return (
@@ -578,9 +574,9 @@ function MobileSportsGrid({ onPhotoClick }: { onPhotoClick: (idx: number) => voi
       })}
     </div>
   );
-}
+};
 
-function MobileReadingGrid({ onTap }: { onTap: (idx: number) => void }) {
+const MobileReadingGrid = ({ onTap }: { onTap: (idx: number) => void }) => {
   const { t } = useI18n();
   const books = bookshelf;
   return (
@@ -619,7 +615,7 @@ function MobileReadingGrid({ onTap }: { onTap: (idx: number) => void }) {
               />
               {!book.coverUrl && (
                 <div className="relative z-10 flex h-full flex-col justify-end p-3 pl-5">
-                  <p className="font-display text-xs font-semibold leading-tight text-white/95">
+                  <p className="font-dm-mono text-xs font-semibold leading-tight text-white/95">
                     {t(`life.book.${book.id}.title`)}
                   </p>
                   <p className="mt-1 font-body text-xs text-white/45">
@@ -639,9 +635,9 @@ function MobileReadingGrid({ onTap }: { onTap: (idx: number) => void }) {
       ))}
     </div>
   );
-}
+};
 
-function MobileMoreGrid() {
+const MobileMoreGrid = () => {
   const { t } = useI18n();
   const [flipped, setFlipped] = useState<number | null>(null);
   const hobbies = otherHobbies.slice(0, 6);
@@ -671,8 +667,7 @@ function MobileMoreGrid() {
                 className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl [backface-visibility:hidden]"
                 style={{ backgroundColor: hobby.color + '22' }}
               >
-                <span className="text-4xl">{hobby.icon}</span>
-                <span className="mt-2 font-serif text-sm text-ink">
+                <span className="font-serif text-sm text-ink">
                   {t(`life.hobby.${hobby.id}.label`)}
                 </span>
               </div>
@@ -722,13 +717,13 @@ function MobileMoreGrid() {
       })}
     </div>
   );
-}
+};
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // MAIN — LifeSection
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export function LifeSection() {
+export const LifeSection = () => {
   const { t } = useI18n();
   const [panel, setPanel] = useState<Panel>(0);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -775,14 +770,14 @@ export function LifeSection() {
                     >
                       {/* Heading */}
                       <motion.span
-                        className="block font-display font-light leading-[1.05] text-ink"
+                        className="block font-dm-mono font-light leading-[1.05] text-ink"
                         style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5rem)' }}
                         variants={leftItemVariants}
                       >
                         {cfg.line1}
                       </motion.span>
                       <motion.span
-                        className="block font-display italic leading-[1.05] text-olive"
+                        className="block font-dm-mono italic leading-[1.05] text-olive"
                         style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5rem)' }}
                         variants={leftItemVariants}
                       >
@@ -814,7 +809,7 @@ export function LifeSection() {
                                   className="h-14 w-14 shrink-0 object-cover"
                                 />
                                 <div className="min-w-0 flex-1">
-                                  <p className="font-display text-[1.1rem] font-black leading-tight text-ink">
+                                  <p className="font-dm-mono text-[1.1rem] font-black leading-tight text-ink">
                                     Twinkle Pickle
                                   </p>
                                   <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-olive-dark">
@@ -972,7 +967,9 @@ export function LifeSection() {
                   onClick={() => setPanel(i as Panel)}
                   className={cn(
                     'relative flex-1 flex flex-col items-center gap-2 rounded-full py-2 transition-all duration-300',
-                    isActive ? 'bg-ink/[0.07] text-olive-dark font-medium' : 'text-ink/35 hover:text-ink/60',
+                    isActive
+                      ? 'bg-ink/[0.07] text-olive-dark font-medium'
+                      : 'text-ink/35 hover:text-ink/60',
                   )}
                 >
                   <span className="text-xs tracking-wide">{t(item.labelKey)}</span>
@@ -995,13 +992,13 @@ export function LifeSection() {
             {/* Title */}
             <div className="mb-4">
               <span
-                className="block font-display font-light leading-[1.05] text-ink"
+                className="block font-dm-mono font-light leading-[1.05] text-ink"
                 style={{ fontSize: 'clamp(2rem, 9vw, 3rem)' }}
               >
                 {PANEL_CONFIG[panel].line1}
               </span>
               <span
-                className="block font-display italic leading-[1.05] text-olive"
+                className="block font-dm-mono italic leading-[1.05] text-olive"
                 style={{ fontSize: 'clamp(2rem, 9vw, 3rem)' }}
               >
                 {PANEL_CONFIG[panel].line2}
@@ -1030,7 +1027,7 @@ export function LifeSection() {
                     className="h-12 w-12 shrink-0 object-cover"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="font-display text-[1rem] font-black leading-tight text-ink">
+                    <p className="font-dm-mono text-[1rem] font-black leading-tight text-ink">
                       Twinkle Pickle
                     </p>
                     <p className="mt-0.5 font-mono text-xs uppercase tracking-[0.14em] text-olive-dark">
@@ -1100,4 +1097,4 @@ export function LifeSection() {
       )}
     </div>
   );
-}
+};

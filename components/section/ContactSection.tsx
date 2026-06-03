@@ -56,7 +56,7 @@ export function ContactSection() {
           </motion.p>
 
           <motion.h2
-            className="mb-6 font-display text-[clamp(2.2rem,5.5vw,4rem)] font-light leading-[1.15] text-cream"
+            className="mb-6 font-dm-mono text-[clamp(2.2rem,5.5vw,4rem)] font-light leading-[1.15] text-cream"
             initial={{ opacity: 0, y: 28, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: '-60px' }}

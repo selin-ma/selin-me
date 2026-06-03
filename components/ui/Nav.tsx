@@ -7,17 +7,92 @@ import { useEffect, useState } from 'react';
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { LanguageSwitch } from '@/components/ui/LanguageSwitch';
 import { cn } from '@/lib/utils';
-import sheroImg from '@/public/images/hero/shero.jpg';
+import avatarImg from '@/public/images/avatar.png';
 
 const NAV_LINKS = [
+  { labelKey: 'nav.home', href: '#hero' },
   { labelKey: 'nav.about', href: '#about' },
-  { labelKey: 'nav.skills', href: '#skills' },
+  // { labelKey: 'nav.skills', href: '#skills' },
   { labelKey: 'nav.work', href: '#showcase' },
   { labelKey: 'nav.vibe', href: '#vibe' },
   { labelKey: 'nav.life', href: '#life' },
 ] as const;
 
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.replace('#', ''));
+
+const DesktopNavItem = ({
+  href,
+  label,
+  isActive,
+}: {
+  href: string;
+  label: string;
+  isActive: boolean;
+}) => {
+  const [hovered, setHovered] = useState(false);
+  const flip = hovered;
+
+  return (
+    <a
+      href={href}
+      className={cn(
+        'inline-flex h-full items-center gap-0.5 px-2 text-sm tracking-[0.05em]',
+        isActive ? 'text-sticky-yellow-light font-bold' : 'text-ink/60 font-medium',
+      )}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* left bracket — slides in from right when active */}
+      <span
+        className="text-sticky-yellow transition-all duration-200"
+        style={{
+          opacity: isActive ? 1 : 0,
+          transform: isActive ? 'translateX(0)' : 'translateX(5px)',
+        }}
+      >
+        [
+      </span>
+
+      {/* flip text container */}
+      <span
+        className="relative overflow-hidden px-0.5"
+        style={{ height: '1.25em', display: 'inline-block', verticalAlign: 'text-bottom' }}
+      >
+        {/* front face */}
+        <span
+          className="block leading-[1.25em] transition-transform duration-[180ms]"
+          style={{
+            transform: flip ? 'translateY(-110%)' : 'translateY(0%)',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        >
+          {label}
+        </span>
+        {/* back face — olive color */}
+        <span
+          className="absolute inset-0 block leading-[1.25em] text-sticky-yellow-light transition-transform duration-[180ms]"
+          style={{
+            transform: flip ? 'translateY(0%)' : 'translateY(110%)',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        >
+          {label}
+        </span>
+      </span>
+
+      {/* right bracket — slides in from left when active */}
+      <span
+        className="text-sticky-yellow transition-all duration-200"
+        style={{
+          opacity: isActive ? 1 : 0,
+          transform: isActive ? 'translateX(0)' : 'translateX(-5px)',
+        }}
+      >
+        ]
+      </span>
+    </a>
+  );
+};
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -90,7 +165,7 @@ export function Nav() {
           onClick={menuOpen ? closeMenu : undefined}
         >
           <Image
-            src={sheroImg}
+            src={avatarImg}
             alt="avatar"
             className="h-full w-full object-cover object-right"
             placeholder="blur"
@@ -99,7 +174,7 @@ export function Nav() {
 
         {/* Mobile progress bar — bottom edge of header */}
         <div
-          className="absolute bottom-0 left-0 h-[2px] bg-terra transition-[width] duration-100 linear"
+          className="absolute bottom-0 left-0 h-[2px] bg-sticky-yellow-light transition-[width] duration-100 linear"
           style={{ width: `${progress}%` }}
           aria-hidden="true"
         />
@@ -117,7 +192,7 @@ export function Nav() {
       </header>
 
       {/* ── Desktop floating pill nav ────────────────────────────────────── */}
-      <nav className="fixed left-0 right-0 top-0 z-50 hidden justify-center pt-5 md:flex md:px-4">
+      <nav className="fixed left-0 right-0 top-0 z-50 hidden justify-center pt-8 md:flex md:px-4 font-dm-mono">
         <div
           className={cn(
             'flex items-center gap-1 rounded-full px-4 py-2 transition-all duration-500',
@@ -132,7 +207,7 @@ export function Nav() {
             className="mr-2 flex h-9 w-9 flex-shrink-0 overflow-hidden rounded-full transition-opacity hover:opacity-80"
           >
             <Image
-              src={sheroImg}
+              src={avatarImg}
               alt="avatar"
               className="h-full w-full object-cover object-right"
               placeholder="blur"
@@ -142,40 +217,25 @@ export function Nav() {
           <ul className="flex items-center gap-1 h-full">
             {NAV_LINKS.map((item) => {
               const id = item.href.replace('#', '');
-              const isActive = activeSection === id;
               return (
                 <li key={item.href}>
-                  <a
+                  <DesktopNavItem
                     href={item.href}
-                    className={cn(
-                      'inline-flex h-full group relative px-3 font-body text-sm tracking-[0.05em] transition-all duration-500 ease-out',
-                      isActive ? 'text-olive-dark font-medium' : 'text-ink hover:text-olive-dark',
-                    )}
-                  >
-                    <span className="transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
-                      {t(item.labelKey)}
-                    </span>
-                    <span
-                      className={cn(
-                        'absolute -bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-olive transition-all duration-500 ease-out',
-                        isActive
-                          ? 'scale-100 opacity-100 animate-breathe'
-                          : 'scale-0 opacity-0 group-hover:scale-75 group-hover:opacity-60',
-                      )}
-                    />
-                  </a>
+                    label={t(item.labelKey)}
+                    isActive={activeSection === id}
+                  />
                 </li>
               );
             })}
           </ul>
           <div className="flex items-center gap-5 h-full">
             <LanguageSwitch />
-            <a
+            {/* <a
               href="#contact"
-              className="rounded-full border border-ink/20 px-4 py-1.5 font-body text-sm tracking-[0.05em] text-ink transition-all duration-300 ease-out hover:border-olive-lt hover:bg-olive-lt hover:text-white"
+              className="rounded-full border border-ink/20 px-4 py-1.5 text-sm tracking-[0.05em] text-ink transition-all duration-300 ease-out hover:border-sticky-yellow-light hover:bg-sticky-yellow-light hover:text-white"
             >
               {t('nav.hireMe')}
-            </a>
+            </a> */}
           </div>
         </div>
       </nav>
@@ -198,7 +258,7 @@ export function Nav() {
 
             {/* Full-width drawer — slides in from right */}
             <div
-              className="fixed left-0 top-0 z-50 h-[500px] overflow-hidden md:hidden"
+              className="fixed left-0 top-0 z-50 h-dvh overflow-hidden md:hidden"
               style={{ width: '100dvw' }}
             >
               <motion.div
@@ -207,7 +267,7 @@ export function Nav() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="flex h-full w-full flex-col border-l border-white/20 bg-white/85 backdrop-blur-md"
+                className="flex h-full w-full flex-col border-l border-white/20 bg-white/85 backdrop-blur-md font-dm-mono"
               >
                 {/* Top bar — close button */}
                 <div className="flex items-center justify-between px-6 pr-8 py-4 border-b border-ink/[0.07]">
@@ -244,16 +304,27 @@ export function Nav() {
                       <a
                         href={item.href}
                         onClick={closeMenu}
-                        className="flex items-center border-b border-ink/[0.07] py-3 font-display text-xl text-ink transition-colors duration-200 hover:text-terra"
+                        className={cn(
+                          'flex items-center gap-1 border-b border-ink/[0.07] py-3 text-xl transition-colors duration-200',
+                          activeSection === item.href.replace('#', '')
+                            ? 'text-sticky-yellow-light font-bold'
+                            : 'text-ink hover:text-sticky-yellow-light/80 font-medium',
+                        )}
                       >
+                        {activeSection === item.href.replace('#', '') && (
+                          <span className="text-sticky-yellow-light text-lg">[</span>
+                        )}
                         {t(item.labelKey)}
+                        {activeSection === item.href.replace('#', '') && (
+                          <span className="text-sticky-yellow-light text-lg">]</span>
+                        )}
                       </a>
                     </motion.li>
                   ))}
                 </ul>
 
                 {/* Bottom CTA */}
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
@@ -262,11 +333,11 @@ export function Nav() {
                   <a
                     href="#contact"
                     onClick={closeMenu}
-                    className="flex items-center justify-center rounded-full bg-olive py-3 font-body text-[0.78rem] tracking-[0.08em] text-white transition-all duration-300 active:scale-[0.98] hover:bg-olive-dark"
+                    className="flex items-center justify-center rounded-full bg-sticky-yellow py-3 text-xs tracking-[0.08em] text-ink transition-all duration-300 active:scale-[0.98] hover:bg-sticky-yellow-light"
                   >
                     {t('nav.hireMe')}
                   </a>
-                </motion.div>
+                </motion.div> */}
               </motion.div>
             </div>
           </>
