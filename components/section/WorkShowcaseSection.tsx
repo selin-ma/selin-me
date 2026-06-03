@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { Container } from '@/components/ui/Container';
 import { workShowcases } from '@/lib/data';
 import type { WorkShowcase } from '@/types';
+import { HandwrittenUnderline } from './HeroSection';
 
 // ── Image / placeholder panel ─────────────────────────────────────────────
 function ImagePanel({
@@ -60,13 +61,12 @@ function ImagePanel({
               priority={i === 0}
               placeholder="blur"
               sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-top transition-[opacity,transform] duration-500 group-hover:scale-[1.03]"
+              className="object-cover object-top"
               style={{ opacity: i === active ? 1 : 0 }}
             />
           ) : null,
         )
       )}
-
       {/* Hover overlay — visit site */}
       <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/[0.18]">
         <span className="translate-y-2 scale-95 rounded-full bg-white px-8 py-3.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-ink opacity-0 shadow-md transition-all duration-300 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
@@ -193,7 +193,7 @@ function ProjectRow({
       >
         {/* Index number — first col odd, last col even */}
         <div
-          className={`font-display text-7xl font-bold italic leading-none text-[#F0F0F0] ${
+          className={`font-dm-mono text-7xl font-bold italic leading-none text-[#F0F0F0] ${
             isEven ? 'lg:order-3 lg:text-right' : 'lg:order-1'
           }`}
         >
@@ -218,7 +218,7 @@ function ProjectRow({
 
           {/* Title */}
           <h3
-            className="font-display font-black leading-[1.05] text-ink"
+            className="font-dm-mono font-black leading-[1.05] text-ink"
             style={{ fontSize: 'clamp(2rem, 3.8vw, 3.2rem)' }}
           >
             {title}
@@ -248,40 +248,331 @@ function ProjectRow({
   );
 }
 
+// ── Pixel reveal heading (char-by-char, scroll-triggered) ─────────────────
+export function PixelRevealHeading({
+  segments,
+}: {
+  segments: { text: string; className?: string }[];
+}) {
+  const containerRef = useRef<HTMLHeadingElement>(null);
+  const [triggered, setTriggered] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggered(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: '-40px' },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!triggered || !containerRef.current) return;
+    const CHAR_DELAY = 45;
+    const DURATION = 480;
+    const EASE = 'cubic-bezier(0.34, 1.1, 0.64, 1)';
+    const chars = containerRef.current.querySelectorAll<HTMLSpanElement>('.char-inner');
+    chars.forEach((char, i) => {
+      setTimeout(() => {
+        char.style.transition = `transform ${DURATION}ms ${EASE}, opacity ${Math.round(DURATION * 0.4)}ms ease`;
+        char.style.transform = 'translateY(0%)';
+        char.style.opacity = '1';
+      }, i * CHAR_DELAY);
+    });
+  }, [triggered]);
+
+  return (
+    <h2
+      ref={containerRef}
+      className="font-pixelify-sans font-black leading-tight text-ink text-center text-5xl lg:text-7xl"
+    >
+      {segments.map(({ text, className }, si) => (
+        <span key={si} className={className}>
+          {[...text].map((ch, ci) =>
+            ch === ' ' ? (
+              <span key={ci} className="inline-block w-[0.28em]" />
+            ) : (
+              <span
+                key={ci}
+                className="inline-block pb-[0.1em] pt-[0.25em] -mt-[0.25em] align-bottom"
+                style={{ clipPath: 'inset(0 -0.5em 0 -0.5em)' }}
+              >
+                <span
+                  className="char-inner inline-block"
+                  style={{ transform: 'translateY(110%)', opacity: '0' }}
+                >
+                  {ch}
+                </span>
+              </span>
+            ),
+          )}
+        </span>
+      ))}
+    </h2>
+  );
+}
+
 // ── Section ────────────────────────────────────────────────────────────────
 export function WorkShowcaseSection() {
   const { t, locale } = useI18n();
   const projects = workShowcases.slice(0, 3);
   const visitLabel = t('showcase.visit');
 
+  // ── Cards for sticky stack layout, derived from showcase data ──────────
+  const tabStyleByIndex = [
+    {
+      bg: 'bg-sticky-green',
+      textColor: 'text-ink',
+      tabPos: 'left-0',
+      tabShape: 'right-trapezoid' as const,
+    },
+    {
+      bg: 'bg-dark',
+      textColor: 'text-white',
+      tabPos: 'left-70',
+      tabShape: 'isosceles-trapezoid' as const,
+    },
+    {
+      bg: 'bg-sticky-yellow',
+      textColor: 'text-ink',
+      tabPos: 'left-140',
+      tabShape: 'isosceles-trapezoid' as const,
+    },
+  ];
+  const showcaseCards = projects.map((project, idx) => {
+    const title = locale === 'zh' ? project.titleZh : project.title;
+    const label = (locale === 'zh' ? project.categoryZh : project.category).toUpperCase();
+    const desc = locale === 'zh' ? project.descZh : project.desc;
+    const tech = project.tech ?? [];
+    const siteUrl = project.siteUrl ?? project.slides?.[0]?.siteUrl ?? '#';
+    const coverImage = project.coverImage ?? project.slides?.[0]?.coverImage;
+    return {
+      id: project.id,
+      ...tabStyleByIndex[idx],
+      title,
+      label,
+      desc,
+      tech,
+      siteUrl,
+      coverImage,
+    };
+  });
+
   return (
-    <section id="showcase" className="relative bg-white">
+    <section id="showcase" className="relative overflow-x-clip">
       {/* ── Section header ─────────────────────────────────────────────── */}
       <Container className="pb-0 pt-14 md:pt-20">
-        <motion.p
-          className="mb-3 font-mono text-xs uppercase tracking-[0.28em] text-olive-dark"
+        <motion.div
+          className="mb-3 flex flex-col justify-center items-center font-caveat-hand text-2xl font-medium text-center tracking-wider text-ink"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          / {t('showcase.kicker')}
-        </motion.p>
+          {t('showcase.kicker')}
+          <HandwrittenUnderline />
+        </motion.div>
 
-        <motion.h2
-          className="font-display font-black leading-tight text-ink"
-          style={{ fontSize: 'clamp(2.4rem, 4.8vw, 4rem)' }}
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.7, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {t('showcase.title.prefix')} <em className="text-terra">{t('showcase.title.em')}</em>
-        </motion.h2>
+        <PixelRevealHeading
+          segments={[
+            { text: t('showcase.title.prefix'), className: 'uppercase' },
+            {
+              text: t('showcase.title.em'),
+              className: 'block md:inline italic text-sticky-green uppercase',
+            },
+          ]}
+        />
       </Container>
 
-      {/* ── Project rows ───────────────────────────────────────────────── */}
-      <Container>
+      {/* ── Sticky card stack layout ──────────────────────────── */}
+      <div className="relative isolate">
+        {/* spacer so cards begin at reasonable scroll position */}
+        {/* <div className="h-[10vh] lg:block" /> */}
+
+        {showcaseCards.map((card, _index) => {
+          const clipPath =
+            card.tabShape === 'right-trapezoid'
+              ? 'polygon(0% 0%, 86% 0%, 100% 100%, 0% 100%)'
+              : 'polygon(14% 0%, 86% 0%, 100% 100%, 0% 100%)';
+
+          return (
+            <section
+              key={card.id}
+              className={`lg:sticky lg:top-44 mx-auto w-full max-w-[1440px] px-6 lg:px-16 lg:h-[650px] ${card.textColor} mb-8 lg:mb-0 mt-15 lg:mt-34`}
+            >
+              {/* Outer wrapper that holds the folder tab + card body */}
+              <div className="relative h-full pt-9 lg:pt-0">
+                {/* Folder tab — mobile: absolute, 4px taller than pt-9 reserved space so it
+                    overlaps the card body top edge and eliminates the sub-pixel seam */}
+                <div
+                  className={`flex lg:hidden absolute top-0 left-0 z-10 h-[40px] w-[200px] items-center gap-2 px-4 ${card.bg}`}
+                  style={{ clipPath: 'polygon(0% 0%, 86% 0%, 100% 100%, 0% 100%)' }}
+                >
+                  <span className="material-symbols-outlined text-sm leading-none opacity-60">
+                    code
+                  </span>
+                  <span className="font-dm-mono text-xs tracking-[0.2em] uppercase opacity-70 font-medium">
+                    {t('showcase.project')} {_index === 0 ? '01' : _index === 1 ? '02' : '03'}
+                  </span>
+                </div>
+                {/* Folder tab — desktop only (trapezoid shape, absolutely positioned) */}
+                <div
+                  className={`hidden lg:flex absolute -top-14 z-10 h-[calc(3.5rem+2px)] w-[280px] justify-center items-center gap-3 ${card.bg} ${card.tabPos}`}
+                  style={{ clipPath }}
+                >
+                  <span className="material-symbols-outlined text-base leading-none opacity-70">
+                    code
+                  </span>
+                  <span className="font-dm-mono text-sm tracking-[0.2em] uppercase opacity-85 font-medium">
+                    {t('showcase.project')} {_index === 0 ? '01' : _index === 1 ? '02' : '03'}
+                  </span>
+                </div>
+                {/* Card body — folder body */}
+                <div className={`lg:h-full ${card.bg} overflow-hidden`}>
+                  <div className="flex flex-col lg:flex-row lg:h-full gap-5 p-5 lg:p-8">
+                    {/* Left — text content */}
+                    <div className="flex flex-1 flex-col justify-between min-w-0">
+                      {/* Top group — title + description + link */}
+                      <div className="space-y-4">
+                        {/* Title — top-left first line */}
+                        <h3 className="font-dm-mono text-3xl md:text-4xl lg:text-6xl font-black leading-[0.95] tracking-tight">
+                          {card.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="font-body text-sm leading-relaxed opacity-60 max-w-lg">
+                          {card.desc}
+                        </p>
+
+                        {/* Live Website link */}
+                        <a
+                          href={card.siteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group relative py-2 inline-flex items-center gap-1.5 font-dm-mono text-sm uppercase opacity-50 hover:opacity-100 transition-opacity duration-200"
+                        >
+                          Live Website
+                          <span className="material-symbols-outlined" style={{ fontSize: '12px' }}>
+                            arrow_outward
+                          </span>
+                          <span className="absolute bottom-0.5 left-0 h-px w-full bg-current scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100" />
+                        </a>
+                      </div>
+
+                      {/* Bottom — folder-tab shaped tech tags */}
+                      <div className="flex flex-wrap gap-x-3 gap-y-4">
+                        {card.tech.map((tag: string) => (
+                          <div key={tag} className="relative pt-3">
+                            {/* Folder tab — trapezoid, narrower than body */}
+                            <div
+                              className="absolute top-0 left-0 h-3 w-[58%] bg-current/[0.22]"
+                              style={{ clipPath: 'polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%)' }}
+                            />
+                            {/* Folder body */}
+                            <div className="flex items-center px-3 h-8 bg-current/[0.13]">
+                              <span className="font-dm-mono text-xs whitespace-nowrap opacity-70">
+                                {tag}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right — project image */}
+                    <div className="w-full aspect-[4/3] lg:w-auto lg:aspect-square lg:h-full border-2 border-white overflow-hidden group relative">
+                      {(() => {
+                        const imageContent = card.coverImage ? (
+                          <motion.div
+                            className="h-full w-full"
+                            whileHover={{ scale: 1.04 }}
+                            transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+                          >
+                            <Image
+                              src={card.coverImage}
+                              alt={card.title}
+                              className="h-full w-full object-cover object-top"
+                            />
+                          </motion.div>
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-white/10">
+                            <svg
+                              width="48"
+                              height="48"
+                              viewBox="0 0 48 48"
+                              fill="none"
+                              className="opacity-30"
+                            >
+                              <rect
+                                x="6"
+                                y="10"
+                                width="36"
+                                height="28"
+                                rx="2"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                              />
+                              <circle
+                                cx="18"
+                                cy="22"
+                                r="4"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                              />
+                              <path
+                                d="M6 32l10-8 8 6 8-10 10 12"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        );
+
+                        const overlay = (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/[0.18]">
+                            <span className="translate-y-2 scale-95 rounded-full bg-white px-8 py-3.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-ink opacity-0 shadow-md transition-all duration-300 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
+                              {visitLabel}
+                            </span>
+                          </div>
+                        );
+
+                        return card.siteUrl ? (
+                          <a
+                            href={card.siteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative block h-full w-full"
+                          >
+                            {imageContent}
+                            {overlay}
+                          </a>
+                        ) : (
+                          <div className="relative h-full w-full">{imageContent}</div>
+                        );
+                      })()}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+
+        {/* bottom spacer so last card scrolls out smoothly */}
+        {/* <div className="hidden lg:block h-screen" /> */}
+      </div>
+
+      {/* ── Project rows (hidden) ────────────────────────────────── */}
+      <Container className="hidden">
         {projects.map((project, i) => (
           <ProjectRow
             key={project.id}

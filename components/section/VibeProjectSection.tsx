@@ -185,7 +185,7 @@ function SelinMeVisual() {
       </div>
       {/* Mini nav */}
       <div className="flex shrink-0 items-center justify-between border-b border-ink/[0.05] px-5 py-2">
-        <span className="font-display text-[0.75rem] italic text-ink">selin.me</span>
+        <span className="font-dm-mono text-[0.75rem] italic text-ink">selin.me</span>
         <div className="flex gap-3">
           {['Work', 'Play', 'About'].map((n) => (
             <span key={n} className="font-body text-[0.45rem] text-ink/30">
@@ -199,7 +199,7 @@ function SelinMeVisual() {
         <p className="mb-2 font-mono text-[0.45rem] uppercase tracking-[0.22em] text-[#7FA2BF]/70">
           Portfolio · Chengdu
         </p>
-        <h4 className="mb-3 font-display text-[2.8rem] font-black leading-[1.0] text-ink">
+        <h4 className="mb-3 font-dm-mono text-[2.8rem] font-black leading-[1.0] text-ink">
           Frontend
           <br />
           Engineer
@@ -370,7 +370,7 @@ function VibeCardFull({
             {t(`vibe.card.${key}.category` as Parameters<typeof t>[0])}
           </p>
           <h3
-            className="mb-4 font-display text-[2.4rem] font-black leading-tight"
+            className="mb-4 font-dm-mono text-[2.4rem] font-black leading-tight"
             style={{ color: meta.accent }}
           >
             {t(`vibe.card.${key}.title` as Parameters<typeof t>[0])}
@@ -472,7 +472,7 @@ function VibeCardMobile({ id }: { id: CardId }) {
             {t(`vibe.card.${key}.category` as Parameters<typeof t>[0])}
           </p>
           <h3
-            className="mb-2 font-display text-[1.3rem] font-black leading-snug"
+            className="mb-2 font-dm-mono text-[1.3rem] font-black leading-snug"
             style={{ color: meta.accent }}
           >
             {t(`vibe.card.${key}.title` as Parameters<typeof t>[0])}
@@ -677,7 +677,7 @@ function VibeSlider() {
           {/* Decorative background number */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-display font-black leading-none text-ink/[0.04]"
+            className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-dm-mono font-black leading-none text-ink/[0.04]"
             style={{ fontSize: '22rem', zIndex: 0 }}
           >
             {String(activeIdx + 1).padStart(2, '0')}
@@ -867,7 +867,7 @@ export function VibeProjectSection() {
           / {t('vibe.kicker')}
         </motion.p>
         <motion.h2
-          className="font-display font-black leading-tight text-ink"
+          className="font-dm-mono font-black leading-tight text-ink"
           style={{ fontSize: 'clamp(2.4rem, 4.8vw, 4rem)' }}
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}

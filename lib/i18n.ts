@@ -14,15 +14,14 @@ export const messages: Record<Locale, Messages> = {
   zh: {
     // Nav
     'nav.myStory': '我的故事',
+    'nav.home': '主页',
     'nav.about': '关于我',
     'nav.experience': '经历',
     'nav.skills': '技术栈',
     'nav.work': '工作成果',
-    'nav.vibe': 'Vibe Coding',
-    'nav.life': '生活',
+    'nav.vibe': '脑洞实验',
+    'nav.life': '屏幕之外',
     'nav.hireMe': '联系我',
-    'nav.language': '语言',
-
     // Hero
     'hero.greeting': "Hi, I'm",
     'hero.name': 'Selin',
@@ -34,9 +33,11 @@ export const messages: Record<Locale, Messages> = {
     'hero.cta.contact': '联系我',
     'hero.years.label': '年前端工程经验',
     'hero.scroll': '滚动',
+    'hero.available': '当前可接洽',
 
     // About
     'about.kicker': '关于我',
+    'about.name': 'Selin',
     'about.label.experience': '工作经历',
     'about.label.education': '教育背景',
     'about.available': '当前可接洽',
@@ -46,6 +47,16 @@ export const messages: Record<Locale, Messages> = {
     'about.role.penge': '前端实习生',
     'about.school': '电子科技大学成都学院',
     'about.degree': '计算机科学与技术（统招专升本）',
+    'about.degreeShort': '计算机科学与技术',
+
+    // Work Method
+    'workMethod.kicker': '工作方式',
+    'workMethod.0.title': '先观察，再重构',
+    'workMethod.0.body': '先观察上下文，而不是急着重写一切',
+    'workMethod.1.title': '细节不将就',
+    'workMethod.1.body': '用心打磨每个像素',
+    'workMethod.2.title': '发布只是开始',
+    'workMethod.2.body': '倾听反馈，不断打磨',
 
     // Experience
     'experience.kicker': '工作经历',
@@ -117,10 +128,10 @@ export const messages: Record<Locale, Messages> = {
     'life.hobby.movie.label': '电影',
     'life.hobby.movie.desc':
       '在观影团观影——字幕播完才亮灯，没有人屏摄没有人大声议论。这群人真正热爱电影，我也在这里学会了怎么"看"一部电影。',
-    'life.hobby.cook.label': '烘焙',
+    'life.hobby.cook.label': '烹饪',
     'life.hobby.cook.desc':
       '川菜是母语，豆花烤鱼是DNA，但我也迷上了做新疆拌面和甜品。料理和写代码一样——细节决定成败，每一步都很重要。',
-    'life.hobby.pet.label': '小宠',
+    'life.hobby.pet.label': '薯仔',
     'life.hobby.pet.desc':
       '薯仔是真正的体育生，每天都在做引体，想方设法越狱。时不时会想，它越狱的行为是徒劳的，但就像西西弗斯一样，它是快乐的吧。',
     'life.hobby.tennis.label': '网球',
@@ -129,17 +140,20 @@ export const messages: Record<Locale, Messages> = {
     'life.hobby.surf-skate.label': '陆冲',
     'life.hobby.surf-skate.desc':
       '从零自学，能慢慢滑走的时候，没想到会带着一群朋友刷10km绿道，更没想到曾让我摔到仰望的泵道，后来再陡我都能驾驭。',
+    'life.hobby.travel.label': '旅行',
+    'life.hobby.tb.label': '组织团建',
+    'life.hobby.hiking.label': '徒步',
 
     // Sports photos
-    'life.photo.kl1': 'MiLP DUPR 12 战队赛 · 吉隆坡',
-    'life.photo.kl2': '战队日常 · 吉隆坡',
-    'life.photo.kl3': 'MiLP DUPR 14 战队赛 · 吉隆坡',
-    'life.photo.chongqing': '厨房杯公开赛 · 重庆',
-    'life.photo.shanghai': 'MiLP年终总决赛 · 上海',
-    'life.photo.chengdu1': '战队日常 · 成都',
-    'life.photo.chengdu2': 'Beesoul杯混双挑战赛 · 成都',
-
-    'life.sports.teamRole': '匹克球战队 · 主理人',
+    'life.photo.kl1': 'MiLP战队赛·吉隆坡',
+    'life.photo.kl2': '战队日常·吉隆坡',
+    'life.photo.kl3': 'MiLP战队赛·吉隆坡',
+    'life.photo.chongqing': '厨房杯公开赛·重庆',
+    'life.photo.shanghai': 'MiLP 年终总决赛·上海',
+    'life.photo.chengdu1': '战队日常·成都',
+    'life.photo.chengdu2': 'Beesoul杯混双挑战赛·成都',
+    'life.photo.chengdu3': '直球杯女双邀请赛·成都',
+    'life.photo.xinjin': '四川省匹克球公开赛·新津',
     'life.sports.sponsored': '签约球员',
     'life.sports.xiaohongshu': '小红书 ↗',
     'life.sports.motto':
@@ -147,16 +161,44 @@ export const messages: Record<Locale, Messages> = {
     'life.reading.body': '那些与我们身处不同时代的朋友们，她们的生命与我们终究还是相连的。',
     'life.more.body': '每一种爱好都是理解世界的另一种语法。保持好奇，保持清醒。',
 
+    // Badge / coaching certificate
+    'life.sports.badge.tag': '匹克球·球员证',
+    'life.sports.badge.name': 'Selin',
+    'life.sports.badge.role1': '兼职教练',
+    'life.sports.badge.role2': '匹克球俱乐部主理人',
+    'life.sports.badge.sponsorLabel': '签约球员',
+    'life.sports.badge.sponsor': 'Beesoul',
+    'life.sports.badge.id': '#TC-001',
+
+    // Board section labels
+    'life.board.sports': '匹克球',
+    'life.board.reading': '阅读',
+    'life.board.more': '好奇心',
+
+    // Photo date months (zh format suffix)
+    'life.photo.date.jan': '1月',
+    'life.photo.date.feb': '2月',
+    'life.photo.date.mar': '3月',
+    'life.photo.date.apr': '4月',
+    'life.photo.date.may': '5月',
+    'life.photo.date.jun': '6月',
+    'life.photo.date.jul': '7月',
+    'life.photo.date.aug': '8月',
+    'life.photo.date.sep': '9月',
+    'life.photo.date.oct': '10月',
+    'life.photo.date.nov': '11月',
+    'life.photo.date.dec': '12月',
+
     // Contact
     'contact.kicker': '保持联系',
     'contact.title.line1': '一起写下',
     'contact.title.em': '下一章',
     'contact.lede':
       '如果你在寻找一位对代码质量有追求、对用户体验有感知的前端工程师，欢迎随时联系我，期待与你探索下一段旅程。',
-    'contact.availability': '当前可接洽',
-
     // Vibe Projects
-    'vibe.kicker': 'Vibe Coding',
+    'vibe.kicker': 'AI搭子',
+    'vibe.title.word1': '脑洞',
+    'vibe.title.word2': '实验',
     'vibe.title.prefix': '用 AI',
     'vibe.title.em': '一起构建',
     'vibe.lede':
@@ -184,7 +226,7 @@ export const messages: Record<Locale, Messages> = {
     'vibe.card.kanajump.category': 'Web App · 日语学习 · 更新中',
     'vibe.card.kanajump.title': 'Kana Jump',
     'vibe.card.kanajump.desc':
-      '一款专注于假名学习的 PWA 应用，支持离线使用、答题历史同步和错题针对性练习。',
+      '日语假名和单词学习 PWA — TSRS间隔重复算法练习，以《大家的日本語初級 I》为教材，持续更新中。',
 
     // Work Showcase
     'showcase.kicker': '工作成果',
@@ -193,21 +235,34 @@ export const messages: Record<Locale, Messages> = {
     'showcase.lede': '参与并主导过的、真实服务于用户的产品。',
     'showcase.visit': '访问网站',
     'showcase.placeholder': '截图待补充',
+    'showcase.project': '项目',
 
-    // Footer
-    'footer.line': '用心打磨 · 部署于 GitHub Pages · © {year}',
+    // Footer — flip slots
+    'footer.flip.0.0': '存在主义者',
+    'footer.flip.0.1': '2am 哲学家',
+    'footer.flip.0.2': 'INFJ',
+    'footer.flip.1.0': '永远的 v3.0',
+    'footer.flip.1.1': '不满意就重做',
+    'footer.flip.1.2': '审美强迫症',
+    'footer.flip.2.0': '独处',
+    'footer.flip.2.1': '觉醒',
+    'footer.flip.2.2': '选择',
+    'footer.flip.3.0': '棒球帽收藏家',
+    'footer.flip.3.1': '像素农民',
+    'footer.flip.3.2': '长跑 × 三分钟热度',
+    'footer.line': "Selin's portfolio · © {year}",
   },
   en: {
     // Nav
     'nav.myStory': 'My Story',
+    'nav.home': 'Home',
     'nav.about': 'About Me',
     'nav.experience': 'Experience',
     'nav.skills': 'Skills',
     'nav.work': 'Work',
-    'nav.vibe': 'Vibe',
+    'nav.vibe': 'AI Projects',
     'nav.life': 'Life',
-    'nav.hireMe': 'Hire Me',
-    'nav.language': 'Language',
+    'nav.hireMe': 'Say hi!',
 
     // Hero
     'hero.greeting': "Hi, I'm",
@@ -221,18 +276,30 @@ export const messages: Record<Locale, Messages> = {
     'hero.cta.contact': 'Contact me',
     'hero.years.label': 'Years of Experience',
     'hero.scroll': 'scroll',
+    'hero.available': 'Available for work',
 
     // About
     'about.kicker': 'About Me',
+    'about.name': 'Selin',
     'about.label.experience': 'Experience',
     'about.label.education': 'Education',
     'about.available': 'Available for work',
-    'about.roleTitle': 'Frontend Engineer',
+    'about.roleTitle': '5yrs+ Frontend Engineer',
     'about.role.cit': 'Mid-Level Frontend Engineer',
     'about.role.qingcloud': 'Junior Frontend Engineer',
     'about.role.penge': 'Frontend Intern',
     'about.school': 'Chengdu College of UESTC',
     'about.degree': 'Bachelor of Computer Science and Technology (Top-up)',
+    'about.degreeShort': 'B.S. Computer Science',
+
+    // Work Method
+    'workMethod.kicker': 'How I Work',
+    'workMethod.0.title': 'I look before I rebuild',
+    'workMethod.0.body': 'Read first. Rewrite later.',
+    'workMethod.1.title': "Pixels don't lie",
+    'workMethod.1.body': 'Every pixel, every rhythm, every gap.',
+    'workMethod.2.title': 'I ship, then keep listening',
+    'workMethod.2.body': 'Ship it. Then keep listening.',
 
     // Experience
     'experience.kicker': 'Work Experience',
@@ -246,7 +313,7 @@ export const messages: Record<Locale, Messages> = {
     'experience.techStack': 'Tech Stack',
 
     // Skills
-    'skills.kicker': 'Expertise',
+    'skills.kicker': 'expertise',
     'skills.title.prefix': 'What I',
     'skills.title.em': 'Bring',
     'skills.tab.all': 'All',
@@ -321,15 +388,20 @@ export const messages: Record<Locale, Messages> = {
     'life.hobby.surf-skate.label': 'Surf Skate',
     'life.hobby.surf-skate.desc':
       'Self-taught from scratch. Once I could glide steadily, I found myself cruising a 10 km greenway with friends — and conquering pump tracks that had once sent me flat on my back.',
+    'life.hobby.travel.label': 'Nature Explorer',
+    'life.hobby.tb.label': 'Team Outing Host',
+    'life.hobby.hiking.label': 'Occasional Hiker',
 
     // Sports photos
-    'life.photo.kl1': 'MiLP DUPR 12 · Kuala Lumpur',
+    'life.photo.kl1': 'MiLP · Kuala Lumpur',
     'life.photo.kl2': 'Team Life · Kuala Lumpur',
-    'life.photo.kl3': 'MiLP DUPR 14 · Kuala Lumpur',
+    'life.photo.kl3': 'MiLP · Kuala Lumpur',
     'life.photo.chongqing': 'Kitchen Cup Open · Chongqing',
     'life.photo.shanghai': 'MiLP China National Finals · Shanghai',
     'life.photo.chengdu1': 'Team Life · Chengdu',
     'life.photo.chengdu2': 'Beesoul Mixed Doubles Challenge · Chengdu',
+    'life.photo.chengdu3': 'Straight Ball Cup Women’s Doubles Invitational · Chengdu',
+    'life.photo.xinjin': 'Sichuan Province Cup Open · Xinjin',
     'life.sports.teamRole': 'Pickleball Team · Founder',
     'life.sports.sponsored': 'Sponsored Player',
     'life.sports.xiaohongshu': 'RED ↗',
@@ -338,6 +410,33 @@ export const messages: Record<Locale, Messages> = {
       'Friends from another era — their lives and ours are still connected, across every page.',
     'life.more.body':
       'Every hobby is another way of making sense of the world. Stay curious, stay wide awake.',
+
+    // Badge / coaching certificate
+    'life.sports.badge.tag': 'Pickleball Player',
+    'life.sports.badge.name': 'Selin',
+    'life.sports.badge.role1': 'Part-time Coach',
+    'life.sports.badge.role2': 'Pickleball Club Founder',
+    'life.sports.badge.sponsorLabel': 'Sponsored by',
+    'life.sports.badge.sponsor': 'Beesoul',
+
+    // Board section labels
+    'life.board.sports': 'Sports & Movement',
+    'life.board.reading': 'Reading & Quiet Corners',
+    'life.board.more': 'Wide Awake',
+
+    // Photo date months (en abbreviations)
+    'life.photo.date.jan': 'JAN',
+    'life.photo.date.feb': 'FEB',
+    'life.photo.date.mar': 'MAR',
+    'life.photo.date.apr': 'APR',
+    'life.photo.date.may': 'MAY',
+    'life.photo.date.jun': 'JUN',
+    'life.photo.date.jul': 'JUL',
+    'life.photo.date.aug': 'AUG',
+    'life.photo.date.sep': 'SEP',
+    'life.photo.date.oct': 'OCT',
+    'life.photo.date.nov': 'NOV',
+    'life.photo.date.dec': 'DEC',
 
     // Contact
     'contact.kicker': 'Get In Touch',
@@ -348,7 +447,9 @@ export const messages: Record<Locale, Messages> = {
     'contact.availability': 'Open to new opportunities',
 
     // Vibe Projects
-    'vibe.kicker': 'Vibe Coding Projects',
+    'vibe.kicker': 'build with ai',
+    'vibe.title.word1': 'THOUGHTFUL',
+    'vibe.title.word2': 'PROJECTS',
     'vibe.title.prefix': 'Building with',
     'vibe.title.em': 'AI',
     'vibe.lede':
@@ -377,18 +478,33 @@ export const messages: Record<Locale, Messages> = {
     'vibe.card.kanajump.category': 'Web App · Japanese',
     'vibe.card.kanajump.title': 'Kana Jump',
     'vibe.card.kanajump.desc':
-      'A kana memorization tool — browse hiragana & katakana, practice mode, and study history. Built as a PWA so it works anywhere.',
+      'Japanese kana & vocabulary PWA — TSRS spaced-repetition practice, built around Minna no Nihongo Elementary I. Actively updating.',
 
     // Work Showcase
-    'showcase.kicker': 'Selected Work',
-    'showcase.title.prefix': 'Products that',
-    'showcase.title.em': 'Ship',
+    'showcase.kicker': 'explore my work',
+    'showcase.title.prefix': 'Features Web',
+    'showcase.title.em': 'Works',
     'showcase.lede': 'Real products I helped build — live, in the wild, serving real users.',
     'showcase.visit': 'Visit Site',
     'showcase.placeholder': 'Screenshot coming soon',
+    'showcase.project': 'Project',
+
+    // Footer — flip slots
+    'footer.flip.0.0': 'existentialist',
+    'footer.flip.0.1': '2am philosopher',
+    'footer.flip.0.2': 'INFJ',
+    'footer.flip.1.0': 'forever v3.0',
+    'footer.flip.1.1': 'redo if not right',
+    'footer.flip.1.2': 'aesthetic OCD',
+    'footer.flip.2.0': 'solitude',
+    'footer.flip.2.1': 'awakening',
+    'footer.flip.2.2': 'by choice',
+    'footer.flip.3.0': 'cap hoarder',
+    'footer.flip.3.1': 'pixel farmer',
+    'footer.flip.3.2': 'short games, long runs',
 
     // Footer
-    'footer.line': 'Crafted with care · Deployed on GitHub Pages · © {year}',
+    'footer.line': 'Code creates world © {year}',
   },
 };
 

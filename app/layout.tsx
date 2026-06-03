@@ -1,11 +1,38 @@
 import '@/app/globals.css';
 
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display, Pixelify_Sans, Caveat, DM_Mono } from 'next/font/google';
 
 import { I18nProvider } from '@/components/i18n/I18nProvider';
 import { ChatBot } from '@/components/ui/ChatBot';
 import { IconFonts } from '@/components/ui/IconFonts';
+import dynamic from 'next/dynamic';
+
+const ContactStickyCard = dynamic(
+  () => import('@/components/section/HeroSection').then((m) => m.ContactStickyCard),
+  { ssr: false },
+);
+
+const fontSpaceMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-dm-mono',
+  display: 'swap',
+});
+
+const fontCaveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-caveat-hand',
+  display: 'swap',
+});
+
+const fontPixel = Pixelify_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-pixelify-sans',
+  display: 'swap',
+});
 
 const fontDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -44,10 +71,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="zh-CN"
       suppressHydrationWarning
-      className={`${fontDisplay.variable} ${fontBody.variable}`}
+      className={`${fontDisplay.variable} ${fontBody.variable} ${fontPixel.variable} ${fontCaveat.variable} ${fontSpaceMono.variable}`}
     >
       <body>
         <I18nProvider>{children}</I18nProvider>
+        <ContactStickyCard />
         <ChatBot />
         <IconFonts />
       </body>

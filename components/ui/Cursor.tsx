@@ -1,81 +1,65 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 export function Cursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-  const mouse = useRef({ x: 0, y: 0 });
-  const ring = useRef({ x: 0, y: 0 });
-  const rafRef = useRef<number>(0);
-  const hasMoved = useRef(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [isTouch, setIsTouch] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Skip on touch-only devices (no hover capability)
-    if (window.matchMedia('(hover: none)').matches) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!hasMoved.current) {
-        hasMoved.current = true;
-        ring.current = { x: e.clientX - 10, y: e.clientY - 10 };
-        if (dotRef.current) dotRef.current.style.opacity = '1';
-        if (ringRef.current) ringRef.current.style.opacity = '1';
-      }
-      mouse.current = { x: e.clientX, y: e.clientY };
-      if (dotRef.current) {
-        dotRef.current.style.left = `${e.clientX - 4}px`;
-        dotRef.current.style.top = `${e.clientY - 4}px`;
-      }
-    };
-
-    const animate = () => {
-      ring.current.x += (mouse.current.x - ring.current.x - 10) * 0.14;
-      ring.current.y += (mouse.current.y - ring.current.y - 10) * 0.14;
-      if (ringRef.current) {
-        ringRef.current.style.left = `${ring.current.x}px`;
-        ringRef.current.style.top = `${ring.current.y}px`;
-      }
-      rafRef.current = requestAnimationFrame(animate);
-    };
-
-    // const handleInteractableEnter = () => {
-    //   if (dotRef.current) dotRef.current.style.transform = 'scale(2.5)';
-    //   if (ringRef.current) ringRef.current.style.transform = 'scale(1.8)';
-    // };
-
-    // const handleInteractableLeave = () => {
-    //   if (dotRef.current) dotRef.current.style.transform = 'scale(1)';
-    //   if (ringRef.current) ringRef.current.style.transform = 'scale(1)';
-    // };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    // document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
-    //   el.addEventListener('mouseenter', handleInteractableEnter);
-    //   el.addEventListener('mouseleave', handleInteractableLeave);
-    // });
-
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(rafRef.current);
-    };
+    setIsTouch('ontouchstart' in window);
   }, []);
 
+  useEffect(() => {
+    if (isTouch) return;
+
+    const el = cursorRef.current;
+    if (!el) return;
+
+    const onMove = (e: MouseEvent) => {
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      if (!visible) setVisible(true);
+    };
+
+    const onEnter = (e: Event) => {
+      const target = e.target as Element;
+      if (target.closest('a, button, [role="button"]')) setHovered(true);
+    };
+
+    const onLeave = (e: Event) => {
+      const target = e.target as Element;
+      if (target.closest('a, button, [role="button"]')) setHovered(false);
+    };
+
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseover', onEnter);
+    document.addEventListener('mouseout', onLeave);
+
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseover', onEnter);
+      document.removeEventListener('mouseout', onLeave);
+    };
+  }, [isTouch, visible]);
+
+  if (isTouch === null || isTouch) return null;
+
   return (
-    <>
-      <div
-        ref={dotRef}
-        style={{ opacity: 0 }}
-        className="cursor-dot h-2 w-2 rounded-full bg-olive transition-transform duration-150"
-        aria-hidden="true"
-      />
-      <div
-        ref={ringRef}
-        style={{ opacity: 0 }}
-        className="cursor-ring h-5 w-5 rounded-full border border-olive/60 transition-transform duration-200"
-        aria-hidden="true"
-      />
-    </>
+    <div
+      ref={cursorRef}
+      aria-hidden="true"
+      className={cn(
+        'fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2',
+        'rounded-none bg-white',
+        'transition-[width,height] duration-100',
+        visible ? 'opacity-100' : 'opacity-0',
+        hovered ? 'w-7 h-7' : 'w-3 h-3',
+      )}
+      style={{ mixBlendMode: 'difference' }}
+    />
   );
 }

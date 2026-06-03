@@ -1,5 +1,6 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
@@ -121,13 +122,17 @@ export function ChatBot() {
       </button>
 
       {/* Chat panel */}
-      {open && (
-        <div
+      <AnimatePresence>
+        {open && (
+        <motion.div
+          initial={{ opacity: 0, y: 16, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 20, scale: 0.95 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
             'fixed bottom-[5rem] right-4 z-50',
             'flex h-[520px] w-[calc(100vw-2rem)] max-w-[360px] flex-col overflow-hidden',
             'rounded-2xl bg-[#F7F7F8]',
-            'animate-fade-up',
             'shadow-[0_12px_48px_rgba(0,0,0,0.12),0_1px_4px_rgba(0,0,0,0.06)]',
           )}
         >
@@ -142,7 +147,7 @@ export function ChatBot() {
                   Selin&apos;s Bot
                 </p>
                 <p className="flex items-center gap-1.5 font-body text-sm text-ink/40">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-olive" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-sticky-yellow-light" />
                   We&apos;re online
                 </p>
               </div>
@@ -247,8 +252,9 @@ export function ChatBot() {
               </button>
             </div>
           </div>
-        </div>
-      )}
+        </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

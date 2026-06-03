@@ -38,6 +38,8 @@ export interface PhotoSlot {
   labelKey: string;
   src?: StaticImageData;
   position?: string;
+  /** Polaroid timestamp, e.g. "DEC 2024" */
+  date?: string;
 }
 
 export interface SportsActivity {
