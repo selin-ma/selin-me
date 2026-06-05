@@ -243,11 +243,11 @@ function SportsSection() {
                 )}
               </div>
               <div className="mt-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 sm:gap-1 px-0.5">
-                <p className="font-dm-mono text-[0.6rem] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.14em] text-ink/80 leading-tight text-center">
+                <p className="font-dm-mono text-[0.6rem] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.14em] text-ink/80 leading-tight text-right sm:text-left">
                   {t(photo.labelKey)}
                 </p>
                 {photo.date && (
-                  <span className="shrink-0 font-dm-mono text-[0.6rem] sm:text-xs tracking-[0.06em] text-ink/60 sm:text-ink/80 text-center">
+                  <span className="shrink-0 font-dm-mono text-[0.6rem] sm:text-xs tracking-[0.06em] text-ink/60 sm:text-ink/80 text-right">
                     {formatPhotoDate(photo.date, t)}
                   </span>
                 )}
