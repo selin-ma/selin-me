@@ -388,9 +388,9 @@ export const messages: Record<Locale, Messages> = {
     'life.hobby.surf-skate.label': 'Surf Skate',
     'life.hobby.surf-skate.desc':
       'Self-taught from scratch. Once I could glide steadily, I found myself cruising a 10 km greenway with friends — and conquering pump tracks that had once sent me flat on my back.',
-    'life.hobby.travel.label': 'Nature Explorer',
-    'life.hobby.tb.label': 'Team Outing Host',
-    'life.hobby.hiking.label': 'Occasional Hiker',
+    'life.hobby.travel.label': 'Traveling',
+    'life.hobby.tb.label': 'Hosting Team Outings',
+    'life.hobby.hiking.label': 'Hiking',
 
     // Sports photos
     'life.photo.kl1': 'MiLP · Kuala Lumpur',
